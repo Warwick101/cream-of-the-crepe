@@ -16,10 +16,11 @@
     "@angular/compiler": "^17.2.4",
     "@angular/core": "^17.2.4",
     "@angular/forms": "^17.2.4",
-    "@angular/material": "~17.2.2",
+    "@angular/material": "^16.2.14",
     "@angular/platform-browser": "^17.2.4",
     "@angular/platform-browser-dynamic": "^17.2.4",
     "@angular/router": "^17.2.4",
+    "@wjdk/acl": "^2.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.4"

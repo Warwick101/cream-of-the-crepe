@@ -12,10 +12,13 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
+import {RegisterIconsService, WdkBaseModule, WdkHeaderModule, WdkSnackBarModule, WdkSnackBarService} from "@wjdk/acl";
+import {HeaderComponent} from "./header/header.component";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,9 +27,9 @@ import {MatSelectModule} from "@angular/material/select";
     MatSelectModule,
     BrowserAnimationsModule,
     MatInputModule,
-    // WdkBaseModule,
-    // WdkHeaderModule,
-    // WdkSnackBarModule,
+    WdkBaseModule,
+    WdkHeaderModule,
+    WdkSnackBarModule,
     MatTableModule,
     MatIconModule,
     MatFormFieldModule,

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {BrandTypes, RegisterIconsService, WdkBaseConfig, WdkSnackBarService} from "@wjdk/acl";
+import {HeaderComponent} from "./header/header.component";
+import {environment} from "../environments/environment";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'cream-of-the-crepe';
+  baseConfig;
+
+  constructor(private snackBarService: WdkSnackBarService,
+              // below is epic
+              private registerIconsService: RegisterIconsService) {
+    this.baseConfig = {
+      appName: environment.title,
+      appAbbr: 'gg',
+      unbranded: false,
+      homeRoute: '/home',
+      brand: BrandTypes.WDS,
+      // footerText: `© Copyright ${new Date().getFullYear()} WDS - ACL Custom Footer`,
+      headerPortal: HeaderComponent,
+    } as WdkBaseConfig;
+
+    this.snackBarService.onDismiss.subscribe(() => {
+      // this.handleOnDismissEvent();
+    });
+  }
+
 }
