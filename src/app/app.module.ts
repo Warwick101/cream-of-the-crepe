@@ -14,11 +14,13 @@ import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {RegisterIconsService, WdkBaseModule, WdkHeaderModule, WdkSnackBarModule, WdkSnackBarService} from "@wjdk/acl";
 import {HeaderComponent} from "./header/header.component";
+import {DropdownDirective} from "./header/dropdown.directive";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,
@@ -28,6 +30,7 @@ import {HeaderComponent} from "./header/header.component";
     BrowserAnimationsModule,
     MatInputModule,
     WdkBaseModule,
+    MatIconModule,
     WdkHeaderModule,
     WdkSnackBarModule,
     MatTableModule,

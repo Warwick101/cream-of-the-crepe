@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import {BrandTypes, RegisterIconsService, WdkBaseConfig, WdkSnackBarService} from "@wjdk/acl";
+import {BrandTypes, WdkBaseConfig, WdkSnackBarService} from "@wjdk/acl";
 import {HeaderComponent} from "./header/header.component";
 import {environment} from "../environments/environment";
+import {RegisterIconsService} from "./services/icon-service/register-icons.service";
 
 @Component({
   selector: 'app-root',

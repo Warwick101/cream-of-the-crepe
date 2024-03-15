@@ -1,3 +1,78 @@
-<div class="header-wrapper">
-  <h1>Logo Here</h1>
+<div class="header">
+  <div class="header__logo">
+    <img src="../../assets/creame-of-the-crepe.png">
+  </div>
+  <div class="content--container header__nav">
+    <ul class="header__nav-list">
+      <!--<a *ngFor="let routeItem of routeItems" [routerLink]="[routeItem.routerLink]"-->
+      <!--routerLinkActive="router-active">-->
+      <!--{{routeItem.page}}-->
+      <!--</a>-->
+
+      <a [routerLink]="['/menu']"
+         routerLinkActive="router-active">
+        Menu
+      </a>
+      <a [routerLink]="['/catering']"
+         routerLinkActive="router-active">
+        Catering
+      </a>
+      <a [routerLink]="['/about-us']"
+         routerLinkActive="router-active">
+        About Us
+      </a>
+<!--      <ul (click)="toggleAccountMenu()"-->
+<!--          class="account-menu"-->
+<!--          qssDropdown-->
+<!--          routerLinkActive="router-active"-->
+<!--          [ngClass]="{'closed' : isAccountMenu}">-->
+<!--        <li class="account-menu__items">-->
+<!--          <ul>-->
+<!--            <li>-->
+<!--              <a [routerLink]="['/hub']">-->
+<!--                Profile-->
+<!--              </a>-->
+<!--            </li>-->
+<!--          </ul>-->
+<!--        </li>-->
+<!--      </ul>-->
+
+
+    </ul>
+    <div class="mobile-menu-hide" (click)="menuOn()">
+      <mat-icon svgIcon="menu-burger--s" class="icon burger-icon"></mat-icon>
+    </div>
+  </div>
+
+  <div *ngIf="isNavMenu"
+       @animateState
+       class="mobile-menu">
+    <!--<div [@listState]="routeItems?.length">-->
+    <div @listState>
+
+      <!--<a *ngFor="let routeItem of routeItems; let i = index"-->
+      <!--[routerLink]="[routeItem.routerLink]"-->
+      <!--(click)="menuOff()"-->
+      <!--routerLinkActive="router-active">-->
+      <!--{{routeItem.page}}-->
+      <!--</a>-->
+
+
+      <a [routerLink]="['/menu']"
+         (click)="menuOff()"
+         routerLinkActive="router-active">
+        Menu
+      </a>
+      <a [routerLink]="['/catering']"
+         (click)="menuOff()"
+         routerLinkActive="router-active">
+        Catering
+      </a>
+      <a [routerLink]="['/about-us']"
+         (click)="menuOff()"
+         routerLinkActive="router-active">
+        About Us
+      </a>
+    </div>
+  </div>
 </div>
