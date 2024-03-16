@@ -63,6 +63,11 @@
          routerLinkActive="router-active">
         Menu
       </a>
+      <a [routerLink]="['/order']"
+         (click)="menuOff()"
+         routerLinkActive="router-active">
+        Order
+      </a>
       <a [routerLink]="['/catering']"
          (click)="menuOff()"
          routerLinkActive="router-active">

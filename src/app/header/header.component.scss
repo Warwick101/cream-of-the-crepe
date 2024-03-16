@@ -1,11 +1,17 @@
+@mixin link {
+  font-size: 16px;
+  color: #e9b72e;
+  font-weight: 400;
+  text-decoration: underline;
+}
+
 span {
   padding: 0 16px;
 }
 
 a {
+  @include link;
   padding: 12px 16px;
-  font-size: 16px;
-  color: white;
   text-decoration: none;
 }
 
@@ -27,9 +33,7 @@ h3 {
   align-items: center;
   border-bottom: solid 1px #34221c;
   padding: 14px 0 0 0;
-  position: relative;
   z-index: 1000;
-
   display: flex;
   justify-content: center;
 
@@ -44,7 +48,7 @@ h3 {
 
 .header__nav {
   display: flex;
-  //margin: 0 auto;
+  top: 41px;
   align-items: center;
   justify-content: space-between;
 
@@ -55,7 +59,6 @@ h3 {
 
 .header {
   &:has(.mobile-menu) {
-
     .header__logo {
       display: none;
     }
@@ -90,7 +93,7 @@ h3 {
 
   a {
     font-size: 20px;
-    color: #ff8b3d;
+    color: #e9b72e;
   }
 
   a:hover {
@@ -122,7 +125,7 @@ h3 {
 }
 
 .burger-icon {
-  color: #ff8b3d;
+  color: #e9b72e;
   width: 30px;
   height: 30px;
 }
@@ -134,17 +137,22 @@ h3 {
 }
 
 .mobile-menu {
-  background-color: #201614;
+  //transform: translateX(100vw);
+  background-color: #7e550b;
   flex-direction: column;
   width: 100%;
   align-items: center;
   display: flex;
-  height: 330px;
   justify-content: center;
+  position: fixed;
+  top: 0;
+  height: 100%;
 
   a {
     display: block;
     text-align: center;
+    margin-bottom: 36px;
+    font-size: 28px;
   }
 
   a:hover {
@@ -154,86 +162,11 @@ h3 {
   }
 }
 
-a.login {
-  border-bottom: 0!important;
-  font-weight: 600;
-  background-color: #3d9f45;
-
-}
-
-
 .header__nav-list {
   justify-content: flex-end;
   display: block;
   align-items: center;
   margin-left: auto;
-}
-
-
-// Account Menu Dropdown
-
-
-.account-menu {
-  display: inline-block;
-  min-width: 137px;
-  position: relative;
-
-  &:not(.closed) {
-    box-shadow: 0 3px 0 0 green;
-
-    a {
-      color: white;
-
-      &:hover {
-        color: white;
-      }
-    }
-  }
-
-  a {
-    width: 100%;
-    border-bottom: none;
-
-    &:hover {
-      border-bottom: none;
-    }
-  }
-
-  li {
-    display: flex;
-    align-items: baseline;
-  }
-
-  .account-menu__profile {
-
-  }
-
-  .account-menu__items {
-    position: absolute;
-    width: 100%;
-    padding-top: 3px;
-
-    ul {
-      background-color: #efefef;
-      width: 100%;
-
-      a {
-        color: #636363;
-
-        &:hover {
-          border-bottom: none;
-          color: #1f1f1f;
-        }
-      }
-    }
-  }
-
-
-  &.closed {
-    .account-menu__items {
-      display: none;
-    }
-  }
 }
 
 
