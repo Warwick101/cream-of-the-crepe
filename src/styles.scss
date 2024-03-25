@@ -1,3 +1,7 @@
+@use '@angular/material' as material;
+@use './typography.scss' ;
+@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;800&family=Itim&display=swap');
+
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
@@ -14,4 +18,28 @@ wdk-menu {
 
 body {
   background-color: #201614;
+  //background-color: #5c4740;
 }
+
+:root {
+  --base-font-size: 16px;
+}
+
+// Typography
+//@include material.typography-hierarchy(typography.$cvs-typography, "hi");
+//@include material.legacy-typography-hierarchy(typography.$cvs-typography, "body");
+@include material.all-component-typographies((typography.$cvs-typography));
+@include typography.apply-typography(var(--base-font-size));
+
+//.cvs-link, .pds-link, a {
+//  @include global.pds-link(var(--base-font-size));
+//}
+
+//.itim-regular {
+//  font-family: "Itim", cursive;
+//  font-weight: 400;
+//  font-style: normal;
+//}
+
+
+
