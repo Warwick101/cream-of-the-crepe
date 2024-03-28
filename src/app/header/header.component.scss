@@ -34,7 +34,7 @@ h3 {
   justify-content: flex-start;
   margin: 0 auto;
   z-index: 1000;
-  overflow: hidden;
+  //overflow: hidden;
   position: relative;
   padding-bottom: 48px;
   background-color: #201614;
@@ -44,13 +44,16 @@ h3 {
     z-index: 99;
     width: 100%;
     position: absolute;
-    left: 560px;
+    //left: 560px;
     top: 110px;
     display: flex;
     color: #f4e669;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     .header__info__block {
-      width: 400px;
+      width: 320px;
 
       h5 {
         font-size: 18px;
@@ -82,7 +85,7 @@ h3 {
   }
 
   .header__logo {
-    padding: 22px 98px 29px 260px;
+    padding: 22px 98px 29px 80px;
     background-color: #2b1b18;
     border-top-right-radius: 0;
     border-bottom-left-radius: 0;
@@ -106,7 +109,15 @@ h3 {
     padding: 8px 24px 18px 42px;
     background-color: #ffaa44;
     position: absolute;
-    width: 100%;
+    width: 100%;min-height: 78px;
+
+    .header__nav__menu {
+      display: none;
+      position: absolute;
+      right: 90px;
+      top: 40px;
+      z-index: 9999;
+    }
 
     .header__nav__spacer {
       width: 400px;
@@ -184,17 +195,6 @@ h3 {
 }
 
 
-.burger-icon {
-  color: #e9b72e;
-  width: 30px;
-  height: 30px;
-}
-
-
-.burger-icon:hover {
-  color: white;
-  cursor: pointer;
-}
 
 .mobile-menu {
   //transform: translateX(100vw);
@@ -239,9 +239,34 @@ h3 {
 
 }
 
-@media screen and (max-width: 960px) {
+
+@media screen and (max-width: 1280px) {
+  .header__info {
+   display: none!important;
+  }
+
   .header__nav-list {
-    display: none;
+    display: none!important;
+  }
+
+  .header__nav__menu {
+    display: block!important;
+  }
+}
+
+
+@media screen and (max-width: 1600px) {
+
+  .header__nav__spacer {
+    width: 250px!important;
+  }
+
+  .header__nav {
+    padding: 8px 24px 18px 0!important;
+  }
+
+  .header__info {
+    justify-content: flex-end!important;
   }
 }
 

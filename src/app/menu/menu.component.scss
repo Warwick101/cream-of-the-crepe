@@ -1,5 +1,19 @@
 @use '@angular/material' as mat;
 
+.header__img {
+  position: absolute;
+  top: -31px;
+  width: 100%;
+  z-index: -1;
+  opacity: 0.3;
+  overflow: hidden;
+  height: 1310px;
+
+  img {
+    height: 100%;
+  }
+}
+
 
 .menu-wrapper {
   width: 100%;
@@ -26,6 +40,9 @@
       background-color: #eaeaea;
       border-radius:18px;
       display: flex;
+      box-sizing: border-box;
+      flex-wrap: wrap;
+
 
       .menu__content__block {
         flex: 1;
@@ -91,5 +108,13 @@
         }
       }
     }
+  }
+}
+
+
+@media screen and (max-width: 495px) {
+
+  .menu__section__content {
+    flex-direction: column;
   }
 }
