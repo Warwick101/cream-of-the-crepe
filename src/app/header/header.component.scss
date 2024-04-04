@@ -109,7 +109,8 @@ h3 {
     padding: 8px 24px 18px 42px;
     background-color: #ffaa44;
     position: absolute;
-    width: 100%;min-height: 78px;
+    width: 100%;
+    min-height: 46px;
 
     .header__nav__menu {
       display: none;
@@ -233,6 +234,14 @@ h3 {
 
 // Responsive
 
+
+@media screen and (max-width: 960px) {
+
+
+}
+
+
+
 @media screen and (min-width: 960px) {
   .mobile-menu-hide, .mobile-menu {
     display: none;
@@ -242,6 +251,30 @@ h3 {
 
 
 @media screen and (max-width: 1280px) {
+
+  .header {
+    padding-bottom: 0;
+  }
+
+  .header__nav__menu {
+    top: 72px!important;
+
+    .mat-icon {
+      width: 28px;
+      height: 28px;
+      color: #f4e669;
+    };
+  }
+
+  .header__nav__spacer, .header__nav-list {
+    display: none;
+  }
+
+  .header__logo {
+    width: 100%;
+    border-bottom-right-radius: 0!important;
+  }
+
   .header__info {
    display: none!important;
   }
