@@ -15,15 +15,19 @@ import {MatSelectModule} from "@angular/material/select";
 import {RegisterIconsService, WdkBaseModule, WdkHeaderModule, WdkSnackBarModule, WdkSnackBarService} from "@wjdk/acl";
 import {HeaderComponent} from "./header/header.component";
 import {DropdownDirective} from "./header/dropdown.directive";
+import {CommonModule} from "@angular/common";
+import {MenuComponent} from "./menu/menu.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    DropdownDirective
+    DropdownDirective,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     HttpClientModule,
     MatSelectModule,

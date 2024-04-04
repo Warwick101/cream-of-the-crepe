@@ -4,146 +4,180 @@
       <h1>Menu</h1>
     </div>
     <div class="menu__section__content">
-      <div class="menu__content__block menu__content__block--savoury">
-        <h2>
-          Savory
-        </h2>
-        <div>
-          Add an egg to any menu item $.75
-        </div>
 
-        <div class="menu__content__item">
-          <div class="menu__section__item__heading">
-            <div class="menu__section__item__heading__title">
-              Rise and Shine
+      <ng-container *ngFor="let menu of menuData">
+        <div [ngClass]="menu.type" class="menu__content__block">
+          <div class="menu__content__item">
+            <h2 class="menu__content__item__title">
+              {{menu.category}}
+            </h2>
+            <div class="menu__content__item__caption">
+              <span *ngIf="menu.caption">
+                {{menu.caption}}
+              </span>
             </div>
-            <div class="menu__section__item__heading__price">
-              12.95
-            </div>
-          </div>
-          <div class="menu__content__item__description">
-            Eggs, turkey bacon & your choice of cheese (mozzarella, swiss or cheddat)
-          </div>
-          <div class="menu__content__item__image">
-            <img src="../../assets/img/food-item.png">
-          </div>
-        </div>
+              <div *ngFor="let item of menu.items" class="menu__section__item">
+                <div class="menu__section__item__heading">
 
-        <div class="menu__content__item">
-          <div class="menu__section__item__heading">
-            <div class="menu__section__item__heading__title">
-              Rise and Shine
-            </div>
-            <div class="menu__section__item__heading__price">
-              12.95
-            </div>
-          </div>
-          <div class="menu__content__item__description">
-            Eggs, turkey bacon & your choice of cheese (mozzarella, swiss or cheddat)
-          </div>
-          <div class="menu__content__item__image">
-            <img src="../../assets/img/food-item.png">
-          </div>
-        </div>
-
-        <div class="menu__content__item">
-          <div class="menu__section__item__heading">
-            <div class="menu__section__item__heading__title">
-              Rise and Shine
-            </div>
-            <div class="menu__section__item__heading__price">
-              12.95
-            </div>
-          </div>
-          <div class="menu__content__item__description">
-            Eggs, turkey bacon & your choice of cheese (mozzarella, swiss or cheddat)
-          </div>
-          <div class="menu__content__item__image">
-            <img src="../../assets/img/food-item.png">
-          </div>
-        </div>
-        <div class="menu__content__item">
-          <div class="menu__section__item__heading">
-            <div class="menu__section__item__heading__title">
-              Rise and Shine
-            </div>
-            <div class="menu__section__item__heading__price">
-              12.95
-            </div>
-          </div>
-          <div class="menu__content__item__description">
-            Eggs, turkey bacon & your choice of cheese (mozzarella, swiss or cheddat)
-          </div>
-          <div class="menu__content__item__image">
-            <img src="../../assets/img/food-item.png">
-          </div>
-        </div>
-
-      </div>
-      <div class="menu__content__block menu__content__block--sweet">
-        <h2>
-          Sweet
-        </h2>
-        <div>
-          Add one scoop of ice cream for $x.x
-        </div>
-
-        <div class="menu__content__item">
-          <div class="menu__section__item__heading">
-            <div class="menu__section__item__heading__title">
-              Rise and Shine
-            </div>
-            <div class="menu__section__item__heading__price">
-              12.95
-            </div>
-          </div>
-          <div class="menu__content__item__description">
-            Eggs, turkey bacon & your choice of cheese (mozzarella, swiss or cheddat)
-          </div>
-          <div class="menu__content__item__image">
-            <img src="../../assets/img/food-item-sweet.png">
-          </div>
-        </div>
-
-        <div class="menu__content__item">
-          <div class="menu__section__item__heading">
-            <div class="menu__section__item__heading__title">
-              Rise and Shine
-            </div>
-            <div class="menu__section__item__heading__price">
-              12.95
-            </div>
-          </div>
-          <div class="menu__content__item__description">
-            Eggs, turkey bacon & your choice of cheese (mozzarella, swiss or cheddat)
-          </div>
-          <div class="menu__content__item__image">
-            <img src="../../assets/img/food-item-sweet.png">
-          </div>
-        </div>
-
-        <div class="menu__content__item">
-          <div class="menu__section__item__heading">
-            <div class="menu__section__item__heading__title">
-              Rise and Shine
-            </div>
-            <div class="menu__section__item__heading__price">
-              12.95
-            </div>
-          </div>
-          <div class="menu__content__item__description">
-            Eggs, turkey bacon & your choice of cheese (mozzarella, swiss or cheddat)
-          </div>
-          <div class="menu__content__item__image">
-            <img src="../../assets/img/food-item-sweet.png">
-          </div>
-        </div>
+                <div class="menu__section__item__heading__title">
+                  {{item.title}}
+                </div>
+                <div class="menu__section__item__heading__price">
+                  12.95
+                </div>
+                </div>
+                <div class="menu__content__item__description">
+                  {{item.description}}
+                </div>
+                <div class="menu__content__item__image" *ngIf="item.img">
+                  <img [src]="item.img">
+                </div>
+              </div>
 
 
-      </div>
+
+          </div>
+
+
+
+        </div>
+
+        <!--<div class="menu__content__item">-->
+          <!--<div class="menu__section__item__heading">-->
+            <!--<div class="menu__section__item__heading__title">-->
+              <!--Rise and Shine-->
+            <!--</div>-->
+            <!--<div class="menu__section__item__heading__price">-->
+              <!--12.95-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="menu__content__item__description">-->
+            <!--Eggs, turkey bacon & your choice of cheese (mozzarella, swiss or cheddat)-->
+          <!--</div>-->
+          <!--<div class="menu__content__item__image">-->
+            <!--<img src="../../assets/img/food-item.png">-->
+          <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="menu__content__item">-->
+          <!--<div class="menu__section__item__heading">-->
+            <!--<div class="menu__section__item__heading__title">-->
+              <!--Rise and Shine-->
+            <!--</div>-->
+            <!--<div class="menu__section__item__heading__price">-->
+              <!--12.95-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="menu__content__item__description">-->
+            <!--Eggs, turkey bacon & your choice of cheese (mozzarella, swiss or cheddat)-->
+          <!--</div>-->
+          <!--<div class="menu__content__item__image">-->
+            <!--<img src="../../assets/img/food-item.png">-->
+          <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="menu__content__item">-->
+          <!--<div class="menu__section__item__heading">-->
+            <!--<div class="menu__section__item__heading__title">-->
+              <!--Rise and Shine-->
+            <!--</div>-->
+            <!--<div class="menu__section__item__heading__price">-->
+              <!--12.95-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="menu__content__item__description">-->
+            <!--Eggs, turkey bacon & your choice of cheese (mozzarella, swiss or cheddat)-->
+          <!--</div>-->
+          <!--<div class="menu__content__item__image">-->
+            <!--<img src="../../assets/img/food-item.png">-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="menu__content__item">-->
+          <!--<div class="menu__section__item__heading">-->
+            <!--<div class="menu__section__item__heading__title">-->
+              <!--Rise and Shine-->
+            <!--</div>-->
+            <!--<div class="menu__section__item__heading__price">-->
+              <!--12.95-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="menu__content__item__description">-->
+            <!--Eggs, turkey bacon & your choice of cheese (mozzarella, swiss or cheddat)-->
+          <!--</div>-->
+          <!--<div class="menu__content__item__image">-->
+            <!--<img src="../../assets/img/food-item.png">-->
+          <!--</div>-->
+        <!--</div>-->
+
+      <!--</div>-->
+      <!--<div class="menu__content__block menu__content__block&#45;&#45;sweet">-->
+        <!--<h2>-->
+          <!--Sweet-->
+        <!--</h2>-->
+        <!--<div>-->
+          <!--Add one scoop of ice cream for $x.x-->
+        <!--</div>-->
+
+        <!--<div class="menu__content__item">-->
+          <!--<div class="menu__section__item__heading">-->
+            <!--<div class="menu__section__item__heading__title">-->
+              <!--Rise and Shine-->
+            <!--</div>-->
+            <!--<div class="menu__section__item__heading__price">-->
+              <!--12.95-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="menu__content__item__description">-->
+            <!--Eggs, turkey bacon & your choice of cheese (mozzarella, swiss or cheddat)-->
+          <!--</div>-->
+          <!--<div class="menu__content__item__image">-->
+            <!--<img src="../../assets/img/food-item-sweet.png">-->
+          <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="menu__content__item">-->
+          <!--<div class="menu__section__item__heading">-->
+            <!--<div class="menu__section__item__heading__title">-->
+              <!--Rise and Shine-->
+            <!--</div>-->
+            <!--<div class="menu__section__item__heading__price">-->
+              <!--12.95-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="menu__content__item__description">-->
+            <!--Eggs, turkey bacon & your choice of cheese (mozzarella, swiss or cheddat)-->
+          <!--</div>-->
+          <!--<div class="menu__content__item__image">-->
+            <!--<img src="../../assets/img/food-item-sweet.png">-->
+          <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="menu__content__item">-->
+          <!--<div class="menu__section__item__heading">-->
+            <!--<div class="menu__section__item__heading__title">-->
+              <!--Rise and Shine-->
+            <!--</div>-->
+            <!--<div class="menu__section__item__heading__price">-->
+              <!--12.95-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="menu__content__item__description">-->
+            <!--Eggs, turkey bacon & your choice of cheese (mozzarella, swiss or cheddat)-->
+          <!--</div>-->
+          <!--<div class="menu__content__item__image">-->
+            <!--<img src="../../assets/img/food-item-sweet.png">-->
+          <!--</div>-->
+        <!--</div>-->
+
+
+      <!--</div>-->
+      </ng-container>
+
     </div>
-  </div>
+
+    </div>
+
 </div>
 <div class="header__img">
-    <img src="./assets/img/cream-crepe-bg-1-alt.jpg">
+  <img src="./assets/img/cream-crepe-bg-1-alt.jpg">
 </div>
