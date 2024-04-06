@@ -1,0 +1,51 @@
+<div *ngIf="showSpinner">
+    <mat-spinner diameter="50"></mat-spinner>
+</div>
+
+<div *ngIf="!showSpinner">
+    <!-- title -->
+    <h2 mat-dialog-title>Create Menu Category Item</h2>
+    <!-- content -->
+    <mat-dialog-content>
+        <!-- form -->
+        <form [formGroup]="menuCategoryItemForm">        
+
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Item Title</mat-label>
+                    <input matInput placeholder="Item Title" formControlName="title" type="text" id="title"
+                        name="title" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput placeholder="Description" formControlName="description" type="text" id="description"
+                        name="description"></textarea>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Price</mat-label>
+                    <input matInput placeholder="Price" formControlName="price" type="number" id="price" name="price" />
+                </mat-form-field>
+
+            </div>
+        </form>
+        <!-- /form -->
+
+    </mat-dialog-content>
+    <!-- /content -->
+    <!-- mat-dialog-actions -->
+    <div mat-dialog-actions>
+        <div>
+            <button mat-flat-button color="primary" [disabled]="!menuCategoryItemForm.valid" type="submit"
+                (click)="onCreateCategoryItem();">
+                <mat-icon>add_circle</mat-icon>Create
+            </button>
+            <button mat-stroked-button color="primary" type="button" (click)="onCancel()">
+                <mat-icon>close</mat-icon>Cancel
+            </button>
+        </div>
+    </div>
+    <!-- /mat-dialog-actions -->
+
+</div>

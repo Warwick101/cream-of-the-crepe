@@ -1,10 +1,12 @@
 import { Injectable, NgZone } from '@angular/core';
 import {
   Firestore,
+  arrayUnion,
   collection,
   collectionSnapshots,
   doc,
   docSnapshots,
+  getDoc,
   getDocs,
   orderBy,
   query,
@@ -133,13 +135,13 @@ export class MenuManagerService {
   async updateRearrangedCategories(menuCategoriesData: any) {
     const batch: any = [];
     const menuCategoriesRef = collection(this.afs, `menu-categories`);
-  
+
     menuCategoriesData.forEach((menuCategory: any) => {
       const categoryId = menuCategory.cid;
       const categoryRef = doc(menuCategoriesRef, categoryId);
       batch.push(updateDoc(categoryRef, { order: menuCategory.order }));
     });
-  
+
     try {
       await Promise.all(batch);
       console.log('Menu categories updated successfully.');
@@ -165,5 +167,23 @@ export class MenuManagerService {
         };
       })
     );
+  }
+
+  // Create Menu Catergory Item
+  async createMenuCatergoryItem(cid: string, itemData: any) {
+    try {
+      const docRef = doc(this.afs, 'menu-categories', cid);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        await updateDoc(docRef, {
+          items: arrayUnion(itemData),
+        });
+        console.log('Item added to array successfully');
+      } else {
+        console.error('Document does not exist');
+      }
+    } catch (error) {
+      console.error('Error adding item to array: ', error);
+    }
   }
 }
