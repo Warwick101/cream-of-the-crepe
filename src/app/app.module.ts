@@ -19,6 +19,13 @@ import {MenuComponent} from "./menu/menu.component";
 import {MatTabsModule} from "@angular/material/tabs";
 import {FooterComponent} from "./footer/footer.component";
 
+// Firebase
+import {environment} from "../environments/environment";
+import {initializeApp, provideFirebaseApp} from "@angular/fire/app";
+import {getAuth, provideAuth} from "@angular/fire/auth";
+import {getFirestore, provideFirestore} from "@angular/fire/firestore";
+import {getStorage, provideStorage} from "@angular/fire/storage";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +39,10 @@ import {FooterComponent} from "./footer/footer.component";
     CommonModule,
     AppRoutingModule,
     HttpClientModule,
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),  
     MatSelectModule,
     BrowserAnimationsModule,
     MatInputModule,
