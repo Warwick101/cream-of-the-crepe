@@ -1,0 +1,74 @@
+<div style="background-color: white; padding: 20px;">
+    <!-- Login Form -->
+    <ng-container *ngIf="!resetPassword">
+        <!-- form -->
+        <form [formGroup]="loginForm">
+             <!-- form error -->
+             <div *ngIf="errorMessage">
+                <div>
+                    <p>{{ errorMessage }}</p>
+                </div>
+            </div>
+
+            <!-- form fields -->
+            <div>
+                <!-- email -->
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" type="text" required />
+                    <mat-error *ngIf="loginForm.get('email')?.hasError('required')">Email is required</mat-error>
+                    <mat-error *ngIf="loginForm.get('email')?.hasError('email')">Email is not valid</mat-error>
+                </mat-form-field>
+                <!-- password -->
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput formControlName="password" type="password" required />
+                    <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Password is required</mat-error>
+                    <mat-error *ngIf="loginForm.get('password')?.hasError('password')">Wrong password</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <!-- sign in button -->
+                <button mat-flat-button color="primary" [disabled]="loginForm.invalid" (click)="onSubmit()" [class.spinner]="loading">
+                    Sign in
+                </button>
+                <!-- /sign in button -->
+                <!-- forgot password toggle -->
+                <a (click)="reset()">Forgot your password?</a>
+            </div>
+
+        </form>
+    </ng-container>
+
+    <!-- Rest Password -->
+    <ng-container *ngIf="resetPassword && !restSuccessful">
+
+        <!-- form header -->
+        <div>
+            <div>Reset password</div>
+            <div><a (click)="onCancel()"> sign in if you've remembered</a></div>
+        </div>
+
+        <!-- form -->
+        <form [formGroup]="resetPasswordForm">
+
+            <!-- form fields -->
+            <div>          
+                <mat-form-field appearance="outline">
+                    <mat-label>Email Address</mat-label>
+                    <input matInput formControlName="resetEmail">
+                </mat-form-field>
+            </div>
+
+            <!-- reset button -->
+            <div>
+                <button mat-flat-button color="primary" type="submit" [disabled]="resetPasswordForm.invalid" (click)="onReset()">
+                    Reset
+                </button>
+            </div>
+
+        </form>
+        
+    </ng-container>
+</div>
