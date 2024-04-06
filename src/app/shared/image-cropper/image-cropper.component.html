@@ -1,0 +1,58 @@
+<!-- Image cropper -->
+<div>
+    <div *ngIf="!file">
+        <!-- Custom file upload button -->
+        <input #fileInput type="file" (change)="fileChangeEvent($event)" />
+        <!--
+        <label #fileLabel for="file-1">
+            <mat-icon>cloud_upload</mat-icon>
+            <span>Choose a file&hellip;</span>
+        </label>
+        -->
+        <!-- /Custom file upload button -->       
+    </div>
+
+    <!-- Cropper window -->
+    
+        <image-cropper
+            [transform]="transform" 
+            [imageChangedEvent]="imageChangedEvent"
+            [maintainAspectRatio]="true"
+            [cropperMinWidth]="300"
+            [cropperMinHeight]="300"
+            [cropperMaxWidth]="600"
+            [cropperMaxHeight]="600"
+            [hideResizeSquares]="true"
+            [roundCropper]="true"
+            [containWithinAspectRatio]="false"
+            [aspectRatio]="1 / 1" 
+            format="png" 
+            (imageCropped)="imageCropped($event)"
+            (imageLoaded)="imageLoaded($event)" 
+            (cropperReady)="cropperReady()" 
+            (loadImageFailed)="loadImageFailed()"
+        >
+        </image-cropper>
+    
+    <!-- /Cropper window -->
+
+    <!-- Cropper tools -->
+    <div *ngIf="file">
+        <mat-slider *ngIf="file" [disabled]="!file" [max]="max" [min]="min" [step]="step" [discrete]="thumbLabel"
+            (input)="logSliderValue($event)" [showTickMarks]="showTicks">
+            <input matSliderThumb [(ngModel)]="value" #slider>
+        </mat-slider>
+        <button 
+            *ngIf="file && isLoaded" 
+            mat-icon-button color="primary" 
+            (click)="resetImage()">
+            <mat-icon>restart_alt</mat-icon>
+        </button>
+
+        <!-- Custom file upload button #2 -->
+        <input #fileInput type="file" (change)="fileChangeEvent($event)" />     
+        
+    </div>
+    <!-- /Cropper tools -->
+</div>
+<!-- /Image cropper -->
