@@ -1,0 +1,57 @@
+<div *ngIf="showSpinner">
+    <mat-spinner diameter="50"></mat-spinner>
+</div>
+
+<div *ngIf="!showSpinner">
+    <!-- title -->
+    <h2 mat-dialog-title>Create Menu Category</h2>
+    <!-- content -->
+    <mat-dialog-content>
+        <!-- form -->
+        <form [formGroup]="menuCategoryForm" class="padding-small padding-remove-horizontal">
+
+            <!-- File Input -->
+            <!-- <app-image-cropper (imageData)="croppedImage($event)"></app-image-cropper> -->
+
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Category Title</mat-label>
+                    <input matInput placeholder="Category Title" formControlName="category" type="text" id="category"
+                        name="category" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Category Type</mat-label>
+                    <textarea matInput placeholder="Category Title" formControlName="type" type="text" id="type"
+                        name="type"></textarea>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Caption</mat-label>
+                    <input matInput placeholder="Caption" formControlName="caption" type="text" id="caption"
+                        name="caption" />
+                </mat-form-field>
+
+
+
+            </div>
+        </form>
+        <!-- /form -->
+
+    </mat-dialog-content>
+    <!-- /content -->
+    <!-- mat-dialog-actions -->
+    <div mat-dialog-actions>
+        <div>
+            <button mat-flat-button color="primary" [disabled]="!menuCategoryForm.valid" type="submit"
+                (click)="onCreateCategory();">
+                <mat-icon>add_circle</mat-icon>Create
+            </button>
+            <button mat-stroked-button color="primary" type="button" (click)="onCancel()">
+                <mat-icon>close</mat-icon>Cancel
+            </button>
+        </div>
+    </div>
+    <!-- /mat-dialog-actions -->
+
+</div>
