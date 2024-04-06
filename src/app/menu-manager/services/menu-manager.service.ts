@@ -4,8 +4,12 @@ import {
   collection,
   collectionSnapshots,
   doc,
+  getDocs,
+  orderBy,
+  query,
   serverTimestamp,
   setDoc,
+  updateDoc,
 } from '@angular/fire/firestore';
 import {
   Storage,
@@ -33,11 +37,17 @@ export class MenuManagerService {
     onComplete: () => void
   ): Promise<void> {
     try {
-      // Create a Firestore document and get the document ID
-      const docRef = await addDoc(
-        collection(this.afs, 'menu-categories'),
-        menuCategoryData
+      // Get the count of documents in the collection
+      const querySnapshot = await getDocs(
+        collection(this.afs, 'menu-categories')
       );
+      const order = querySnapshot.size; // This will give the count of documents as a number
+
+      // Add document with menuCategoryData and order property
+      const docRef = await addDoc(collection(this.afs, 'menu-categories'), {
+        ...menuCategoryData,
+        order: Number(order), // Convert order to number
+      });
 
       if (menuCategoryImage) {
         // If there's an image, proceed with image upload
@@ -96,7 +106,9 @@ export class MenuManagerService {
   // Get All Menu Categories
   getMenuCategoriesCollection() {
     const collectionRef = collection(this.afs, 'menu-categories');
-    return collectionSnapshots(collectionRef).pipe(
+    const queryMenuCategories = query(collectionRef, orderBy('order'));
+
+    return collectionSnapshots(queryMenuCategories).pipe(
       map((res) =>
         res.map((data) => {
           // const tid = data.id;
@@ -108,10 +120,30 @@ export class MenuManagerService {
             caption: docData['caption'],
             categoryImage: docData['categoryImage'],
             categoryImageFile: docData['categoryImageFile'],
+            order: docData['order'],
           };
           return { ...menuCategoriesData };
         })
       )
     );
-  }  
+  }
+
+  // Update Rearranged Categories
+  async updateRearrangedCategories(menuCategoriesData: any) {
+    const batch: any = [];
+    const menuCategoriesRef = collection(this.afs, `menu-categories`);
+  
+    menuCategoriesData.forEach((menuCategory: any) => {
+      const categoryId = menuCategory.cid;
+      const categoryRef = doc(menuCategoriesRef, categoryId);
+      batch.push(updateDoc(categoryRef, { order: menuCategory.order }));
+    });
+  
+    try {
+      await Promise.all(batch);
+      console.log('Menu categories updated successfully.');
+    } catch (error) {
+      console.error('Error updating menu categories: ', error);
+    }
+  }
 }

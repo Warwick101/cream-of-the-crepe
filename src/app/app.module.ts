@@ -37,6 +37,8 @@ import {MatTabsModule} from "@angular/material/tabs";
 import {FooterComponent} from "./footer/footer.component";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -76,7 +78,9 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     MatDialogModule,
     MatProgressSpinnerModule,
     ImageCropperModule,
-    MatSliderModule
+    MatSliderModule,
+    DragDropModule,
+    MatSlideToggleModule
   ],
   providers: [
     provideAnimationsAsync()
