@@ -124,6 +124,7 @@ export class MenuManagerService {
             categoryImage: docData['categoryImage'],
             categoryImageFile: docData['categoryImageFile'],
             order: docData['order'],
+            items: docData['items'] || null,
           };
           return { ...menuCategoriesData };
         })
@@ -184,6 +185,17 @@ export class MenuManagerService {
       }
     } catch (error) {
       console.error('Error adding item to array: ', error);
+    }
+  }
+
+  // Update Rearranged Category Items
+  async updateRearrangedCategoryItems(cid: string, itemData: any){
+    try {
+      const docRef = doc(this.afs, 'menu-categories', cid);
+      await updateDoc(docRef, { items: itemData });
+      console.log('Array overwritten successfully');
+    } catch (error) {
+      console.error('Error overwriting array: ', error);
     }
   }
 }

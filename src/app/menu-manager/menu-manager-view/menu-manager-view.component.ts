@@ -1,20 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EMPTY, Subscription, catchError, switchMap } from 'rxjs';
 import { MenuManagerService } from '../services/menu-manager.service';
 import { MenuManagerItemCreateComponent } from '../menu-manager-item/menu-manager-item-create/menu-manager-item-create.component';
 import { MatDialog } from '@angular/material/dialog';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-menu-manager-view',
   templateUrl: './menu-manager-view.component.html',
   styleUrl: './menu-manager-view.component.scss',
 })
-export class MenuManagerViewComponent {
+export class MenuManagerViewComponent implements OnDestroy {
   menuManagerViewSubscription: Subscription;
   cid: string = '';
   menuCategoryData: any;
   showSpinner = false;
+  isDraggable: boolean = false;
+  wasRearranged: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -41,7 +44,7 @@ export class MenuManagerViewComponent {
       )
       .subscribe({
         next: (menuCategoryData) => {
-          this.menuCategoryData = menuCategoryData;
+          this.menuCategoryData = menuCategoryData;         
           this.showSpinner = false;
         },
         error: (error) => {
@@ -63,5 +66,20 @@ export class MenuManagerViewComponent {
     dialogRef.afterClosed().subscribe(result => {
      
     });
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.menuCategoryData.items, event.previousIndex, event.currentIndex);
+    this.wasRearranged = true;
+  }
+
+  saveRearrangedCategories(){  
+    this.menuManagerService.updateRearrangedCategoryItems(this.cid, this.menuCategoryData.items)
+  }
+
+  ngOnDestroy(): void {
+    if(this.menuManagerViewSubscription){
+      this.menuManagerViewSubscription.unsubscribe();
+    }
   }
 }

@@ -1,11 +1,14 @@
-<div class="menu-wrapper">
+<div *ngIf="showSpinner">
+  <mat-spinner diameter="50"></mat-spinner>
+</div>
+<div class="menu-wrapper" *ngIf="!showSpinner">
   <div class="menu__section">
     <div class="menu__header">
       <h1>Menu</h1>
     </div>
     <div class="menu__section__content">
 
-      <ng-container *ngFor="let menu of menuData">
+      <ng-container *ngFor="let menu of menuCatergories">
         <div [ngClass]="menu.type" class="menu__content__block">
           <div class="menu__content__item">
             <h2 class="menu__content__item__title">
@@ -15,6 +18,9 @@
               <span *ngIf="menu.caption">
                 {{menu.caption}}
               </span>
+              <div class="menu__content__item__image" *ngIf="menu.categoryImage">
+                <img [src]="menu.categoryImage">
+              </div>
             </div>
               <div *ngFor="let item of menu.items" class="menu__section__item">
                 <div class="menu__section__item__heading">
