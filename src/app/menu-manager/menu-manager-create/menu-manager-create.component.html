@@ -11,7 +11,7 @@
         <form [formGroup]="menuCategoryForm" class="padding-small padding-remove-horizontal">
 
             <!-- File Input -->
-            <!-- <app-image-cropper (imageData)="croppedImage($event)"></app-image-cropper> -->
+            <app-image-cropper (imageData)="croppedImage($event)"></app-image-cropper>
 
             <div>
                 <mat-form-field appearance="outline">
@@ -22,18 +22,14 @@
 
                 <mat-form-field appearance="outline">
                     <mat-label>Category Type</mat-label>
-                    <textarea matInput placeholder="Category Title" formControlName="type" type="text" id="type"
-                        name="type"></textarea>
+                    <input matInput placeholder="Caption" formControlName="type" type="text" id="type" name="type" />
                 </mat-form-field>
 
                 <mat-form-field appearance="outline">
                     <mat-label>Caption</mat-label>
-                    <input matInput placeholder="Caption" formControlName="caption" type="text" id="caption"
-                        name="caption" />
+                    <textarea matInput placeholder="Category Title" formControlName="caption" type="text" id="caption"
+                        name="caption"></textarea>
                 </mat-form-field>
-
-
-
             </div>
         </form>
         <!-- /form -->

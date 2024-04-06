@@ -31,6 +31,9 @@ import {MenuComponent} from "./menu/menu.component";
 import {MatDialogModule} from '@angular/material/dialog';
 import { MenuManagerCreateComponent } from './menu-manager/menu-manager-create/menu-manager-create.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {ImageCropperModule } from 'ngx-image-cropper';
+import { ImageCropperComponent } from './shared/image-cropper/image-cropper.component';
+import {MatSliderModule} from '@angular/material/slider';
 
 
 
@@ -43,7 +46,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     SignupComponent,
     LoginComponent,
     MenuManagerListComponent,
-    MenuManagerCreateComponent
+    MenuManagerCreateComponent,
+    ImageCropperComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +71,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatIconModule,
     MatFormFieldModule,
     MatDialogModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ImageCropperModule,
+    MatSliderModule
   ],
   providers: [
     provideAnimationsAsync()

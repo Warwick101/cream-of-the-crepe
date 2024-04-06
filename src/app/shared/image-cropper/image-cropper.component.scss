@@ -1,0 +1,100 @@
+.mm-image-cropper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    padding: 5px;  
+    &__info {   
+        margin-top: 34px;
+        max-width: 250px;
+    }
+    &__info label {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+    }
+    &__info mat-icon {
+        margin: 0 auto;
+        margin-bottom: 15px;
+        font-size: 50px;
+        height: 50px;
+        width: 50px;
+    }
+    &__info h4,
+    &__info p {
+        text-align: center;
+        margin: 0;
+    }
+    &__tools {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: relative;
+        padding: 5px 25px;
+        bottom: 0px;
+        & .mm-color-picker-swatches {
+            display: flex;
+            flex-direction: row;
+            gap: 0.5rem;
+            margin: 10px;
+            cursor: pointer;
+        }
+        & input[type="color"] {
+            border-radius: 50%;
+            inline-size: 20px;
+            block-size: 20px; 
+            /* Can set padding between outer circle and color swatch for Firefox here;
+             * it doesn't support a color-swarch-wrapper pseudoclass
+             */
+            padding: 2px;
+            border-width: 1px;
+            border-style: solid;
+            border-color: rgb(153, 153, 153);
+            &.selected {
+                border-color: #000;
+            }
+            &:not(.selected) {
+                border-color: red;
+            }
+        }
+          
+        /* Affects area between outer circle and color swatch. Firefox doesn't have an equivalent. */
+        & input[type="color"]::-webkit-color-swatch-wrapper {
+            padding: 1px;
+        }
+          
+        /* Affects the inner circle, i.e. the current color selection */
+        & input[type="color"]::-webkit-color-swatch {
+            border-radius: 50%;
+        }
+          
+        & input[type="color"]::-moz-color-swatch {
+            border-radius: 50%;
+        }
+
+        & .mm-color-picker-swatch,
+        & .mm-color-picker-swatch-custom {
+            width: 20px;
+            height: 20px;
+            padding: 2px;
+            border-radius: 50%;
+            border: 1px solid black;
+            &.selected {
+                border-color: #000;
+            }
+            &:not(.selected) {
+                border-color: #ccc;
+            }
+        }
+    }
+    & .inputfile {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+    }
+}
+
