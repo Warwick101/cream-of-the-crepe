@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MenuManagerCreateComponent } from '../menu-manager-create/menu-manager-create.component';
 import { MenuManagerService } from '../services/menu-manager.service';
 import { Subscription } from 'rxjs';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-menu-manager-list',
@@ -11,6 +12,10 @@ import { Subscription } from 'rxjs';
 })
 export class MenuManagerListComponent implements OnDestroy{  
   menuCategoriesSubscription: Subscription;
+  menuCategoriesData: any;
+  isDraggable: boolean = false;
+  wasRearranged: boolean = false;
+
 
   constructor(
     private _dialog: MatDialog,
@@ -18,7 +23,7 @@ export class MenuManagerListComponent implements OnDestroy{
   ){
 
     this.menuCategoriesSubscription = this.menuManagerService.getMenuCategoriesCollection().subscribe(menuCategoriesData => {
-      console.log(menuCategoriesData)
+      this.menuCategoriesData = menuCategoriesData;
     })
 
   }
@@ -33,6 +38,22 @@ export class MenuManagerListComponent implements OnDestroy{
     dialogRef.afterClosed().subscribe(result => {
      
     });
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.menuCategoriesData, event.previousIndex, event.currentIndex);
+    this.wasRearranged = true;
+  }
+
+  saveRearrangedCategories(){
+    console.log(this.menuCategoriesData)
+
+    this.menuCategoriesData.forEach((menuCategory: any, index: number) => {
+      menuCategory.order = index;
+    });
+
+    console.log(this.menuCategoriesData)
+    this.menuManagerService.updateRearrangedCategories(this.menuCategoriesData);
   }
 
   ngOnDestroy(): void {

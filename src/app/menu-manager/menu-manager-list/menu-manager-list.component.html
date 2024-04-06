@@ -1,3 +1,22 @@
+<div style="background-color: white; padding: 20px;">
 <div>
     <button (click)="openCreateCategorykDialog()">Create Category</button>
+</div>
+
+<mat-slide-toggle [(ngModel)]="isDraggable">Rearrange</mat-slide-toggle>
+<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+    @for (menuCategoryData of menuCategoriesData; track menuCategoryData) {
+      <div class="example-box" [ngClass]="{'no-move-cursor': !isDraggable}" cdkDrag [cdkDragDisabled]="!isDraggable">
+        <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+        <div>{{menuCategoryData.order}}</div>
+        <div>{{menuCategoryData.category}}</div>
+        <div>View</div>
+      </div>
+    }
+  </div>
+
+  <div *ngIf="wasRearranged">
+    <button (click)="saveRearrangedCategories()">Save</button>
+  </div>
+
 </div>

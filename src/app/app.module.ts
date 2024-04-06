@@ -34,8 +34,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {ImageCropperModule } from 'ngx-image-cropper';
 import { ImageCropperComponent } from './shared/image-cropper/image-cropper.component';
 import {MatSliderModule} from '@angular/material/slider';
-
-
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -73,7 +73,9 @@ import {MatSliderModule} from '@angular/material/slider';
     MatDialogModule,
     MatProgressSpinnerModule,
     ImageCropperModule,
-    MatSliderModule
+    MatSliderModule,
+    DragDropModule,
+    MatSlideToggleModule
   ],
   providers: [
     provideAnimationsAsync()
