@@ -1,11 +1,27 @@
-import {Component, ElementRef, Input, OnInit, QueryList, ViewChildren} from '@angular/core';
+import {Component, OnDestroy ElementRef, Input, OnInit, QueryList, ViewChildren} from '@angular/core';
+import { MenuManagerService } from '../menu-manager/services/menu-manager.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss'
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent implements OnInit, OnDestroy{
+  showSpinner = false;
+  menuCatergories: any;
+  menuCatergoriesSubscription: Subscription;
+
+  constructor(
+    private menuManagerService: MenuManagerService,
+  ){
+    this.showSpinner = true;
+    this.menuCatergoriesSubscription = this.menuManagerService.getMenuCategoriesCollection().subscribe(menuCatergories => {
+      this.menuCatergories = menuCatergories;
+      this.showSpinner = false;
+    })
+
+  }
 
 
   menuData = [
@@ -226,7 +242,6 @@ export class MenuComponent implements OnInit {
       });
     },{rootMargin: '20% 0px 0px',  threshold: [1]});
 
-
     images.forEach(target => {
       const element = document.querySelector(selectors[0]);
       if (element !== null) {
@@ -245,6 +260,12 @@ export class MenuComponent implements OnInit {
     if (view) {
       view.scrollIntoView(this.options);
       this.activeLink = targetId;
+    }
+  }
+
+  ngOnDestroy(): void {
+    if(this.menuCatergoriesSubscription){
+      this.menuCatergoriesSubscription.unsubscribe()
     }
   }
 }

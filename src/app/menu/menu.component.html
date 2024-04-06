@@ -1,4 +1,7 @@
-<div class="menu-wrapper">
+<div *ngIf="showSpinner">
+  <mat-spinner diameter="50"></mat-spinner>
+</div>
+<div class="menu-wrapper" *ngIf="!showSpinner">
   <div class="menu__section">
     <div class="menu__header">
       <h1>Menu</h1>
