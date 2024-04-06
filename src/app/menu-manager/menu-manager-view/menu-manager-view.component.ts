@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EMPTY, Subscription, catchError, switchMap } from 'rxjs';
 import { MenuManagerService } from '../services/menu-manager.service';
+import { MenuManagerItemCreateComponent } from '../menu-manager-item/menu-manager-item-create/menu-manager-item-create.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-menu-manager-view',
@@ -17,7 +19,9 @@ export class MenuManagerViewComponent {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private menuManagerService: MenuManagerService
+    private menuManagerService: MenuManagerService,
+    private _dialog: MatDialog,
+
   ) {
     this.showSpinner = true;
     this.menuManagerViewSubscription = this.route.params
@@ -51,6 +55,13 @@ export class MenuManagerViewComponent {
   }
 
   openCreateCategoryItemDialog(){
+    let dialogRef = this._dialog.open(MenuManagerItemCreateComponent, {
+      width: '500px',
+      data: { cid: this.cid },
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+     
+    });
   }
 }
