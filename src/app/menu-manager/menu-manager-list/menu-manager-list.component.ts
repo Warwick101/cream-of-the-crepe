@@ -28,7 +28,7 @@ export class MenuManagerListComponent implements OnDestroy{
 
   }
 
-  openCreateCategorykDialog() {  
+  openCreateCategoryDialog() {  
 
     let dialogRef = this._dialog.open(MenuManagerCreateComponent, {
       width: '500px',
@@ -45,14 +45,10 @@ export class MenuManagerListComponent implements OnDestroy{
     this.wasRearranged = true;
   }
 
-  saveRearrangedCategories(){
-    console.log(this.menuCategoriesData)
-
+  saveRearrangedCategories(){  
     this.menuCategoriesData.forEach((menuCategory: any, index: number) => {
       menuCategory.order = index;
     });
-
-    console.log(this.menuCategoriesData)
     this.menuManagerService.updateRearrangedCategories(this.menuCategoriesData);
   }
 

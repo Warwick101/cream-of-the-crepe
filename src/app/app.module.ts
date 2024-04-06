@@ -36,6 +36,7 @@ import { ImageCropperComponent } from './shared/image-cropper/image-cropper.comp
 import {MatSliderModule} from '@angular/material/slider';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MenuManagerViewComponent } from './menu-manager/menu-manager-view/menu-manager-view.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     LoginComponent,
     MenuManagerListComponent,
     MenuManagerCreateComponent,
-    ImageCropperComponent
+    ImageCropperComponent,
+    MenuManagerViewComponent
   ],
   imports: [
     BrowserModule,
