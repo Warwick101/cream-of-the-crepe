@@ -16,6 +16,9 @@
                 {{menu.caption}}
               </span>
             </div>
+            <div class="menu__content__block__image" *ngIf="menu.img">
+              <img [src]="menu.img">
+            </div>
               <div *ngFor="let item of menu.items" class="menu__section__item">
                 <div class="menu__section__item__heading">
 
@@ -28,9 +31,6 @@
                 </div>
                 <div class="menu__content__item__description">
                   {{item.description}}
-                </div>
-                <div class="menu__content__item__image" *ngIf="item.img">
-                  <img [src]="item.img">
                 </div>
               </div>
 

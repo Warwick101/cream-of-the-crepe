@@ -235,8 +235,15 @@ h3 {
 // Responsive
 
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 560px) {
+  .header__logo {
+    padding: 0!important;
+  }
 
+  .header__logo__image {
+    max-width: 130px;
+    padding: 16px;
+  }
 
 }
 
