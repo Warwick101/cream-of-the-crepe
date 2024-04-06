@@ -25,14 +25,19 @@ import {initializeApp, provideFirebaseApp} from "@angular/fire/app";
 import {getAuth, provideAuth} from "@angular/fire/auth";
 import {getFirestore, provideFirestore} from "@angular/fire/firestore";
 import {getStorage, provideStorage} from "@angular/fire/storage";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SignupComponent } from './auth/signup/signup.component';
+import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     DropdownDirective,
+    MenuComponent,
+    SignupComponent,
+    LoginComponent,
     FooterComponent,
-    MenuComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +48,8 @@ import {getStorage, provideStorage} from "@angular/fire/storage";
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),  
+    ReactiveFormsModule,
+    FormsModule,
     MatSelectModule,
     BrowserAnimationsModule,
     MatInputModule,

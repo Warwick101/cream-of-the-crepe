@@ -1,0 +1,68 @@
+<div style="background-color: white; padding: 20px;">
+    <form [formGroup]="signupForm">
+         <!-- Error Messages -->
+         <ng-container *ngIf="errorMessage">
+            <p>{{ errorMessage }}</p>
+        </ng-container>
+      <!-- Form Fields -->
+      <div>
+        <!-- first name -->
+        <mat-form-field appearance="outline">
+            <mat-label>First name</mat-label>
+            <input matInput formControlName="firstName" name="firstName" required pattern="[a-zA-Z ]*">
+            <mat-error *ngIf="signupForm.get('firstName')?.hasError('required')">First name is required</mat-error>
+            <mat-error *ngIf="signupForm.get('firstName')?.hasError('pattern')">First name only accepts letters</mat-error>
+        </mat-form-field>
+
+        <!-- last name -->
+        <mat-form-field appearance="outline">
+            <mat-label>Last name</mat-label>
+            <input matInput formControlName="lastName" name="lastName" required pattern="[a-zA-Z ]*">
+            <mat-error *ngIf="signupForm.get('lastName')?.hasError('required')">Last name is required</mat-error>
+            <mat-error *ngIf="signupForm.get('lastName')?.hasError('pattern')">Last name only accepts letters</mat-error>
+        </mat-form-field>
+
+        <!-- email -->
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" name="email" required type="email">
+            <mat-error *ngIf="signupForm.get('email')?.hasError('required')">Email is required</mat-error>
+            <mat-error *ngIf="signupForm.get('email')?.hasError('email')">Email is not valid</mat-error>
+        </mat-form-field>
+
+        <!-- password -->
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" name="password" type="password" required
+                pattern="^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$">
+            <mat-error *ngIf="signupForm.get('password')?.hasError('required')">Password is required</mat-error>
+            <mat-error *ngIf="signupForm.value.password">Use a combination of lower-case, upper-case, numbers and at least 6
+                characters long.</mat-error>
+        </mat-form-field>
+
+        <!-- password confirm -->
+        <mat-form-field appearance="outline">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput formControlName="confirmPassword" name="confirmPassword" type="password" required
+                pattern="{{signupForm.value.password}}">
+            <mat-error *ngIf="signupForm.get('confirmPassword')?.hasError('required')">Confirm password is
+                required</mat-error>
+            <mat-error *ngIf="signupForm.value.confirmPassword">Passwords do not match.</mat-error>
+        </mat-form-field>
+
+        <!-- remember me toggle - optional and for display purposes at the moment -->
+        <!-- <div>
+            <input id="terms" name="terms" formControlName="acceptTerms" type="checkbox" required>
+            <label for="terms">I have read the <a routerLink="/terms-and-conditions">Terms & Conditions</a></label>
+        </div> -->
+
+    </div>
+
+    <!-- sign up button -->
+    <button mat-flat-button [disabled]="!signupForm.valid" (click)="onSubmit()" color="primary">
+        Sign up
+    </button>
+
+</form>
+
+</div>
