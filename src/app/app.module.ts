@@ -1,6 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+// Firebase
+import {environment} from "../environments/environment";
+import {initializeApp, provideFirebaseApp} from "@angular/fire/app";
+import {getAuth, provideAuth} from "@angular/fire/auth";
+import {getFirestore, provideFirestore} from "@angular/fire/firestore";
+import {getStorage, provideStorage} from "@angular/fire/storage";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SignupComponent } from './auth/signup/signup.component';
+import { LoginComponent } from './auth/login/login.component';
+import { MenuManagerListComponent } from './menu-manager/menu-manager-list/menu-manager-list.component';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
@@ -16,18 +27,14 @@ import {HeaderComponent} from "./header/header.component";
 import {DropdownDirective} from "./header/dropdown.directive";
 import {CommonModule} from "@angular/common";
 import {MenuComponent} from "./menu/menu.component";
+import {MatDialogModule} from '@angular/material/dialog';
+import { MenuManagerCreateComponent } from './menu-manager/menu-manager-create/menu-manager-create.component';
 import {MatTabsModule} from "@angular/material/tabs";
 import {FooterComponent} from "./footer/footer.component";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
-// Firebase
-import {environment} from "../environments/environment";
-import {initializeApp, provideFirebaseApp} from "@angular/fire/app";
-import {getAuth, provideAuth} from "@angular/fire/auth";
-import {getFirestore, provideFirestore} from "@angular/fire/firestore";
-import {getStorage, provideStorage} from "@angular/fire/storage";
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SignupComponent } from './auth/signup/signup.component';
-import { LoginComponent } from './auth/login/login.component';
+
+
 
 @NgModule({
   declarations: [
@@ -37,6 +44,8 @@ import { LoginComponent } from './auth/login/login.component';
     MenuComponent,
     SignupComponent,
     LoginComponent,
+    MenuManagerListComponent,
+    MenuManagerCreateComponent,
     FooterComponent,
   ],
   imports: [
@@ -61,6 +70,8 @@ import { LoginComponent } from './auth/login/login.component';
     MatTableModule,
     MatIconModule,
     MatFormFieldModule,
+    MatDialogModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     provideAnimationsAsync()
