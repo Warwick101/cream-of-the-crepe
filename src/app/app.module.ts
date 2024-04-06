@@ -39,6 +39,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MenuManagerViewComponent } from './menu-manager/menu-manager-view/menu-manager-view.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MenuManagerCreateComponent,
     ImageCropperComponent,
     FooterComponent,
+    ImageCropperComponent,
+    MenuManagerViewComponent
   ],
   imports: [
     BrowserModule,

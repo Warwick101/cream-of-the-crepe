@@ -1,6 +1,6 @@
 <div style="background-color: white; padding: 20px;">
 <div>
-    <button (click)="openCreateCategorykDialog()">Create Category</button>
+    <button (click)="openCreateCategoryDialog()">Create Category</button>
 </div>
 
 <mat-slide-toggle [(ngModel)]="isDraggable">Rearrange</mat-slide-toggle>
@@ -10,7 +10,7 @@
         <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
         <div>{{menuCategoryData.order}}</div>
         <div>{{menuCategoryData.category}}</div>
-        <div>View</div>
+        <button [disabled]="isDraggable" style="cursor: pointer;" [routerLink]="['/menu-manager', menuCategoryData.cid]">View</button>
       </div>
     }
   </div>

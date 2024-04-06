@@ -1,0 +1,14 @@
+<div *ngIf="showSpinner">
+    <mat-spinner diameter="50"></mat-spinner>
+</div>
+<div *ngIf="!showSpinner">
+    <h2>{{menuCategoryData.category}}</h2>
+    <div style="width: 250px;">
+        <img style="width: 100%;" [src]="menuCategoryData.categoryImage">
+    </div>
+
+    <div>
+        <button (click)="openCreateCategoryItemDialog()">Create Category Item</button>
+    </div>
+
+</div>

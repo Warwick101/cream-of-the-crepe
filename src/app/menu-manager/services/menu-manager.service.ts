@@ -4,6 +4,7 @@ import {
   collection,
   collectionSnapshots,
   doc,
+  docSnapshots,
   getDocs,
   orderBy,
   query,
@@ -145,5 +146,24 @@ export class MenuManagerService {
     } catch (error) {
       console.error('Error updating menu categories: ', error);
     }
+  }
+
+  // Get Single Menu Category Document
+  getMenuCategoryDetails(cid: string) {
+    const ref = doc(this.afs, 'menu-categories', cid);
+    return docSnapshots(ref).pipe(
+      map((action) => {
+        const menuCategoryData = action.data() as any;
+        return {
+          category: menuCategoryData['category'],
+          type: menuCategoryData['type'],
+          caption: menuCategoryData['caption'],
+          categoryImage: menuCategoryData['categoryImage'],
+          categoryImageFile: menuCategoryData['categoryImageFile'],
+          order: menuCategoryData['order'],
+          items: menuCategoryData['items'] || null,
+        };
+      })
+    );
   }
 }
