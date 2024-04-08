@@ -42,8 +42,33 @@
       background-color: #eaeaea;
       border-radius:18px;
       box-sizing: border-box;
+      position: relative;
 
+    .menu-nav {
+      width: 100%;
+      position: sticky;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      top: 0;
 
+      .menu-nav__item {
+        display: block;
+        text-align: center;
+        font-size: 16px;
+        max-width: 76px;
+        padding: 16px 10px;
+        background-color: #eaeaea;
+
+        a {
+          color: #0068B3;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
 
       .menu__content__block {
         flex: 1;

@@ -4,9 +4,15 @@
       <h1>Menu</h1>
     </div>
     <div class="menu__section__content">
-
+      <div class="menu-nav">
+        <ng-container *ngFor="let menu of menuData">
+          <div class="menu-nav__item">
+            <a>{{menu.category}}</a>
+          </div>
+        </ng-container>
+      </div>
       <ng-container *ngFor="let menu of menuData">
-        <div [ngClass]="menu.type" class="menu__content__block">
+        <div [ngClass]="menu.type" class="menu__content__block" [id]="menu.categoryId">
           <div class="menu__content__item">
             <h2 class="menu__content__item__title">
               {{menu.category}}

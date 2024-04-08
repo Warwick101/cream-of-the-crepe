@@ -15,6 +15,7 @@ export class MenuComponent implements OnInit {
       category: "Savory Crêpes",
       img:'../../assets/img/food-item.png',
       type: "savory",
+      categoryId: "savoryCrepe",
       caption: "Add an egg to any menu item $.75",
       items: [
         { title: "Rise and Shine", description: "Eggs, turkey bacon & your choice of cheese (mozzarella, swiss or cheddar)",
@@ -27,6 +28,7 @@ export class MenuComponent implements OnInit {
     },
     {
       category: "Sweet Crêpes",
+      categoryId: "sweetCrepe",
       img:'../../assets/img/food-item.png',
       type: "sweet",
       caption: "Add one scoop of ice cream for $x.x",
@@ -41,6 +43,7 @@ export class MenuComponent implements OnInit {
     },
     {
       category: "French Takos",
+      categoryId: "frenchTako",
       img:'../../assets/img/food-item.png',
       type: "savory",
       items: [
@@ -53,6 +56,7 @@ export class MenuComponent implements OnInit {
     },
     {
       category: "French Takos",
+      categoryId: "frenchTako2",
       img:'../../assets/img/food-item.png',
       type: "savory",
       items: [
@@ -65,6 +69,7 @@ export class MenuComponent implements OnInit {
     },
     {
       category: "Drinks",
+      categoryId: "drinks",
       img:'../../assets/img/food-item.png',
       type: "sweet",
       items: [
@@ -76,6 +81,7 @@ export class MenuComponent implements OnInit {
     },
     {
       category: "Pastries & Desserts",
+      categoryId: "dessert",
       type: "sweet",
       items: [
         { title: "Croissant", description: "", price: 3.25 },
@@ -85,6 +91,7 @@ export class MenuComponent implements OnInit {
     },
     {
       category: "Gelato",
+      categoryId: "gelato",
       type: "sweet",
       items: [
         { title: "One Scoop", description: "Mixed, Berry, Vanilla, Chocolate, Coconut Almonds..", price: 3,
