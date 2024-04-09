@@ -52,13 +52,23 @@ export class MenuComponent implements OnInit {
       ]
     },
     {
-      category: "French Takos",
+      category: "Paninis",
+      caption: "Served with chips / Add two eggs 3.00",
       img:'../../assets/img/food-item.png',
       type: "savory",
       items: [
-        { title: "Paris Original Takos", description: "Marinated chicken, fries, caramelized onion homemade french cheese sauce", price: 13.5 },
-        { title: "Cordon Blue Takos", description: "Crispy chicken tenders swiss cheese, fries,homemade french cheese sauce", price: 13.5 },
-        { title: "Marrakeeh Takos", description: "Ground beef kafta, fries, cheddar cheese, homemade french cheese sauce", price: 13.5,
+        { title: "Morning Panini", description: "Turkey bacon, eggs, avocado & your choice of cheese", price: 13.5 },
+        { title: "Chicken Pesto Panini", description: "Crispy chicken tenders swiss cheese, fries,homemade french cheese sauce", price: 13.5 },
+        { title: "Barbecue Chicken Panini", description: "Ground beef kafta, fries, cheddar cheese, homemade french cheese sauce", price: 13.5},
+        { title: "Turkey Panini", description: "Ground beef kafta, fries, cheddar cheese, homemade french cheese sauce", price: 13.5},
+        { title: "Gyros Panini", description: "Ground beef kafta, fries, cheddar cheese, homemade french cheese sauce", price: 13.5},
+        { title: "Philly Cheese Panini", description: "Ground beef kafta, fries, cheddar cheese, homemade french cheese sauce", price: 13.5},
+        { title: "Smoked Salmon Panini", description: "Ground beef kafta, fries, cheddar cheese, homemade french cheese sauce", price: 13.5},
+        { title: "Tuna Melt Panini", description: "Ground beef kafta, fries, cheddar cheese, homemade french cheese sauce", price: 13.5},
+        { title: "Shrimp Panini Panini", description: "Ground beef kafta, fries, cheddar cheese, homemade french cheese sauce", price: 13.5},
+        { title: "Veggie Panini", description: "Ground beef kafta, fries, cheddar cheese, homemade french cheese sauce", price: 13.5},
+        { title: "Caprese Panini", description: "Ground beef kafta, fries, cheddar cheese, homemade french cheese sauce", price: 13.5},
+        { title: "Grilled Cheese Panini", description: "Ground beef kafta, fries, cheddar cheese, homemade french cheese sauce", price: 13.5,
           img:'../../assets/img/food-item.png'
         },
       ]
