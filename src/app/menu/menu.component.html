@@ -19,20 +19,23 @@
             <div class="menu__content__block__image" *ngIf="menu.img">
               <img [src]="menu.img">
             </div>
+            <div class="">
               <div *ngFor="let item of menu.items" class="menu__section__item">
                 <div class="menu__section__item__heading">
 
-                <div class="menu__section__item__heading__title">
-                  {{item.title}}
-                </div>
-                <div class="menu__section__item__heading__price">
-                  12.95
-                </div>
+                  <div class="menu__section__item__heading__title">
+                    {{item.title}}
+                  </div>
+                  <div class="menu__section__item__heading__price">
+                    12.95
+                  </div>
                 </div>
                 <div class="menu__content__item__description">
                   {{item.description}}
                 </div>
               </div>
+            </div>
+
 
 
 
