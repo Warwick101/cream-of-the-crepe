@@ -249,7 +249,7 @@ h3 {
 
 
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 760px) {
   .mobile-menu-hide, .mobile-menu {
     display: none;
   }
@@ -257,7 +257,12 @@ h3 {
 }
 
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1100px) {
+
+  .header__nav {
+    box-sizing: border-box!important;
+  }
+
 
   .header {
     padding-bottom: 0;
@@ -292,6 +297,12 @@ h3 {
 
   .header__nav__menu {
     display: block!important;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .header__info__block {
+    width: 240px!important;
   }
 }
 

@@ -7,14 +7,28 @@ import {Component, OnInit} from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  items = ['one', 'two', 'three'];
-  hi = ['one', 'two', 'three'];
 
   menuData = [
     {
       category: "Savory Crêpes",
-      img:'../../assets/img/food-item.png',
+      img:'../../assets/img/savory-crepe--thumb.png',
       type: "savory",
+      categoryId: "savoryCrepe",
+      caption: "Add an egg to any menu item $.75",
+      items: [
+        { title: "Rise and Shine", description: "Eggs, turkey bacon & your choice of cheese (mozzarella, swiss or cheddar)",
+          price: 12.95
+        },
+        { title: "Greekfast", description: "Eggs, feta cheese, spinach & tomatoes", price: 11.95 },
+        { title: "Halima Special", description: "Egg blended mozzarella, swiss & feta cheese", price: 11.5 },
+        { title: "Breakfast Burrito", description: "Your choice turkey or sliced roast beef with onions, green peppers, egg & cheddar", price: 13.5 },
+      ]
+    },
+    {
+      category: "Chicken Florentine",
+      img:'../../assets/img/chicken-florentine--thumb.png',
+      type: "savory",
+      categoryId: "savoryCrepe",
       caption: "Add an egg to any menu item $.75",
       items: [
         { title: "Rise and Shine", description: "Eggs, turkey bacon & your choice of cheese (mozzarella, swiss or cheddar)",
@@ -27,21 +41,21 @@ export class MenuComponent implements OnInit {
     },
     {
       category: "Sweet Crêpes",
-      img:'../../assets/img/food-item.png',
+      categoryId: "sweetCrepe",
+      img:'../../assets/img/sweet-crepe--thumb.png',
       type: "sweet",
       caption: "Add one scoop of ice cream for $x.x",
       items: [
         { title: "Sweetheart", description: "Fresh strawberries & Nutella spread", price: "N/A" }, // No price provided
-        { title: "Funky Monkey", description: "Fresh bananas & Nutella hazelnut spread", price: 10.95,
-          img:'../../assets/img/food-item-sweet.png'
-        },
+        { title: "Funky Monkey", description: "Fresh bananas & Nutella hazelnut spread", price: 10.95},
         { title: "Totally Nutty", description: "Peanut butter with Nutella spread or fruit preserves", price: 10.5 },
         { title: "Crazy for Chocolate", description: "Chocolate crepe, chocolate sauce, chocolate rice krispies & raspberry sauce", price: 10.5 },
       ]
     },
     {
       category: "French Takos",
-      img:'../../assets/img/food-item.png',
+      categoryId: "frenchTako",
+      img:'../../assets/img/french-takos--thumb.png',
       type: "savory",
       items: [
         { title: "Paris Original Takos",
@@ -55,8 +69,9 @@ export class MenuComponent implements OnInit {
     },
     {
       category: "Paninis",
+      categoryId: "Paninis",
       caption: "Served with chips / Add two eggs 3.00",
-      img:'../../assets/img/food-item.png',
+      img:'../../assets/img/paninis--thumb.png',
       type: "savory",
       items: [
         { title: "Morning Panini",
@@ -88,17 +103,19 @@ export class MenuComponent implements OnInit {
     },
     {
       category: "Drinks",
-      img:'../../assets/img/food-item.png',
+      categoryId: "drinks",
+      img:'../../assets/img/drinks.jpg',
       type: "sweet",
       items: [
         { title: "Coffee (Regular or decaf)", description: "", price: 3.25 },
-        { title: "Espresso", description: "", price: 3.25
-        },
+        { title: "Espresso", description: "", price: 3.25},
         { title: "Americano", description: "", price: 3.5}
       ]
     },
     {
       category: "Pastries & Desserts",
+      img:'../../assets/img/pasteries.jpg',
+      categoryId: "dessert",
       type: "sweet",
       items: [
         { title: "Croissant", description: "", price: 3.25 },
@@ -108,11 +125,11 @@ export class MenuComponent implements OnInit {
     },
     {
       category: "Gelato",
+      img:'../../assets/img/gelato.jpg',
+      categoryId: "gelato",
       type: "sweet",
       items: [
-        { title: "One Scoop", description: "Mixed, Berry, Vanilla, Chocolate, Coconut Almonds..", price: 3,
-          img:'../../assets/img/food-item.png'},
-      ]
+        { title: "One Scoop", description: "Mixed, Berry, Vanilla, Chocolate, Coconut Almonds..", price: 3}]
     }
   ];
 
@@ -120,8 +137,6 @@ export class MenuComponent implements OnInit {
 
 
     // Example of accessing menu data
-    console.log('logging', this.menuData); // Output: "Savory Cêpes"
-
-
+    // console.log('logging', this.menuData); // Output: "Savory Cêpes"
   }
 }

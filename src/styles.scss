@@ -43,3 +43,20 @@ body {
 
 
 
+mat-tab-group {
+  background-color: #eaeaea!important;
+}
+
+.mdc-tab-indicator__content--underline {
+  opacity: 0!important;
+}
+
+.mat-mdc-tab {
+  padding: 0 8px!important;
+  min-width: unset!important;
+}
+
+
+.mdc-tab__content {
+  //align-items: baseline!important;
+}

@@ -4,9 +4,19 @@
       <h1>Menu</h1>
     </div>
     <div class="menu__section__content">
+      <div class="menu-nav">
+        <mat-tab-group>
 
+        <ng-container *ngFor="let menu of menuData">
+
+            <mat-tab [label]="menu.category"></mat-tab>
+
+        </ng-container>
+        </mat-tab-group>
+
+      </div>
       <ng-container *ngFor="let menu of menuData">
-        <div [ngClass]="menu.type" class="menu__content__block">
+        <div [ngClass]="menu.type" class="menu__content__block" [id]="menu.categoryId">
           <div class="menu__content__item">
             <h2 class="menu__content__item__title">
               {{menu.category}}
@@ -23,19 +33,17 @@
               <div *ngFor="let item of menu.items" class="menu__section__item">
                 <div class="menu__section__item__heading">
 
-                  <div class="menu__section__item__heading__title">
-                    {{item.title}}
-                  </div>
-                  <div class="menu__section__item__heading__price">
-                    12.95
-                  </div>
+                <div class="menu__section__item__heading__title">
+                  {{item.title}}
+                </div>
+                <div class="menu__section__item__heading__price">
+                  12.95
+                </div>
                 </div>
                 <div class="menu__content__item__description">
                   {{item.description}}
                 </div>
               </div>
-            </div>
-
 
 
 
@@ -173,7 +181,7 @@
         <!--</div>-->
 
 
-      <!--</div>-->
+      </div>
       </ng-container>
 
     </div>

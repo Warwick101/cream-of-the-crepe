@@ -17,6 +17,7 @@ import {HeaderComponent} from "./header/header.component";
 import {DropdownDirective} from "./header/dropdown.directive";
 import {CommonModule} from "@angular/common";
 import {MenuComponent} from "./menu/menu.component";
+import {MatTabsModule} from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import {MenuComponent} from "./menu/menu.component";
     MatIconModule,
     WdkHeaderModule,
     WdkSnackBarModule,
+    MatTabsModule,
     MatTableModule,
     MatIconModule,
     MatFormFieldModule,
