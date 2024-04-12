@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-// import {WdkBaseModule, WdkHeaderModule, WdkSnackBarModule} from "@wjdk/acl";
 import {HttpClientModule} from "@angular/common/http";
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {MatTableModule} from "@angular/material/table";
@@ -18,12 +17,14 @@ import {DropdownDirective} from "./header/dropdown.directive";
 import {CommonModule} from "@angular/common";
 import {MenuComponent} from "./menu/menu.component";
 import {MatTabsModule} from "@angular/material/tabs";
+import {FooterComponent} from "./footer/footer.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     DropdownDirective,
+    FooterComponent,
     MenuComponent
   ],
   imports: [
