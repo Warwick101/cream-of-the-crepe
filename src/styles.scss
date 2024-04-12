@@ -52,11 +52,16 @@ mat-tab-group {
 }
 
 .mat-mdc-tab {
-  padding: 0 8px!important;
+  padding: 4px 10px !important;
   min-width: unset!important;
+  height: 100%!important;
 }
 
 
 .mdc-tab__content {
   //align-items: baseline!important;
+}
+
+.mat-mdc-tab-labels {
+  height: 70px!important;
 }

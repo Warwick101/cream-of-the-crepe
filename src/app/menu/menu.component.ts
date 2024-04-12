@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, QueryList, ViewChildren} from '@angular/core';
 
 @Component({
   selector: 'app-menu',
@@ -133,10 +133,92 @@ export class MenuComponent implements OnInit {
     }
   ];
 
+
+  @Input() link: string = '';
+
+  @Input() linkLabel: string = '';
+
+  options: ScrollToOptions = {};
+
+  @Input() behaviour: ScrollBehavior = 'auto';
+
+
+
+  // @Input() top ?: any;
+
+  @Input() targetId: string = '';
+
+  @Input() linkInfo: any[] = [
+    {
+    linkTargetId: 'test',
+      linkLabel: 'ddfd',
+      linkActive: false
+  }
+  ];
+
+  @ViewChildren('jumplink') jumpLinks: QueryList<ElementRef<HTMLAnchorElement>> = new QueryList<ElementRef<HTMLAnchorElement>>();
+
+  private observer!: IntersectionObserver;
+
+  activeLink: string = '';
+
+  constructor() {
+    // this.observer = new IntersectionObserver();
+  }
+
   ngOnInit(): void {
 
+    const targetIds: string[] = [];
 
-    // Example of accessing menu data
-    // console.log('logging', this.menuData); // Output: "Savory Cêpes"
+    this.linkInfo.forEach(img => {
+      targetIds.push(img.linkTargetId);
+    });
+
+
+    const selectors: string[] = targetIds.map((id) => '#' + id);
+    const elementsById: string = selectors.join(' , ');
+    const images = document.querySelectorAll(elementsById);
+
+    this.observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          const dataId = entry.target.id;
+          const targetLink = this.linkInfo.find((l) => l.linkTargetId === dataId);
+
+          if (dataId === targetLink.linkTargetId) {
+            this.activeLink = dataId;
+          }
+        } else {
+          const currentIndex = targetIds.indexOf(entry.target.id);
+          if (currentIndex < selectors.length - 1) {
+            const nextTargetId = selectors[currentIndex + 1];
+            if (document.querySelector(nextTargetId) !== null) {
+              this.observer.observe(document.querySelector(nextTargetId)!);
+            }
+          }
+        }
+      });
+    },{rootMargin: '20% 0px 0px',  threshold: [1]});
+
+
+    images.forEach(target => {
+      const element = document.querySelector(selectors[0]);
+      if (element !== null) {
+        this.observer.observe(element);
+      }
+    });
+
+  }
+
+  jumpToArticle(targetId: string) {
+    console.log(targetId, 'targetId')
+    const view = document.getElementById(targetId);
+    console.log(view, 'view')
+
+    this.options.behavior = this.behaviour;
+    if (view) {
+      view.scrollIntoView(this.options);
+      this.activeLink = targetId;
+    }
   }
 }
