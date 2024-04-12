@@ -55,7 +55,6 @@
 
 
       mat-tab-group {
-        max-width: 76vw;
         position: absolute;
       }
 
@@ -97,6 +96,7 @@
 
         .menu__content__item__title {
           text-align: center;
+          margin-top: 24px;
         }
 
         .menu__content__item__caption {
@@ -228,8 +228,6 @@
 @media screen and (max-width: 1400px) {
 
   .menu__section {
-    //width: unset!important;
-    max-width: unset!important;
     margin: 0 42px;
   }
 }

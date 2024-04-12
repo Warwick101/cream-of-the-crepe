@@ -28,7 +28,7 @@ export class MenuComponent implements OnInit {
       category: "Chicken Florentine",
       img:'../../assets/img/chicken-florentine--thumb.png',
       type: "savory",
-      categoryId: "savoryCrepe",
+      categoryId: "chickenCrepe",
       caption: "Add an egg to any menu item $.75",
       items: [
         { title: "Rise and Shine", description: "Eggs, turkey bacon & your choice of cheese (mozzarella, swiss or cheddar)",
@@ -148,13 +148,7 @@ export class MenuComponent implements OnInit {
 
   @Input() targetId: string = '';
 
-  @Input() linkInfo: any[] = [
-    {
-    linkTargetId: 'test',
-      linkLabel: 'ddfd',
-      linkActive: false
-  }
-  ];
+  @Input() linkInfo: any[] = [];
 
   @ViewChildren('jumplink') jumpLinks: QueryList<ElementRef<HTMLAnchorElement>> = new QueryList<ElementRef<HTMLAnchorElement>>();
 
