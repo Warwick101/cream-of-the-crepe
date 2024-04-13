@@ -44,12 +44,12 @@ h3 {
     z-index: 99;
     width: 100%;
     position: absolute;
+    align-items: baseline;
     //left: 560px;
     top: 110px;
     display: flex;
     color: #f4e669;
     display: flex;
-    align-items: center;
     justify-content: center;
 
     .header__info__block {
@@ -147,6 +147,7 @@ h3 {
             border-bottom: 3px solid #f4e669;
             font-weight: 400;
             color: #201614;
+            color: #202080;
 
             margin-right: -1px;
             z-index: 999;
