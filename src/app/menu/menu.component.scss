@@ -2,15 +2,14 @@
 
 .header__img {
   position: absolute;
-  top: -31px;
+  top: -301px;
   width: 100%;
   z-index: -1;
   opacity: 0.3;
-  overflow: hidden;
   height: 1310px;
 
   img {
-    height: 100%;
+    width: 100%;
   }
 }
 
@@ -39,9 +38,10 @@
 
     .menu__header {
       h1 {
-        color: #f4e669;
-        color: #fff;
+        color: #eec143;
+        font-size: 62px;
         text-align: center;
+        font-weight: 400;
       }
     }
 
@@ -110,7 +110,7 @@
 
         &.savory {
           h2 {
-            color: #B37500;
+            color: #d89300;
             margin-bottom: 0;
           }
         }

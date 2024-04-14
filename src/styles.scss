@@ -1,5 +1,6 @@
 @use '@angular/material' as material;
 @use './typography.scss' ;
+@import url('https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;800&family=Itim&display=swap');
 
 /* You can add global styles to this file, and also import other style files */
@@ -14,6 +15,7 @@ wdk-menu {
 
 .main__header {
   padding: 0!important;
+  background-color: transparent!important;
 }
 
 body {
