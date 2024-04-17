@@ -21,9 +21,41 @@
 }
 
 .footer__group__list {
+
   h4 {
-    color: white;
-    padding-bottom: 1rem;
+    font-size: 16px;
+    color: #eec143;
+    font-weight: 600;
+    padding-bottom: 0;
+
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+
+    li {
+      color: #e4d3a4;
+    }
+
+  }
+
+  .footer__group__list__container {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 16px;
+
+    .footer__group__list__container__img {
+      width: 60px;
+
+      &+ .footer__group__list__container__img {
+        margin-left: 8px;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
   }
 }
 
