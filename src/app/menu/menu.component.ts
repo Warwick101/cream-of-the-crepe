@@ -1,4 +1,4 @@
-import {Component, OnDestroy ElementRef, Input, OnInit, QueryList, ViewChildren} from '@angular/core';
+import {Component, OnDestroy, ElementRef, Input, OnInit, QueryList, ViewChildren} from '@angular/core';
 import { MenuManagerService } from '../menu-manager/services/menu-manager.service';
 import { Subscription } from 'rxjs';
 
@@ -11,20 +11,18 @@ export class MenuComponent implements OnInit, OnDestroy{
   showSpinner = false;
   menuCatergories: any;
   menuCatergoriesSubscription: Subscription;
+  menuData: any;
 
-  constructor(
-    private menuManagerService: MenuManagerService,
-  ){
+  constructor(private menuManagerService: MenuManagerService){
     this.showSpinner = true;
     this.menuCatergoriesSubscription = this.menuManagerService.getMenuCategoriesCollection().subscribe(menuCatergories => {
-      this.menuCatergories = menuCatergories;
+      this.menuData = menuCatergories;
       this.showSpinner = false;
     })
-
   }
 
 
-  menuData = [
+  menuData2 = [
     {
       category: "Savory Crêpes",
       img:'../../assets/img/savory-crepe--thumb.png',
@@ -204,9 +202,7 @@ export class MenuComponent implements OnInit, OnDestroy{
 
   activeLink: string = '';
 
-  constructor() {
-    // this.observer = new IntersectionObserver();
-  }
+
 
   ngOnInit(): void {
 

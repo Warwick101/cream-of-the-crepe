@@ -32,8 +32,8 @@
                 {{menu.caption}}
               </span>
             </div>
-            <div class="menu__content__block__image" *ngIf="menu.img">
-              <img [src]="menu.img">
+            <div class="menu__content__block__image" *ngIf="menu.categoryImage">
+              <img [src]="menu.categoryImage">
             </div>
             <div class="">
               <div *ngFor="let item of menu.items" class="menu__section__item">
