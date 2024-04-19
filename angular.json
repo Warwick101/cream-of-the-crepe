@@ -27,10 +27,15 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/@wjdk/acl/assets",
+                "output": "/assets"
+              }
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "node_modules/@wjdk/acl/sass/styles.scss",
               "src/styles.scss"
             ],
             "scripts": []
