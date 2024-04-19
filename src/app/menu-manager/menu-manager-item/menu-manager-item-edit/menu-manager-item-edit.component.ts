@@ -12,6 +12,8 @@ import { MenuManagerService } from '../../services/menu-manager.service';
 export class MenuManagerItemEditComponent {
   showSpinner = false;
   menuCategoryItemEditForm: FormGroup;
+  showConfirmation = false;
+
 
   constructor(
     public dialogRef: MatDialogRef<any>,
@@ -59,6 +61,19 @@ export class MenuManagerItemEditComponent {
 
   onCancel() {
     this.dialogRef.close();
+  }
+
+  showRemoveConfirmation(): void {
+    this.showConfirmation = true;
+  }
+
+  async onRemoveAdvertiser() {
+    this.showSpinner = true;    
+    this.showConfirmation = false;
+    
+   
+    this.dialogRef.close();
+    this.showSpinner = false;
   }
 
 }
