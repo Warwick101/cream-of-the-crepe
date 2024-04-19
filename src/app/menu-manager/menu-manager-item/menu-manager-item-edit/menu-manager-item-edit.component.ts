@@ -67,10 +67,10 @@ export class MenuManagerItemEditComponent {
     this.showConfirmation = true;
   }
 
-  async onRemoveAdvertiser() {
+  async onRemoveItem() {    
     this.showSpinner = true;    
     this.showConfirmation = false;
-    
+    await this.menuManagerService.removeMenuItem(this.data.cid, this.data.categoryItemData.id)
    
     this.dialogRef.close();
     this.showSpinner = false;

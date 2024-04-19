@@ -1,6 +1,7 @@
 import { Injectable, NgZone } from '@angular/core';
 import {
   Firestore,
+  arrayRemove,
   arrayUnion,
   collection,
   collectionSnapshots,
@@ -214,6 +215,28 @@ export class MenuManagerService {
       }
     } catch (error) {
       console.error('Error updating item in category array: ', error);
+    }
+  }
+
+  async removeMenuItem(cid: string, itemId: string) {
+    try {
+      const categoryDocRef = doc(this.afs, 'menu-categories', cid);
+      const categoryDocSnap = await getDoc(categoryDocRef);
+  
+      if (categoryDocSnap.exists()) {
+        const categoryData = categoryDocSnap.data();
+        const updatedItems = categoryData['items'].filter((item: any) => item.id !== itemId);
+  
+        await updateDoc(categoryDocRef, {
+          items: updatedItems,
+        });
+  
+        console.log('Item deleted from category array successfully');
+      } else {
+        console.error('Category document does not exist');
+      }
+    } catch (error) {
+      console.error('Error deleting item from category array: ', error);
     }
   }
 
