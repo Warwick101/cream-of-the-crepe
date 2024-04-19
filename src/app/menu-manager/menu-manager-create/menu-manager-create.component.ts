@@ -1,5 +1,10 @@
 import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
@@ -8,13 +13,12 @@ import { MenuManagerService } from '../services/menu-manager.service';
 @Component({
   selector: 'app-menu-manager-create',
   templateUrl: './menu-manager-create.component.html',
-  styleUrl: './menu-manager-create.component.scss'
+  styleUrl: './menu-manager-create.component.scss',
 })
 export class MenuManagerCreateComponent {
   showSpinner = false;
   menuCategoryForm: FormGroup;
   selectedFile: File | null = null;
-
 
   constructor(
     public dialogRef: MatDialogRef<any>,
@@ -22,11 +26,10 @@ export class MenuManagerCreateComponent {
     private fb: FormBuilder,
     private authService: AuthService,
     private menuManagerService: MenuManagerService
-  ){
-
+  ) {
     this.menuCategoryForm = this.fb.group({
       category: new FormControl('', Validators.required),
-      type: new FormControl('', Validators.required),
+      // type: new FormControl('', Validators.required),
       caption: new FormControl(''),
       categoryImage: [null],
     });
@@ -40,19 +43,26 @@ export class MenuManagerCreateComponent {
     }
   }
 
-  async onCreateCategory(){
+  async onCreateCategory() {
     this.showSpinner = true;
-    const menuCategoryData = {
+    const menuCategoryData: any = {
       category: this.menuCategoryForm.value.category,
-      type: this.menuCategoryForm.value.type,
-      caption: this.menuCategoryForm.value.caption,
+      // type: this.menuCategoryForm.value.type,
     };
 
-    await this.menuManagerService.createMenuCategory(menuCategoryData, this.selectedFile, () => {
-      this.dialogRef.close();
-      this.showSpinner = false;
-    });
+    // Check if caption exists in the form value
+    if (this.menuCategoryForm.value.caption) {
+      menuCategoryData.caption = this.menuCategoryForm.value.caption;
+    }
 
+    await this.menuManagerService.createMenuCategory(
+      menuCategoryData,
+      this.selectedFile,
+      () => {
+        this.dialogRef.close();
+        this.showSpinner = false;
+      }
+    );
   }
 
   onCancel() {

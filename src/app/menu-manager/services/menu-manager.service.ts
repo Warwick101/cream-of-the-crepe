@@ -119,8 +119,8 @@ export class MenuManagerService {
           const menuCategoriesData = {
             cid: data.id,
             category: docData['category'],
-            type: docData['type'],
-            caption: docData['caption'],
+            // type: docData['type'],
+            caption: docData['caption'] || null,
             categoryImage: docData['categoryImage'],
             categoryImageFile: docData['categoryImageFile'],
             order: docData['order'],
@@ -130,7 +130,7 @@ export class MenuManagerService {
         })
       )
     );
-  }
+  }  
 
   // Update Rearranged Categories
   async updateRearrangedCategories(menuCategoriesData: any) {
@@ -185,6 +185,35 @@ export class MenuManagerService {
       }
     } catch (error) {
       console.error('Error adding item to array: ', error);
+    }
+  }
+
+  async updateMenuItem(cid: string, updatedItemData: any) {   
+    try {
+      const itemId = updatedItemData.id;
+      const categoryDocRef = doc(this.afs, 'menu-categories', cid);
+      const categoryDocSnap = await getDoc(categoryDocRef);
+      
+      if (categoryDocSnap.exists()) {
+        const categoryData = categoryDocSnap.data();
+        const updatedItems = categoryData['items'].map((item: any) => {
+          if (item.id === itemId) {
+            return updatedItemData;
+          } else {
+            return item;
+          }
+        });
+  
+        await updateDoc(categoryDocRef, {
+          items: updatedItems,
+        });
+        
+        console.log('Item updated in category array successfully');
+      } else {
+        console.error('Category document does not exist');
+      }
+    } catch (error) {
+      console.error('Error updating item in category array: ', error);
     }
   }
 

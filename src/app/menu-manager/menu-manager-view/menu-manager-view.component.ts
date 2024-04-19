@@ -5,6 +5,7 @@ import { MenuManagerService } from '../services/menu-manager.service';
 import { MenuManagerItemCreateComponent } from '../menu-manager-item/menu-manager-item-create/menu-manager-item-create.component';
 import { MatDialog } from '@angular/material/dialog';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { MenuManagerItemEditComponent } from '../menu-manager-item/menu-manager-item-edit/menu-manager-item-edit.component';
 
 @Component({
   selector: 'app-menu-manager-view',
@@ -23,8 +24,7 @@ export class MenuManagerViewComponent implements OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     private menuManagerService: MenuManagerService,
-    private _dialog: MatDialog,
-
+    private _dialog: MatDialog
   ) {
     this.showSpinner = true;
     this.menuManagerViewSubscription = this.route.params
@@ -44,7 +44,7 @@ export class MenuManagerViewComponent implements OnDestroy {
       )
       .subscribe({
         next: (menuCategoryData) => {
-          this.menuCategoryData = menuCategoryData;         
+          this.menuCategoryData = menuCategoryData;
           this.showSpinner = false;
         },
         error: (error) => {
@@ -56,29 +56,51 @@ export class MenuManagerViewComponent implements OnDestroy {
         },
       });
   }
-
-  openCreateCategoryItemDialog(){
+  
+  openCreateCategoryItemDialog() {
     let dialogRef = this._dialog.open(MenuManagerItemCreateComponent, {
       width: '500px',
       data: { cid: this.cid },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-     
+    // dialogRef.afterClosed().subscribe(result => {
+
+    // });
+  }
+
+  openEditCategoryItemDialog(data: any, index: number) {
+    let dialogRef = this._dialog.open(MenuManagerItemEditComponent, {
+      width: '500px',
+      data: {
+        index: index,
+        cid: this.cid,
+        categoryItemData: data,
+      },
     });
+
+    // dialogRef.afterClosed().subscribe(result => {
+
+    // });
   }
 
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.menuCategoryData.items, event.previousIndex, event.currentIndex);
+    moveItemInArray(
+      this.menuCategoryData.items,
+      event.previousIndex,
+      event.currentIndex
+    );
     this.wasRearranged = true;
   }
 
-  saveRearrangedCategories(){  
-    this.menuManagerService.updateRearrangedCategoryItems(this.cid, this.menuCategoryData.items)
+  saveRearrangedCategories() {
+    this.menuManagerService.updateRearrangedCategoryItems(
+      this.cid,
+      this.menuCategoryData.items
+    );
   }
 
   ngOnDestroy(): void {
-    if(this.menuManagerViewSubscription){
+    if (this.menuManagerViewSubscription) {
       this.menuManagerViewSubscription.unsubscribe();
     }
   }

@@ -40,6 +40,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { MenuManagerViewComponent } from './menu-manager/menu-manager-view/menu-manager-view.component';
 import { MenuManagerItemCreateComponent } from './menu-manager/menu-manager-item/menu-manager-item-create/menu-manager-item-create.component';
+import { BackButtonComponent } from './shared/back-button/back-button.component';
+import { MenuManagerItemEditComponent } from './menu-manager/menu-manager-item/menu-manager-item-edit/menu-manager-item-edit.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import { MenuManagerItemCreateComponent } from './menu-manager/menu-manager-item
     MenuManagerViewComponent,
     MenuManagerItemCreateComponent,
     FooterComponent,
+    BackButtonComponent,
+    MenuManagerItemEditComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +87,7 @@ import { MenuManagerItemCreateComponent } from './menu-manager/menu-manager-item
     ImageCropperModule,
     MatSliderModule,
     DragDropModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
   ],
   providers: [
     provideAnimationsAsync()
