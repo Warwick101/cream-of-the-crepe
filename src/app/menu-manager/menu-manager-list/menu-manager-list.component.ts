@@ -4,6 +4,7 @@ import { MenuManagerCreateComponent } from '../menu-manager-create/menu-manager-
 import { MenuManagerService } from '../services/menu-manager.service';
 import { Subscription } from 'rxjs';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { MenuManagerEditComponent } from '../menu-manager-edit/menu-manager-edit.component';
 
 @Component({
   selector: 'app-menu-manager-list',
@@ -35,9 +36,21 @@ export class MenuManagerListComponent implements OnDestroy{
       // data: { campaign: this.campaign },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    // dialogRef.afterClosed().subscribe(result => {
      
+    // });
+  }
+
+  openEditCategoryDialog(menuCategoryData: any) {      
+
+    let dialogRef = this._dialog.open(MenuManagerEditComponent, {
+      width: '500px',
+      data: menuCategoryData
     });
+
+    // dialogRef.afterClosed().subscribe(result => {
+     
+    // });
   }
 
   drop(event: CdkDragDrop<string[]>) {

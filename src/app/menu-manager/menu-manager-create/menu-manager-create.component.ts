@@ -6,7 +6,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { MenuManagerService } from '../services/menu-manager.service';
 
@@ -33,6 +32,8 @@ export class MenuManagerCreateComponent {
       caption: new FormControl(''),
       categoryImage: [null],
     });
+
+    
   }
 
   croppedImage(imageData: any) {

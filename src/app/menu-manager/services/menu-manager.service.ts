@@ -5,6 +5,7 @@ import {
   arrayUnion,
   collection,
   collectionSnapshots,
+  deleteField,
   doc,
   docSnapshots,
   getDoc,
@@ -17,6 +18,7 @@ import {
 } from '@angular/fire/firestore';
 import {
   Storage,
+  deleteObject,
   getDownloadURL,
   ref,
   uploadBytesResumable,
@@ -107,6 +109,76 @@ export class MenuManagerService {
     }
   }
 
+  async editMenuCategory(
+    cid: string,
+    menuCategoryData: any,
+    menuCategoryImage: any,
+    onComplete: () => void
+  ): Promise<void> {
+    try {
+      if (menuCategoryImage) {
+        const oldImageFile = menuCategoryData.categoryImageFile;
+        const timestamp = new Date().getTime();
+        const [fileName, fileExtension] = menuCategoryImage.name.split('.');
+        const trimmedCategory = menuCategoryData.category.replace(/\s/g, ''); // Remove all whitespace
+        const fileNameWithTimestamp = `${trimmedCategory}_${timestamp}.${fileExtension}`;
+
+        const filePath = `${cid}/menuCategoryImage/${fileNameWithTimestamp}`;
+        const storageRef = ref(this.storage, filePath);
+        const uploadTask = uploadBytesResumable(storageRef, menuCategoryImage);
+        const uploadTaskSnapshot = await uploadTask;
+        const downloadURL = await getDownloadURL(uploadTaskSnapshot.ref);
+
+        menuCategoryData.categoryImage = downloadURL;
+        menuCategoryData.categoryImageFile = fileNameWithTimestamp;
+
+        this.updateCategoryDocument(cid, menuCategoryData);
+        this.removePreviousImage(cid, oldImageFile);
+        this.ngZone.run(() => {
+          onComplete();
+        });
+      } else {
+        this.updateCategoryDocument(cid, menuCategoryData);
+        this.ngZone.run(() => {
+          onComplete();
+        });
+      }
+    } catch (error) {
+      console.error('Error creating menu category:', error);
+    }
+  }
+
+  async updateCategoryDocument(cid: string, menuCategoryData: any) {
+    try {
+      const ref = doc(this.afs, 'menu-categories', cid);
+
+      // Overwrite the entire document with menuCategoryData
+      await setDoc(ref, menuCategoryData);
+
+      console.log('Menu category updated successfully!');
+    } catch (error) {
+      console.error('Error updating menu category:', error);
+    }
+  }
+
+  async removePreviousImage(cid: string, oldImageFile: any) {
+    if (oldImageFile) {
+      const filePath = `${cid}/menuCategoryImage/${oldImageFile}`;
+      const prevFileRef = ref(this.storage, filePath);
+      try {
+        await deleteObject(prevFileRef);
+        // File deleted successfully
+      } catch (error: any) {
+        // Handle error with a snack bar?
+        console.error('Error deleting file:', error);
+        if (error.code === 'storage/object-not-found') {
+        } else {
+          // Show a generic error message
+        }
+      }
+    }
+  }
+
   // Get All Menu Categories
   getMenuCategoriesCollection() {
     const collectionRef = collection(this.afs, 'menu-categories');
@@ -131,7 +203,7 @@ export class MenuManagerService {
         })
       )
     );
-  }  
+  }
 
   // Update Rearranged Categories
   async updateRearrangedCategories(menuCategoriesData: any) {
@@ -161,9 +233,10 @@ export class MenuManagerService {
         return {
           category: menuCategoryData['category'],
           type: menuCategoryData['type'],
-          caption: menuCategoryData['caption'],
-          categoryImage: menuCategoryData['categoryImage'],
-          categoryImageFile: menuCategoryData['categoryImageFile'],
+          createdAt: menuCategoryData['createdAt'],
+          caption: menuCategoryData['caption'] || null,
+          categoryImage: menuCategoryData['categoryImage'] || null,
+          categoryImageFile: menuCategoryData['categoryImageFile'] || null,
           order: menuCategoryData['order'],
           items: menuCategoryData['items'] || null,
         };
@@ -189,12 +262,12 @@ export class MenuManagerService {
     }
   }
 
-  async updateMenuItem(cid: string, updatedItemData: any) {   
+  async updateMenuItem(cid: string, updatedItemData: any) {
     try {
       const itemId = updatedItemData.id;
       const categoryDocRef = doc(this.afs, 'menu-categories', cid);
       const categoryDocSnap = await getDoc(categoryDocRef);
-      
+
       if (categoryDocSnap.exists()) {
         const categoryData = categoryDocSnap.data();
         const updatedItems = categoryData['items'].map((item: any) => {
@@ -204,11 +277,11 @@ export class MenuManagerService {
             return item;
           }
         });
-  
+
         await updateDoc(categoryDocRef, {
           items: updatedItems,
         });
-        
+
         console.log('Item updated in category array successfully');
       } else {
         console.error('Category document does not exist');
@@ -222,15 +295,17 @@ export class MenuManagerService {
     try {
       const categoryDocRef = doc(this.afs, 'menu-categories', cid);
       const categoryDocSnap = await getDoc(categoryDocRef);
-  
+
       if (categoryDocSnap.exists()) {
         const categoryData = categoryDocSnap.data();
-        const updatedItems = categoryData['items'].filter((item: any) => item.id !== itemId);
-  
+        const updatedItems = categoryData['items'].filter(
+          (item: any) => item.id !== itemId
+        );
+
         await updateDoc(categoryDocRef, {
           items: updatedItems,
         });
-  
+
         console.log('Item deleted from category array successfully');
       } else {
         console.error('Category document does not exist');
@@ -241,7 +316,7 @@ export class MenuManagerService {
   }
 
   // Update Rearranged Category Items
-  async updateRearrangedCategoryItems(cid: string, itemData: any){
+  async updateRearrangedCategoryItems(cid: string, itemData: any) {
     try {
       const docRef = doc(this.afs, 'menu-categories', cid);
       await updateDoc(docRef, { items: itemData });

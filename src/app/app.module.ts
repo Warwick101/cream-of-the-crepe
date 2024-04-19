@@ -42,6 +42,7 @@ import { MenuManagerViewComponent } from './menu-manager/menu-manager-view/menu-
 import { MenuManagerItemCreateComponent } from './menu-manager/menu-manager-item/menu-manager-item-create/menu-manager-item-create.component';
 import { BackButtonComponent } from './shared/back-button/back-button.component';
 import { MenuManagerItemEditComponent } from './menu-manager/menu-manager-item/menu-manager-item-edit/menu-manager-item-edit.component';
+import { MenuManagerEditComponent } from './menu-manager/menu-manager-edit/menu-manager-edit.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { MenuManagerItemEditComponent } from './menu-manager/menu-manager-item/m
     MenuManagerItemCreateComponent,
     FooterComponent,
     BackButtonComponent,
-    MenuManagerItemEditComponent
+    MenuManagerItemEditComponent,
+    MenuManagerEditComponent
   ],
   imports: [
     BrowserModule,

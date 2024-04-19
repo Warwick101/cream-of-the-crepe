@@ -9,8 +9,10 @@
       <div class="example-box" [ngClass]="{'no-move-cursor': !isDraggable}" cdkDrag [cdkDragDisabled]="!isDraggable">
         <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
         <div>{{menuCategoryData.order}}</div>
-        <div>{{menuCategoryData.category}}</div>
+        <p>{{menuCategoryData.category}}</p>
+        <p *ngIf="menuCategoryData.caption">{{menuCategoryData.caption}}</p>
         <button [disabled]="isDraggable" style="cursor: pointer;" [routerLink]="['/menu-manager', menuCategoryData.cid]">View</button>
+        <button [disabled]="isDraggable" style="cursor: pointer;" (click)="openEditCategoryDialog(menuCategoryData)">Edit</button>
       </div>
     }
   </div>
