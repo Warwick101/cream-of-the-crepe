@@ -12,7 +12,7 @@
           <ng-container>
             <mat-tab *ngFor="let menu of menuData">
               <ng-template mat-tab-label>
-                <span (click)="jumpToArticle(menu.categoryId)">
+                <span (click)="jumpToArticle(menu.cid)">
                   {{menu.category}}
                 </span>
               </ng-template>
@@ -22,7 +22,7 @@
         </mat-tab-group>
       </div>
       <ng-container *ngFor="let menu of menuData">
-        <div [ngClass]="menu.type" class="menu__content__block" [id]="menu.categoryId">
+        <div [ngClass]="menu.type" class="menu__content__block" [id]="menu.cid">
           <div class="menu__content__item">
             <h2 class="menu__content__item__title">
               {{menu.category}}
@@ -43,7 +43,7 @@
                     {{item.title}}
                   </div>
                   <div class="menu__section__item__heading__price">
-                    12.95
+                    {{item.price}}
                   </div>
                 </div>
                 <div class="menu__content__item__description">

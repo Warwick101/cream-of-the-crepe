@@ -2,6 +2,9 @@
     <mat-spinner diameter="50"></mat-spinner>
 </div>
 <div *ngIf="!showSpinner" style="background-color: white; padding: 20px;">
+    <!-- back button -->
+    <app-back-button></app-back-button>
+
     <h2>{{menuCategoryData.category}}</h2>
     <div style="width: 250px;">
         <img style="width: 100%;" [src]="menuCategoryData.categoryImage">
@@ -18,21 +21,22 @@
 
         <mat-slide-toggle [(ngModel)]="isDraggable">Rearrange</mat-slide-toggle>
         <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-            @for (menuCategoryItemData of menuCategoryData.items; track menuCategoryData) {
-            <div class="example-box" [ngClass]="{'no-move-cursor': !isDraggable}" cdkDrag
+            <!-- Use let i of index to directly access the index -->
+            <div *ngFor="let menuCategoryItemData of menuCategoryData.items; let i = index" class="example-box" [ngClass]="{'no-move-cursor': !isDraggable}" cdkDrag
                 [cdkDragDisabled]="!isDraggable">
                 <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
                 <div>{{menuCategoryItemData.title}}</div>
                 <div>{{menuCategoryItemData.description}}</div>
                 <div>{{menuCategoryItemData.price}}</div>
+                <!-- Use i as the index -->
+                <button [disabled]="isDraggable" (click)="openEditCategoryItemDialog(menuCategoryItemData, i)">Edit</button>
             </div>
-            }
         </div>
 
         <div *ngIf="wasRearranged">
             <button (click)="saveRearrangedCategories()">Save</button>
         </div>
 
-    </div>
+    </div>   
 
 </div>

@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { MenuManagerService } from '../../services/menu-manager.service';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-menu-manager-item-create',
@@ -25,14 +26,26 @@ export class MenuManagerItemCreateComponent {
 
     this.menuCategoryItemForm = this.fb.group({
       title: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required),
+      description: new FormControl(''),
       price: new FormControl('', Validators.required),
     });
 
   }
 
-  onCreateCategoryItem(){
-    this.menuManagerService.createMenuCatergoryItem(this.data.cid, this.menuCategoryItemForm.value)
+  async onCreateCategoryItem(){
+    this.showSpinner = true;
+    const menuCategoryItemData: any = {
+      id: uuidv4(),
+      title: this.menuCategoryItemForm.value.title,
+      price: this.menuCategoryItemForm.value.price,
+    };
+
+    // Check if caption exists in the form value
+    if (this.menuCategoryItemForm.value.description) {
+      menuCategoryItemData.description = this.menuCategoryItemForm.value.description;
+    }
+
+    await this.menuManagerService.createMenuCatergoryItem(this.data.cid, menuCategoryItemData)
     this.dialogRef.close();
     this.showSpinner = false;
   }
