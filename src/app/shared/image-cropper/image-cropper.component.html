@@ -2,7 +2,7 @@
 <div>
     <div *ngIf="!file">
         <!-- Custom file upload button -->
-        <input #fileInput type="file" (change)="fileChangeEvent($event)" />
+        <input #fileInput mat-button mat-stroked-button type="file" (change)="fileChangeEvent($event)" />
         <!--
         <label #fileLabel for="file-1">
             <mat-icon>cloud_upload</mat-icon>

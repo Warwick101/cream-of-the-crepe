@@ -1,19 +1,37 @@
-<div style="background-color: white; padding: 20px;">
-<div>
-    <button (click)="openCreateCategoryDialog()">Create Category</button>
-</div>
+<div class="menu-list">
+  <div class="menu-list__actions">
+    <button mat-button mat-raised-button
+            color="primary" (click)="openCreateCategoryDialog()">
+      Create Category
+    </button>
+    <mat-slide-toggle [(ngModel)]="isDraggable">Rearrange</mat-slide-toggle>
+  </div>
 
-<mat-slide-toggle [(ngModel)]="isDraggable">Rearrange</mat-slide-toggle>
-<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+  <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
     @for (menuCategoryData of menuCategoriesData; track menuCategoryData) {
-      <div class="example-box" [ngClass]="{'no-move-cursor': !isDraggable}" cdkDrag [cdkDragDisabled]="!isDraggable">
+    <div class="example-box" [ngClass]="{'no-move-cursor': !isDraggable}"
+         cdkDrag [cdkDragDisabled]="!isDraggable">
+
+      <div class="example-list__contents">
         <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
         <div>{{menuCategoryData.order}}</div>
         <p>{{menuCategoryData.category}}</p>
         <p *ngIf="menuCategoryData.caption">{{menuCategoryData.caption}}</p>
-        <button [disabled]="isDraggable" style="cursor: pointer;" [routerLink]="['/menu-manager', menuCategoryData.cid]">View</button>
-        <button [disabled]="isDraggable" style="cursor: pointer;" (click)="openEditCategoryDialog(menuCategoryData)">Edit</button>
       </div>
+      <div class="example-list__buttons">
+        <button mat-button mat-stroked-button color="primary"
+                [disabled]="isDraggable"
+                [routerLink]="['/menu-manager', menuCategoryData.cid]">
+          View
+        </button>
+        <button mat-button mat-stroked-button
+                [disabled]="isDraggable"
+                (click)="openEditCategoryDialog(menuCategoryData)">
+          Edit
+        </button>
+      </div>
+
+    </div>
     }
   </div>
 

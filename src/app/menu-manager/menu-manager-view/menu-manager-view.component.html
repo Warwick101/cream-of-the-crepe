@@ -11,7 +11,7 @@
     </div>
 
     <div>
-        <button (click)="openCreateCategoryItemDialog()">Create Category Item</button>
+        <button (click)="openCreateCategoryItemDialog()" color="primary" mat-button mat-raised-button>Create Category Item</button>
     </div>
     <div *ngIf="!menuCategoryData.items">
         <h3>There are no Items yet</h3>
@@ -22,19 +22,23 @@
         <mat-slide-toggle [(ngModel)]="isDraggable">Rearrange</mat-slide-toggle>
         <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
             <!-- Use let i of index to directly access the index -->
-            <div *ngFor="let menuCategoryItemData of menuCategoryData.items; let i = index" class="example-box" [ngClass]="{'no-move-cursor': !isDraggable}" cdkDrag
-                [cdkDragDisabled]="!isDraggable">
+            <div *ngFor="let menuCategoryItemData of menuCategoryData.items; let i = index"
+                 [ngClass]="{'no-move-cursor': !isDraggable}" cdkDrag
+                class="example-box example-list__item" [cdkDragDisabled]="!isDraggable">
+              <div class="example-list__item__content">
                 <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
-                <div>{{menuCategoryItemData.title}}</div>
-                <div>{{menuCategoryItemData.description}}</div>
+                <div class="example-list__item__content__title">{{menuCategoryItemData.title}}</div>
+                <div class="example-list__item__content">{{menuCategoryItemData.description}}</div>
                 <div>{{menuCategoryItemData.price}}</div>
+              </div>
+
                 <!-- Use i as the index -->
-                <button [disabled]="isDraggable" (click)="openEditCategoryItemDialog(menuCategoryItemData, i)">Edit</button>
+                <button [disabled]="isDraggable" mat-button mat-stroked-button color="primary" (click)="openEditCategoryItemDialog(menuCategoryItemData, i)">Edit</button>
             </div>
         </div>
 
         <div *ngIf="wasRearranged">
-            <button (click)="saveRearrangedCategories()">Save</button>
+            <button mat-button mat-raised-button (click)="saveRearrangedCategories()">Save</button>
         </div>
 
     </div>   
