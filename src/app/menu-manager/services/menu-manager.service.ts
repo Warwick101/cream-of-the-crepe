@@ -5,6 +5,7 @@ import {
   arrayUnion,
   collection,
   collectionSnapshots,
+  deleteDoc,
   deleteField,
   doc,
   docSnapshots,
@@ -161,23 +162,7 @@ export class MenuManagerService {
     }
   }
 
-  async removePreviousImage(cid: string, oldImageFile: any) {
-    if (oldImageFile) {
-      const filePath = `${cid}/menuCategoryImage/${oldImageFile}`;
-      const prevFileRef = ref(this.storage, filePath);
-      try {
-        await deleteObject(prevFileRef);
-        // File deleted successfully
-      } catch (error: any) {
-        // Handle error with a snack bar?
-        console.error('Error deleting file:', error);
-        if (error.code === 'storage/object-not-found') {
-        } else {
-          // Show a generic error message
-        }
-      }
-    }
-  }
+  
 
   // Get All Menu Categories
   getMenuCategoriesCollection() {
@@ -323,6 +308,30 @@ export class MenuManagerService {
       console.log('Array overwritten successfully');
     } catch (error) {
       console.error('Error overwriting array: ', error);
+    }
+  }
+
+  async removeCategoryDocument(cid: string, imageFile: any){
+    await this.removePreviousImage(cid , imageFile)
+    const ref = doc(this.afs, 'menu-categories', cid);
+    await deleteDoc(ref);
+  }
+
+  async removePreviousImage(cid: string, oldImageFile: any) {
+    if (oldImageFile) {
+      const filePath = `${cid}/menuCategoryImage/${oldImageFile}`;
+      const prevFileRef = ref(this.storage, filePath);
+      try {
+        await deleteObject(prevFileRef);
+        // File deleted successfully
+      } catch (error: any) {
+        // Handle error with a snack bar?
+        console.error('Error deleting file:', error);
+        if (error.code === 'storage/object-not-found') {
+        } else {
+          // Show a generic error message
+        }
+      }
     }
   }
 }

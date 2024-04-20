@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnDestroy } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -15,7 +15,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './menu-manager-edit.component.html',
   styleUrl: './menu-manager-edit.component.scss',
 })
-export class MenuManagerEditComponent {
+export class MenuManagerEditComponent implements OnDestroy{
   showSpinner = false;
   menuCategoryEditForm: FormGroup;
   selectedFile: File | null = null;
@@ -92,7 +92,23 @@ export class MenuManagerEditComponent {
     );
   }
 
+  async onRemoveCategory(){
+    this.showSpinner = true;
+    if(this.menuEditSubscription){
+      this.menuEditSubscription.unsubscribe();
+    }
+    await this.menuManagerService.removeCategoryDocument(this.data.cid, this.menuDetail.categoryImageFile)
+    this.dialogRef.close();
+    this.showSpinner = false;
+  }
+
   onCancel() {
     this.dialogRef.close();
+  }
+
+  ngOnDestroy(): void {
+    if(this.menuEditSubscription){
+      this.menuEditSubscription.unsubscribe();
+    }
   }
 }
