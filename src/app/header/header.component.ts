@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {animateMobileTrigger, listStateTrigger} from "./animations";
 import {BreakpointObserver} from "@angular/cdk/layout";
-import {map, Observable} from "rxjs";
+import {map, Observable, Subscription} from "rxjs";
+import { SettingsService } from '../settings/services/settings.service';
 
 @Component({
   selector: 'app-header',
@@ -12,17 +13,37 @@ import {map, Observable} from "rxjs";
     listStateTrigger
   ]
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
   isNavMenu = false;
   isAccountMenu = false;
+  settings: any
+  settingsSubscription: Subscription;
+  showSpinner = false;
+  isSettings: boolean = false;
 
-  constructor(private breakpointObserver: BreakpointObserver) {
+     
+     constructor(private breakpointObserver: BreakpointObserver, private settingsService: SettingsService) {
+    
      this.breakpointObserver.observe('(min-width: 960px)').subscribe(result => {
        if (this.isNavMenu) {
          this.isNavMenu = false
        }
      })
+
+     this.settingsSubscription = this.settingsService.getSettingsCollection().subscribe(settings => {
+      this.showSpinner = true;
+        if (settings.length > 0) {
+          this.settings = settings[0];
+          this.isSettings = true;    
+          console.log(this.settings);
+        } else {
+          this.isSettings = false;
+          console.log('There is no setting document');
+        }
+        this.showSpinner = false;
+     })
+
   }
 
   ngOnInit(): void {
@@ -34,5 +55,8 @@ export class HeaderComponent implements OnInit {
 
   menuOff() {
     this.isNavMenu = false;
+  }
+  ngOnDestroy(): void {
+    
   }
 }
