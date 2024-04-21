@@ -44,6 +44,10 @@ import { BackButtonComponent } from './shared/back-button/back-button.component'
 import { MenuManagerItemEditComponent } from './menu-manager/menu-manager-item/menu-manager-item-edit/menu-manager-item-edit.component';
 import { MenuManagerEditComponent } from './menu-manager/menu-manager-edit/menu-manager-edit.component';
 import {MatButtonModule} from "@angular/material/button";
+import { SettingsViewComponent } from './settings/settings-view/settings-view.component';
+import { SettingsCreateComponent } from './settings/settings-create/settings-create.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { SettingsEditComponent } from './settings/settings-edit/settings-edit.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +65,10 @@ import {MatButtonModule} from "@angular/material/button";
     FooterComponent,
     BackButtonComponent,
     MenuManagerItemEditComponent,
-    MenuManagerEditComponent
+    MenuManagerEditComponent,
+    SettingsViewComponent,
+    SettingsCreateComponent,
+    SettingsEditComponent
   ],
   imports: [
     BrowserModule,
@@ -92,6 +99,7 @@ import {MatButtonModule} from "@angular/material/button";
     MatSliderModule,
     DragDropModule,
     MatSlideToggleModule,
+    MatCheckboxModule
   ],
   providers: [
     provideAnimationsAsync()
