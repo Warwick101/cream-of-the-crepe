@@ -1,0 +1,20 @@
+/* CSS */
+.days-time-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.days-time-container div {
+    flex: 1;
+    margin-right: 10px; /* Adjust spacing between inputs */
+}
+
+.days-time-container div:last-child {
+    margin-right: 0; /* Remove margin for the last input to prevent extra space */
+}
+
+/* Adjust input width as needed */
+.days-time-container input {
+    width: 80px; /* Example width, adjust as needed */
+    margin-bottom: 10px; /* Optional: Add margin at the bottom of each input */
+}

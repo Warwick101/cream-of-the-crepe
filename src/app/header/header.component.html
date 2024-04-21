@@ -4,9 +4,9 @@
       <img src="../../assets/creame-of-the-crepe.png">
     </div>
   </div>
-<!--  <div class="header__img">-->
-<!--    <img src="./assets/img/cream-crepe-bg-1-alt.jpg">-->
-<!--  </div>-->
+  <!--  <div class="header__img">-->
+  <!--    <img src="./assets/img/cream-crepe-bg-1-alt.jpg">-->
+  <!--  </div>-->
   <div class="content--container header__nav">
     <div class="header__nav__spacer"></div>
     <ul class="header__nav-list">
@@ -15,8 +15,7 @@
       <!--{{routeItem.page}}-->
       <!--</a>-->
       <li class="header__nav-list__item">
-        <a [routerLink]="['/menu']"
-           routerLinkActive="router-active">
+        <a [routerLink]="['/menu']" routerLinkActive="router-active">
           Menu
         </a>
       </li>
@@ -33,6 +32,11 @@
       <li class="header__nav-list__item">
         <a [routerLink]="['/menu-manager']">
           Menu Manager
+        </a>
+      </li>
+      <li class="header__nav-list__item">
+        <a [routerLink]="['/settings']">
+          Settings
         </a>
       </li>
       <!--      <ul (click)="toggleAccountMenu()"-->
@@ -61,7 +65,7 @@
   <div class="header__info">
     <div class="header__info__block">
       <h5>Location</h5>
-      <div class="header__info__block__details">
+      <div class="header__info__block__details" *ngIf="isSettings && settings">
         <div>
           8 South Northwest Highway
         </div>
@@ -69,11 +73,25 @@
           Park Ridge, IL 60068
         </div>
         <div>
-          847.720.4246
+          <a [href]="'tel:' + settings.phoneNumber">{{ settings.phoneNumber }}</a>
         </div>
       </div>
     </div>
     <div class="header__info__block">
+      <h5>Hours</h5>
+      <div class="header__info__block__details" *ngFor="let item of settings.tradingHours">
+        <ng-container *ngIf="item.open; else closedDay">
+          <div>{{ item.day | titlecase }}</div>
+          <div>{{ item.from }}</div>
+          <div>{{ item.to }}</div>
+        </ng-container>
+        <ng-template #closedDay>
+          <div>{{ item.day | titlecase }}</div>
+          <div>Closed</div>
+        </ng-template>
+      </div>
+    </div>
+    <!-- <div class="header__info__block">
       <h5>Hours</h5>
       <div class="header__info__block__details">
         <div>
@@ -86,7 +104,7 @@
           SUN 9AM - 4PM
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="header__info__block">
       <h5>Connect</h5>
@@ -99,9 +117,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf="isNavMenu"
-       @animateState
-       class="mobile-menu">
+  <div *ngIf="isNavMenu" @animateState class="mobile-menu">
     <!--<div [@listState]="routeItems?.length">-->
     <div @listState>
 
@@ -113,19 +129,13 @@
       <!--</a>-->
 
 
-      <a [routerLink]="['/menu']"
-         (click)="menuOff()"
-         routerLinkActive="router-active">
+      <a [routerLink]="['/menu']" (click)="menuOff()" routerLinkActive="router-active">
         Menu
       </a>
-      <a [routerLink]="['/order']"
-         (click)="menuOff()"
-         routerLinkActive="router-active">
+      <a [routerLink]="['/order']" (click)="menuOff()" routerLinkActive="router-active">
         Order
       </a>
-      <a [routerLink]="['/about-us']"
-         (click)="menuOff()"
-         routerLinkActive="router-active">
+      <a [routerLink]="['/about-us']" (click)="menuOff()" routerLinkActive="router-active">
         About Us
       </a>
     </div>
