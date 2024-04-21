@@ -1,0 +1,59 @@
+<div *ngIf="showSpinner">
+    <mat-spinner diameter="50"></mat-spinner>
+</div>
+
+<div *ngIf="!showSpinner">
+    <!-- title -->
+    <h2 mat-dialog-title>Create Contact Information</h2>
+    <!-- content -->
+    <mat-dialog-content>
+        <!-- form -->
+        <div class="form-container">
+            <form [formGroup]="settingsForm">
+                <!-- Phone Number -->
+                <mat-form-field appearance="outline">
+                    <mat-label>Phone Number</mat-label>
+                    <input matInput placeholder="Phone Number" formControlName="phoneNumber" type="tel" id="phoneNumber"
+                        name="phoneNumber" />
+                </mat-form-field>
+
+                <!-- Days Time -->
+                <div formGroupName="tradingHours" class="days-time-container">
+                    <!-- Loop through daysOfWeek array -->
+                    <div *ngFor="let day of daysOfWeek" [formGroupName]="day.toLowerCase()">
+                        <label>{{ day }}:</label>
+                        
+                        <input type="checkbox" [id]="day.toLowerCase() + 'Open'" formControlName="open">
+                        <div *ngIf="shouldShowTimeInputs(day)">
+                            <label for="{{ day.toLowerCase() }}From">From:</label>
+                            <input type="time" [id]="day.toLowerCase() + 'From'" formControlName="from">
+                        </div>
+                        <div *ngIf="shouldShowTimeInputs(day)">
+                            <label for="{{ day.toLowerCase() }}To">To:</label>
+                            <input type="time" [id]="day.toLowerCase() + 'To'" formControlName="to">
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </mat-dialog-content>
+    <!-- /content -->
+    <!-- mat-dialog-actions -->
+    <div mat-dialog-actions>
+        <div>
+            <button mat-flat-button color="primary" [disabled]="!settingsForm.valid || isSubmitDisabled()" type="submit"
+                (click)="onCreateSettings();">
+                <mat-icon>add_circle</mat-icon>Create
+            </button>
+            <button mat-stroked-button color="primary" type="button" (click)="onCancel()">
+                <mat-icon>close</mat-icon>Cancel
+            </button>
+        </div>
+    </div>
+    <!-- /mat-dialog-actions -->
+
+</div>
