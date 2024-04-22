@@ -47,7 +47,7 @@ export class LoginComponent {
     this.authService
       .login(this.loginForm.value)
       .then(() => {
-        this.router.navigate(['networks']).catch((error: any) => {
+        this.router.navigate(['']).catch((error: any) => {
           console.warn(error);
         });
       })

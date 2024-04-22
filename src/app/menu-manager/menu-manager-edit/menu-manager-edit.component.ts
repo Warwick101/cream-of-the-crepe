@@ -67,7 +67,7 @@ export class MenuManagerEditComponent implements OnDestroy{
     if (imageData) {
       this.isImageSelected = true;
       this.selectedFile = imageData.file;
-      // Set the selected file to networkLogo FormControl
+      // Set the selected file to categoryImage FormControl
       this.menuCategoryEditForm.get('categoryImage')!.setValue(imageData.file);
     }
   }

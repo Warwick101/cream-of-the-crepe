@@ -49,6 +49,7 @@ import { SettingsCreateComponent } from './settings/settings-create/settings-cre
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { SettingsEditComponent } from './settings/settings-edit/settings-edit.component';
 import { ContactComponent } from './contact/contact.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { ContactComponent } from './contact/contact.component';
     SettingsViewComponent,
     SettingsCreateComponent,
     SettingsEditComponent,
-    ContactComponent
+    ContactComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
