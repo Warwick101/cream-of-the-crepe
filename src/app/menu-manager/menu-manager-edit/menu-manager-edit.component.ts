@@ -35,6 +35,7 @@ export class MenuManagerEditComponent implements OnDestroy{
       // type: new FormControl('', Validators.required),
       caption: new FormControl(''),
       categoryImage: [null],
+      special: new FormControl(''),
     });
 
     this.menuEditSubscription = this.menuManagerService
@@ -52,6 +53,11 @@ export class MenuManagerEditComponent implements OnDestroy{
         if (menuDetail.categoryImage) {
           this.menuCategoryEditForm.patchValue({
             categoryImage: menuDetail.categoryImage,
+          });
+        }
+        if (menuDetail.special) {
+          this.menuCategoryEditForm.patchValue({
+            special: menuDetail.special,
           });
         }
       });
@@ -74,7 +80,8 @@ export class MenuManagerEditComponent implements OnDestroy{
       categoryImageFile: this.menuDetail.categoryImageFile,
       createdAt: this.menuDetail.createdAt,
       order: this.menuDetail.order,
-      items: this.menuDetail.items
+      items: this.menuDetail.items,
+      special: this.menuCategoryEditForm.value.special
     };
     // Check if caption exists in the form value
     if (this.menuCategoryEditForm.value.caption) {     

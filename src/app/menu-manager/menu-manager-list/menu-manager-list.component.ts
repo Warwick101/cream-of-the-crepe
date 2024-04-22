@@ -25,6 +25,7 @@ export class MenuManagerListComponent implements OnDestroy{
 
     this.menuCategoriesSubscription = this.menuManagerService.getMenuCategoriesCollection().subscribe(menuCategoriesData => {
       this.menuCategoriesData = menuCategoriesData;
+      console.log(menuCategoriesData)
     })
 
   }
