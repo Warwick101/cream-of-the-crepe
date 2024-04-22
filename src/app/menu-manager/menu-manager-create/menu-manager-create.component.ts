@@ -31,6 +31,7 @@ export class MenuManagerCreateComponent {
       // type: new FormControl('', Validators.required),
       caption: new FormControl(''),
       categoryImage: [null],
+      special: new FormControl(''),
     });
 
     
@@ -45,10 +46,11 @@ export class MenuManagerCreateComponent {
   }
 
   async onCreateCategory() {
+    console.log(this.menuCategoryForm.value)
     this.showSpinner = true;
     const menuCategoryData: any = {
       category: this.menuCategoryForm.value.category,
-      // type: this.menuCategoryForm.value.type,
+      special: this.menuCategoryForm.value.special,
     };
 
     // Check if caption exists in the form value

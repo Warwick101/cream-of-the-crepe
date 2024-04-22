@@ -183,6 +183,7 @@ export class MenuManagerService {
             categoryImageFile: docData['categoryImageFile'],
             order: docData['order'],
             items: docData['items'] || null,
+            special: docData['special'] || null,
           };
           return { ...menuCategoriesData };
         })
@@ -224,6 +225,7 @@ export class MenuManagerService {
           categoryImageFile: menuCategoryData['categoryImageFile'] || null,
           order: menuCategoryData['order'],
           items: menuCategoryData['items'] || null,
+          special: menuCategoryData['special'] || null,
         };
       })
     );
