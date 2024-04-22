@@ -22,7 +22,7 @@
         </mat-tab-group>
       </div>
       <ng-container *ngFor="let menu of menuData">
-        <div [ngClass]="menu.type" class="menu__content__block" [id]="menu.cid">
+        <div [ngClass]="{'special-style': menu.special}" class="menu__content__block" [id]="menu.cid">
           <div class="menu__content__item">
             <h2 class="menu__content__item__title">
               {{menu.category}}
