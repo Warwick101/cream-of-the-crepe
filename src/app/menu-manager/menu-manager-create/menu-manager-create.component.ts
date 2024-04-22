@@ -40,7 +40,7 @@ export class MenuManagerCreateComponent {
   croppedImage(imageData: any) {
     if (imageData) {
       this.selectedFile = imageData.file;
-      // Set the selected file to networkLogo FormControl
+      // Set the selected file to categoryImage FormControl
       this.menuCategoryForm.get('categoryImage')!.setValue(imageData.file);
     }
   }

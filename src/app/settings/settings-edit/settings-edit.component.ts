@@ -47,8 +47,7 @@ export class SettingsEditComponent implements OnDestroy {
 
     this.settingsEditSubscription = this.settingsService
       .getSettingsDetails(this.data.sid)
-      .subscribe((settings) => {
-        console.log(settings);
+      .subscribe((settings) => {       
         this.settingsEditForm.patchValue({
           phoneNumber: settings.phoneNumber,
         });

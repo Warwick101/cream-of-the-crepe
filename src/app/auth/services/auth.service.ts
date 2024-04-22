@@ -82,7 +82,7 @@ export class AuthService {
                 [idTokenResult.claims['isAdmin'] ? 'admin' : 'viewer']: true,
               };
               this.setUserData(credential, userData);
-              this.router.navigate(['networks']).catch((error: any) => {
+              this.router.navigate(['']).catch((error: any) => {
                 console.warn(error);
               });
 
@@ -174,7 +174,11 @@ export class AuthService {
   // Logout
   onLogOut() {
     signOut(this.auth)
-      .then(() => {})
+      .then(() => {
+        this.router.navigate(['']).catch((error: any) => {
+          console.warn(error);
+        });
+      })
       .catch((error) => {
         console.log(error);
       });

@@ -3,6 +3,7 @@ import {animateMobileTrigger, listStateTrigger} from "./animations";
 import {BreakpointObserver} from "@angular/cdk/layout";
 import {map, Observable, Subscription} from "rxjs";
 import { SettingsService } from '../settings/services/settings.service';
+import { AuthService } from '../auth/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -21,9 +22,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   settingsSubscription: Subscription;
   showSpinner = false;
   isSettings: boolean = false;
+  user: any;
 
      
-     constructor(private breakpointObserver: BreakpointObserver, private settingsService: SettingsService) {
+     constructor(private breakpointObserver: BreakpointObserver, private settingsService: SettingsService, public authService: AuthService) {
     
      this.breakpointObserver.observe('(min-width: 960px)').subscribe(result => {
        if (this.isNavMenu) {
@@ -31,12 +33,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
        }
      })
 
+     this.authService.user$.subscribe(user => {
+      this.user = user;
+     })
+
      this.settingsSubscription = this.settingsService.getSettingsCollection().subscribe(settings => {
       this.showSpinner = true;
         if (settings.length > 0) {
           this.settings = settings[0];
           this.isSettings = true;    
-          console.log(this.settings);
         } else {
           this.isSettings = false;
           console.log('There is no setting document');

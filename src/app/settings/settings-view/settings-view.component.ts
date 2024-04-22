@@ -30,8 +30,7 @@ export class SettingsViewComponent implements OnDestroy {
         this.showSpinner = true;
         if (settings.length > 0) {
           this.settings = settings[0];
-          this.isSettings = true;    
-          console.log(this.settings);
+          this.isSettings = true;              
         } else {
           this.isSettings = false;
           console.log('There is no setting document');

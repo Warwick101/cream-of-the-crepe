@@ -8,20 +8,22 @@ import { MenuManagerListComponent } from './menu-manager/menu-manager-list/menu-
 import { MenuManagerViewComponent } from './menu-manager/menu-manager-view/menu-manager-view.component';
 import { SettingsViewComponent } from './settings/settings-view/settings-view.component';
 import { ContactComponent } from './contact/contact.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { adminGuard } from './auth/guards/admin.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: 'menu', pathMatch: 'full'},
   {path: 'menu', component: MenuComponent, title: 'Menu'},
   {path: 'signup', component: SignupComponent, title: 'Signup'},
   {path: 'login', component: LoginComponent, title: 'Login'},
-  {path: 'settings', component: SettingsViewComponent, title: 'Settings'},
+  {path: 'settings', component: SettingsViewComponent, title: 'Settings', canActivate: [adminGuard]},
   {path: 'contact', component: ContactComponent, title: 'Contact'},
-  {path: 'menu-manager', component: MenuManagerListComponent, title: 'Menu Manager'},
-  { path: 'menu-manager/:cid', component: MenuManagerViewComponent, title: 'Menu Manager View'},
+  {path: 'menu-manager', component: MenuManagerListComponent, title: 'Menu Manager', canActivate: [adminGuard]},
+  { path: 'menu-manager/:cid', component: MenuManagerViewComponent, title: 'Menu Manager View', canActivate: [adminGuard]},
 
 
 
-  {path: '**', component: HomeComponent, title: 'Home'},
+  { path: '**', pathMatch: 'full', component: NotFoundComponent },
 ];
 
 

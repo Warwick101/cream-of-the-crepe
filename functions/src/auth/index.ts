@@ -12,10 +12,10 @@ export const setAdminClaim = functions.auth.user().onCreate(async (user) => {
         // Set the custom claim for the user
         await admin.auth().setCustomUserClaims(user.uid, { isAdmin: true });
       } 
-      // else {
-      //   // Set the custom claim for the user
-      //   await admin.auth().setCustomUserClaims(user.uid, { isViewer: true });
-      // }
+      else {
+        // Set the custom claim for the user
+        await admin.auth().setCustomUserClaims(user.uid, { isViewer: true });
+      }
     }
   } catch (error) {
     console.error('Error setting custom claim:', error);

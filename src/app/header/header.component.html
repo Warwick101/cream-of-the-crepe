@@ -29,16 +29,29 @@
           Contact
         </a>
       </li>
-      <li class="header__nav-list__item">
+
+      <li class="header__nav-list__item" *ngIf="user && user.roles.admin">
         <a [routerLink]="['/menu-manager']">
           Menu Manager
         </a>
       </li>
-      <li class="header__nav-list__item">
+      <li class="header__nav-list__item" *ngIf="user && user.roles.admin">
         <a [routerLink]="['/settings']">
           Settings
         </a>
       </li>
+
+      <li class="header__nav-list__item" *ngIf="user">
+        {{user.firstName}}
+      </li>
+
+      <li class="header__nav-list__item" *ngIf="user && user.roles.admin">
+        <a (click)="authService.onLogOut()">
+          Logout
+        </a>
+      </li>
+
+
       <!--      <ul (click)="toggleAccountMenu()"-->
       <!--          class="account-menu"-->
       <!--          qssDropdown-->
