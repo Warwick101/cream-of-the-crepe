@@ -14,9 +14,9 @@
 
       <div class="example-list__contents">
         <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
-        <div>{{menuCategoryData.order}}</div>
         <p>{{menuCategoryData.category}}</p>
         <p *ngIf="menuCategoryData.caption">{{menuCategoryData.caption}}</p>
+        <p *ngIf="menuCategoryData.special"><mat-icon>star</mat-icon></p>
       </div>
       <div class="example-list__buttons">
         <button mat-button mat-stroked-button color="primary"
