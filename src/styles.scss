@@ -22,8 +22,12 @@ wdk-menu {
 }
 
 body {
-  background-color: #201614;
+  background-color: #201614!important;
   //background-color: #5c4740;
+
+  .mat-app-background {
+    background-color: transparent!important;
+  }
 }
 
 :root {

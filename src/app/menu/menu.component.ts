@@ -1,4 +1,14 @@
-import {Component, OnDestroy, ElementRef, Input, OnInit, QueryList, ViewChildren} from '@angular/core';
+import {
+  Component,
+  OnDestroy,
+  ElementRef,
+  Input,
+  OnInit,
+  QueryList,
+  ViewChildren,
+  Renderer2,
+  AfterViewInit
+} from '@angular/core';
 import { MenuManagerService } from '../menu-manager/services/menu-manager.service';
 import { Subscription } from 'rxjs';
 
@@ -7,17 +17,82 @@ import { Subscription } from 'rxjs';
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss'
 })
-export class MenuComponent implements OnInit, OnDestroy{
+export class MenuComponent implements OnInit,AfterViewInit, OnDestroy{
   showSpinner = false;
   menuCatergories: any;
   menuCatergoriesSubscription: Subscription;
   menuData: any;
 
-  constructor(private menuManagerService: MenuManagerService){
+  constructor(private menuManagerService: MenuManagerService, private renderer: Renderer2){
     this.showSpinner = true;
     this.menuCatergoriesSubscription = this.menuManagerService.getMenuCategoriesCollection().subscribe(menuCatergories => {
       this.menuData = menuCatergories;
       this.showSpinner = false;
+
+      menuCatergories.forEach(menu => {
+        const element = document.getElementById(menu.cid);
+        if (element) {
+          const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.5 // Example threshold, adjust as needed
+          };
+
+
+          // TODO need to replicate below with working one:
+
+          // const selectors: string[] = targetIds.map((id) => '#' + id);
+          // const elementsById: string = selectors.join(' , ');
+          // const images = document.querySelectorAll(elementsById);
+          //
+          // this.observer = new IntersectionObserver(entries => {
+          //   entries.forEach(entry => {
+          //     if(entry.isIntersecting) {
+          //       const dataId = entry.target.id;
+          //       const targetLink = this.linkInfo.find((l) => l.linkTargetId === dataId);
+          //
+          //       if (dataId === targetLink.linkTargetId) {
+          //         this.activeLink = dataId;
+          //       }
+          //     } else {
+          //       const currentIndex = targetIds.indexOf(entry.target.id);
+          //       if (currentIndex < selectors.length - 1) {
+          //         const nextTargetId = selectors[currentIndex + 1];
+          //         if (document.querySelector(nextTargetId) !== null) {
+          //           this.observer.observe(document.querySelector(nextTargetId)!);
+          //         }
+          //       }
+          //     }
+          //   });
+          // },{rootMargin: '20% 0px 0px',  threshold: [1]});
+          //
+          // images.forEach(target => {
+          //   const element = document.querySelector(selectors[0]);
+          //   if (element !== null) {
+          //     this.observer.observe(element);
+          //   }
+          // });
+
+
+          const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                // Element is intersecting with viewport
+                // console.log('Element is intersecting:', entry.target);
+
+                // Perform actions as needed when the element is intersecting
+              } else {
+                // Element is not intersecting with viewport
+                // console.log('Element is not intersecting:', entry.target);
+
+                // Perform actions as needed when the element is not intersecting
+              }
+            });
+          }, options);
+
+          observer.observe(element);
+        }
+      });
     })
   }
 
@@ -202,55 +277,22 @@ export class MenuComponent implements OnInit, OnDestroy{
 
   activeLink: string = '';
 
-
-
-  ngOnInit(): void {
-
+  ngAfterViewInit(): void {
     const targetIds: string[] = [];
 
     this.linkInfo.forEach(img => {
       targetIds.push(img.linkTargetId);
     });
+  }
 
-
-    const selectors: string[] = targetIds.map((id) => '#' + id);
-    const elementsById: string = selectors.join(' , ');
-    const images = document.querySelectorAll(elementsById);
-
-    this.observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting) {
-          const dataId = entry.target.id;
-          const targetLink = this.linkInfo.find((l) => l.linkTargetId === dataId);
-
-          if (dataId === targetLink.linkTargetId) {
-            this.activeLink = dataId;
-          }
-        } else {
-          const currentIndex = targetIds.indexOf(entry.target.id);
-          if (currentIndex < selectors.length - 1) {
-            const nextTargetId = selectors[currentIndex + 1];
-            if (document.querySelector(nextTargetId) !== null) {
-              this.observer.observe(document.querySelector(nextTargetId)!);
-            }
-          }
-        }
-      });
-    },{rootMargin: '20% 0px 0px',  threshold: [1]});
-
-    images.forEach(target => {
-      const element = document.querySelector(selectors[0]);
-      if (element !== null) {
-        this.observer.observe(element);
-      }
-    });
+  ngOnInit(): void {
 
   }
 
   jumpToArticle(targetId: string) {
-    console.log(targetId, 'targetId')
+    // console.log(targetId, 'targetId')
     const view = document.getElementById(targetId);
-    console.log(view, 'view')
+    // console.log(view, 'view')
 
     this.options.behavior = this.behaviour;
     if (view) {

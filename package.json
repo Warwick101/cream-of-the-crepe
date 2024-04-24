@@ -21,7 +21,7 @@
     "@angular/platform-browser": "^17.2.4",
     "@angular/platform-browser-dynamic": "^17.2.4",
     "@angular/router": "^17.2.4",
-    "@wjdk/acl": "^2.1.0",
+    "@wjdk/acl": "^2.3.2",
     "ngx-image-cropper": "^7.2.1",
     "or": "^0.2.0",
     "rxjs": "~7.8.0",
