@@ -19,6 +19,9 @@
           Menu
         </a>
       </li>
+      <div *ngIf="authService.user$ | async as user">
+        {{user.firstName}} {{user.lastName}}
+      </div>
       <li class="header__nav-list__item">
         <a [routerLink]="['/about-us']" routerLinkActive="router-active">
           About Us
@@ -31,12 +34,12 @@
       </li>
 
       <li class="header__nav-list__item" *ngIf="user && user.roles.admin">
-        <a [routerLink]="['/menu-manager']">
+        <a [routerLink]="['/menu-manager']" routerLinkActive="router-active">
           Menu Manager
         </a>
       </li>
       <li class="header__nav-list__item" *ngIf="user && user.roles.admin">
-        <a [routerLink]="['/settings']">
+        <a [routerLink]="['/settings']" routerLinkActive="router-active">
           Settings
         </a>
       </li>
@@ -86,7 +89,7 @@
           Park Ridge, IL 60068
         </div>
         <div>
-          <a [href]="'tel:' + settings.phoneNumber">{{ settings.phoneNumber }}</a>
+          <a [href]="'tel:' + settings.phoneNumber">{{ settings.phoneNumber | mask: '(000) 000-0000' }}</a>
         </div>
       </div>
     </div>

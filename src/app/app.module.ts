@@ -48,6 +48,7 @@ import { SettingsViewComponent } from './settings/settings-view/settings-view.co
 import { SettingsCreateComponent } from './settings/settings-create/settings-create.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { SettingsEditComponent } from './settings/settings-edit/settings-edit.component';
+import {NgxMaskDirective, NgxMaskPipe, provideNgxMask} from "ngx-mask";
 import { ContactComponent } from './contact/contact.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
@@ -93,6 +94,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     WdkHeaderModule,
     WdkSnackBarModule,
     MatButtonModule,
+    NgxMaskDirective,
+    NgxMaskPipe,
     MatTabsModule,
     MatTableModule,
     MatIconModule,
@@ -106,7 +109,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     MatCheckboxModule
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideNgxMask()
   ],
   bootstrap: [AppComponent]
 })

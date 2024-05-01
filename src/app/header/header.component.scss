@@ -42,6 +42,7 @@ h3 {
   background-color: rgb(32 22 20 / 40%);
   flex-wrap: wrap;
 
+
   .header__info {
     z-index: 99;
     width: 100%;
@@ -53,6 +54,8 @@ h3 {
     color: #f4e669;
     display: flex;
     justify-content: center;
+    padding-left: 172px;
+    box-sizing: border-box;
 
     .header__info__block {
       width: 320px;
@@ -61,11 +64,12 @@ h3 {
         font-size: 18px;
       }
 
-      .header__info__block__details {
+      .header__info__block__details, a {
         font-size: 12px;
         font-weight: 400;
         line-height: 21px;
-        color: #c4b28b
+        color: #c4b28b;
+        padding: 0
       }
 
       h5 {
@@ -92,7 +96,6 @@ h3 {
     padding: 22px 98px 29px 80px;
     background-color: #011851;
     background-color: #2b1b18;
-    //background-color: #2341a8;
     border-top-right-radius: 0;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 120px;
@@ -100,7 +103,9 @@ h3 {
     z-index: 9;
 
     .header__logo__image {
-      width: 160px;
+      width: 196px;
+      z-index: 9;
+      height: 140px;
 
       img {
         width: 100%;
@@ -114,8 +119,10 @@ h3 {
     flex: 1;
     padding: 8px 24px 18px 42px;
     background-color: #2341a8;
+    background-color: #ffe8d1;
     position: absolute;
-    width: 100%;
+    border-radius: 160px;
+    width:unset;
     min-height: 46px;
 
     .header__nav__menu {
@@ -147,21 +154,25 @@ h3 {
           font-size: 20px;
           white-space: nowrap;
           color: #fcc187;
+          color: #76613f;
+          padding-bottom: 0px;
           margin-right: -1px;
 
           &.router-active {
             border-bottom: 3px solid #fcc187;
             font-weight: 400;
-            color: #201614;
             color: #fcc187;
-
+            color: #201614;
+            font-weight: 600;
+            color: #1841b1;
+            padding-bottom: 0px;
             margin-right: -1px;
             z-index: 999;
           }
 
 
           &:hover {
-            border-bottom: 3px solid #fce7b2;
+            //border-bottom: 3px solid #fce7b2;
             margin-right: -1px;
             cursor: pointer;
           }
@@ -265,9 +276,13 @@ h3 {
 
 
 @media screen and (max-width: 1100px) {
+  .header__nav {
+    //display: none!important;
+  }
 
   .header__nav {
     box-sizing: border-box!important;
+    background-color: transparent!important;
   }
 
 
@@ -291,6 +306,7 @@ h3 {
 
   .header__logo {
     width: 100%;
+    background-color: transparent!important;
     border-bottom-right-radius: 0!important;
   }
 
