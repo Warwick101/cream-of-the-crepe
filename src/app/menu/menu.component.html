@@ -22,7 +22,7 @@
         </mat-tab-group>
       </div>
       <ng-container *ngFor="let menu of menuData">
-        <div #categoryDiv [ngClass]="{'special-style': menu.special}" class="menu__content__block" [id]="menu.cid">
+        <div #categoryDiv [ngClass]="{'special-style': menu.special}" class="menu__content__block" [id]="'id' + menu.cid">
           <div class="menu__content__item">
             <h2 class="menu__content__item__title">
               {{menu.category}}
@@ -35,7 +35,7 @@
             <div class="menu__content__block__image" *ngIf="menu.categoryImage">
               <img [src]="menu.categoryImage">
             </div>
-            <div class="">
+            <div class="menu__item">
               <div *ngFor="let item of menu.items" class="menu__section__item">
                 <div class="menu__section__item__heading">
 

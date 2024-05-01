@@ -38,7 +38,7 @@
 
     .menu__header {
       h1 {
-        color: #eec143;
+        color: #fcc187;
         font-size: 62px;
         text-align: center;
         font-weight: 400;
@@ -96,9 +96,11 @@
         align-items: center;
         padding: 0 62px;
 
+
         .menu__content__item__title {
           text-align: center;
           margin-top: 24px;
+          color: #1b3fa1;
         }
 
         .menu__content__item__caption {
@@ -141,6 +143,7 @@
         flex-direction: column;
         margin-top: 42px;
         margin-bottom: 64px;
+
 
         .menu__section__item {
           display: flex;
@@ -272,4 +275,15 @@
 .special-style {
   background-color: yellow;
   color: black;
+}
+
+.menu__section {
+  #id6fpLoxenbhJw3Lq1qPem {
+grid-column: 1/3;
+    .menu__item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 162px;
+    }
+  }
 }

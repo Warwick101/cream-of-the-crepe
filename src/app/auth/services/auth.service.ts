@@ -4,7 +4,7 @@ import { LoginData } from '../models/auth.model';
 import {
   Auth,
   createUserWithEmailAndPassword,
-  getAuth,
+  getAuth, onAuthStateChanged,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signOut,
@@ -26,7 +26,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-
+  isAuth = false;
   user$: Observable<any>;
   user: LoginData | null = null;
 
@@ -45,6 +45,17 @@ export class AuthService {
 
     this.user$.subscribe((user) => {
       this.user = user;
+    });
+  }
+
+  getOnAuthStateChanged() {
+    return onAuthStateChanged(this.auth, (user) => {
+      if (user) {
+        this.isAuth = true;
+      } else {
+        this.isAuth = false;
+        this.user = null;
+      }
     });
   }
 

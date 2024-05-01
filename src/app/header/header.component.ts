@@ -3,6 +3,7 @@ import {animateMobileTrigger, listStateTrigger} from "./animations";
 import {BreakpointObserver} from "@angular/cdk/layout";
 import {map, Observable, Subscription} from "rxjs";
 import { SettingsService } from '../settings/services/settings.service';
+import {AuthService} from "../auth/services/auth.service";
 
 @Component({
   selector: 'app-header',
@@ -23,8 +24,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isSettings: boolean = false;
 
      
-     constructor(private breakpointObserver: BreakpointObserver, private settingsService: SettingsService) {
-    
+     constructor(private breakpointObserver: BreakpointObserver, private settingsService: SettingsService,
+                 public authService: AuthService) {
+
+       this.authService.getOnAuthStateChanged();
+
      this.breakpointObserver.observe('(min-width: 960px)').subscribe(result => {
        if (this.isNavMenu) {
          this.isNavMenu = false
