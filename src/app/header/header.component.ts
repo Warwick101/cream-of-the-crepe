@@ -4,7 +4,6 @@ import {BreakpointObserver} from "@angular/cdk/layout";
 import {map, Observable, Subscription} from "rxjs";
 import { SettingsService } from '../settings/services/settings.service';
 import { AuthService } from '../auth/services/auth.service';
-import {AuthService} from "../auth/services/auth.service";
 
 @Component({
   selector: 'app-header',
@@ -26,11 +25,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   user: any;
 
      
-     constructor(private breakpointObserver: BreakpointObserver, private settingsService: SettingsService, public authService: AuthService) {
-    
      constructor(private breakpointObserver: BreakpointObserver, private settingsService: SettingsService,
                  public authService: AuthService) {
-
        this.authService.getOnAuthStateChanged();
 
      this.breakpointObserver.observe('(min-width: 960px)').subscribe(result => {
@@ -41,6 +37,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
      this.authService.user$.subscribe(user => {
       this.user = user;
+      console.log(user, ' user')
      })
 
      this.settingsSubscription = this.settingsService.getSettingsCollection().subscribe(settings => {

@@ -19,6 +19,8 @@
           Menu
         </a>
       </li>
+
+
       <div *ngIf="authService.user$ | async as user">
         {{user.firstName}} {{user.lastName}}
       </div>
@@ -71,7 +73,11 @@
       <!--        </li>-->
       <!--      </ul>-->
 
-
+      <li class="header__nav-list__item">
+        <a (click)="authService.onLogOut()">
+          Logout
+        </a>
+      </li>
     </ul>
     <div class="mobile-menu-hide header__nav__menu" (click)="menuOn()">
       <mat-icon svgIcon="menu-burger--s" class="burger-icon"></mat-icon>
@@ -82,14 +88,14 @@
     <div class="header__info__block">
       <h5>Location</h5>
       <div class="header__info__block__details" *ngIf="isSettings && settings">
-        <a href="https://www.google.com/maps/dir/Current+Location/42.0107306,-87.8291049" target="_blank">
+        <div>
           8 South Northwest Highway
-        </a>
+        </div>
         <div>
           Park Ridge, IL 60068
         </div>
         <div>
-          <a [href]="'tel:' + settings.phoneNumber">{{ settings.phoneNumber | mask: '(000) 000-0000' }}</a>
+          <a [href]="'tel:' + settings.phoneNumber">{{ settings.phoneNumber }}</a>
         </div>
       </div>
     </div>
