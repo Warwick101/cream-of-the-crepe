@@ -10,8 +10,11 @@ import { SettingsViewComponent } from './settings/settings-view/settings-view.co
 import { ContactComponent } from './contact/contact.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { adminGuard } from './auth/guards/admin.guard';
+import {MessageBoardComponent} from "./message-board/message-board.component";
 
 const routes: Routes = [
+  // {path: '', redirectTo: 'message-board', pathMatch: 'full'},
+  // {path: 'message-board', component: MessageBoardComponent},
   {path: '', redirectTo: 'menu', pathMatch: 'full'},
   {path: 'menu', component: MenuComponent, title: 'Menu'},
   {path: 'signup', component: SignupComponent, title: 'Signup'},

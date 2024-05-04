@@ -52,6 +52,7 @@ import {NgxMaskDirective, NgxMaskPipe, provideNgxMask} from "ngx-mask";
 import { ContactComponent } from './contact/contact.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {MatMenuModule} from "@angular/material/menu";
+import {MessageBoardComponent} from "./message-board/message-board.component";
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import {MatMenuModule} from "@angular/material/menu";
     FooterComponent,
     BackButtonComponent,
     MenuManagerItemEditComponent,
+    MessageBoardComponent,
     MenuManagerEditComponent,
     SettingsViewComponent,
     SettingsCreateComponent,
