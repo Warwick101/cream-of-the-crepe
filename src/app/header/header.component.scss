@@ -60,6 +60,12 @@ h3 {
     .header__info__block {
       width: 320px;
 
+      .phone {
+        a {
+          color: #ffecc3
+        }
+      }
+
       h5 {
         font-size: 18px;
       }
@@ -141,12 +147,22 @@ h3 {
     .header__nav-list {
       display: flex;
       padding: 0;
-      font-family: "Signika Negative", sans-serif;
+      font-family: "Poppins", sans-serif;
+      padding-right: 54px;
+
+      .header__nav-list__menu {
+        font-size: 20px;
+        font-weight: 400;
+        align-items: baseline;
+        display: flex;
+      }
 
 
       .header__nav-list__item {
         list-style: none;
         margin-right: 72px;
+        display: flex;
+        align-items: center;
 
         a {
           border-bottom: 3px solid transparent;
@@ -157,6 +173,13 @@ h3 {
           color: #76613f;
           padding-bottom: 0px;
           margin-right: -1px;
+          align-items: center;
+          display: flex;
+
+          mat-icon {
+            color: #76613f;
+            opacity: .6;
+          }
 
           &.router-active {
             border-bottom: 3px solid #fcc187;
@@ -164,7 +187,7 @@ h3 {
             color: #fcc187;
             color: #201614;
             font-weight: 600;
-            color: #1841b1;
+            color: #fa990b;
             padding-bottom: 0px;
             margin-right: -1px;
             z-index: 999;

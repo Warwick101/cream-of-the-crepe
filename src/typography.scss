@@ -3,18 +3,18 @@
 
 $cream-typography: material.define-legacy-typography-config(
   $font-family: "Helvetica, Arial, sans-serif",
-  $display-4: material.define-typography-level(utils.rem-calc(36px), 1.3, 400, 'Signika Negative'),
-  $display-3: material.define-typography-level(utils.rem-calc(22px), 1.3, 500, 'Signika Negative'),
-  $display-2: material.define-typography-level(utils.rem-calc(16px), 1.3, 500, 'Signika Negative'),
-  $display-1: material.define-typography-level(utils.rem-calc(24px), 1.3, 600, 'Signika Negative'),
-  $headline: material.define-typography-level(utils.rem-calc(50px), 1.3, 800, 'Signika Negative'),
-  $title: material.define-typography-level(utils.rem-calc(38px), 1.3, 400, 'Signika Negative'),
-  $subheading-2: material.define-typography-level(utils.rem-calc(18px), 1.3, 400, 'Signika Negative'),
+  $display-4: material.define-typography-level(utils.rem-calc(36px), 1.3, 400, 'Poppins'),
+  $display-3: material.define-typography-level(utils.rem-calc(22px), 1.3, 500, 'Poppins'),
+  $display-2: material.define-typography-level(utils.rem-calc(16px), 1.3, 500, 'Poppins'),
+  $display-1: material.define-typography-level(utils.rem-calc(24px), 1.3, 600, 'Poppins'),
+  $headline: material.define-typography-level(utils.rem-calc(50px), 1.3, 800, 'Poppins'),
+  $title: material.define-typography-level(utils.rem-calc(38px), 1.3, 400, 'Poppins'),
+  $subheading-2: material.define-typography-level(utils.rem-calc(18px), 1.3, 400, 'Poppins'),
   $subheading-1: material.define-typography-level(utils.rem-calc(14px), 1.3, 400),
   $body-1: material.define-typography-level(utils.rem-calc(16px), 1.15, 400),
   $body-2: material.define-typography-level(utils.rem-calc(16px), 1.1, 400),
   $caption: material.define-typography-level(utils.rem-calc(14px), 1.3, 400),
-  $button: material.define-typography-level(utils.rem-calc(16px), 1.3, 600),
+  $button: material.define-typography-level(utils.rem-calc(16px), 1.3, 400, 'Poppins'),
   $input: material.define-typography-level(utils.rem-calc(16px), 1.1, 400),
 );
 

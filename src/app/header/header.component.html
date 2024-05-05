@@ -19,14 +19,10 @@
           Menu
         </a>
       </li>
-
-
-      <div *ngIf="authService.user$ | async as user">
-        {{user.firstName}} {{user.lastName}}
-      </div>
       <li class="header__nav-list__item">
-        <a [routerLink]="['/about-us']" routerLinkActive="router-active">
-          About Us
+        <a>
+          <mat-icon svgIcon="external-link--s"></mat-icon>
+          Order Online
         </a>
       </li>
       <li class="header__nav-list__item">
@@ -35,49 +31,38 @@
         </a>
       </li>
 
-      <li class="header__nav-list__item" *ngIf="user && user.roles.admin">
-        <a [routerLink]="['/menu-manager']" routerLinkActive="router-active">
-          Menu Manager
-        </a>
-      </li>
-      <li class="header__nav-list__item" *ngIf="user && user.roles.admin">
-        <a [routerLink]="['/settings']" routerLinkActive="router-active">
-          Settings
-        </a>
-      </li>
+      <button class="header__nav-list__menu" mat-button [matMenuTriggerFor]="menu">Manage</button>
+      <mat-menu #menu="matMenu">
+        <div class="header-menu">
+        <div *ngIf="authService.user$ | async as user" class="header__nav-list__menu__name">
+          {{user.firstName}} {{user.lastName}}
+        </div>
 
-      <li class="header__nav-list__item" *ngIf="user">
-        {{user.firstName}}
-      </li>
+        <button mat-menu-item>
+          <ng-container *ngIf="user && user.roles.admin">
+            <a [routerLink]="['/menu-manager']" routerLinkActive="router-active">
+              Menu Manager
+            </a>
+          </ng-container>
+        </button>
+        <button mat-menu-item>
+          <li class="header__nav-list__item" *ngIf="user && user.roles.admin">
+            <a [routerLink]="['/settings']" routerLinkActive="router-active">
+              Settings
+            </a>
+          </li>
+        </button>
 
-      <li class="header__nav-list__item" *ngIf="user && user.roles.admin">
-        <a (click)="authService.onLogOut()">
-          Logout
-        </a>
-      </li>
+        <button mat-menu-item>
+          <li class="header__nav-list__item" *ngIf="user && user.roles.admin">
+            <a (click)="authService.onLogOut()">
+              Logout
+            </a>
+          </li>
+        </button>
+        </div>
+      </mat-menu>
 
-
-      <!--      <ul (click)="toggleAccountMenu()"-->
-      <!--          class="account-menu"-->
-      <!--          qssDropdown-->
-      <!--          routerLinkActive="router-active"-->
-      <!--          [ngClass]="{'closed' : isAccountMenu}">-->
-      <!--        <li class="account-menu__items">-->
-      <!--          <ul>-->
-      <!--            <li>-->
-      <!--              <a [routerLink]="['/hub']">-->
-      <!--                Profile-->
-      <!--              </a>-->
-      <!--            </li>-->
-      <!--          </ul>-->
-      <!--        </li>-->
-      <!--      </ul>-->
-
-      <li class="header__nav-list__item">
-        <a (click)="authService.onLogOut()">
-          Logout
-        </a>
-      </li>
     </ul>
     <div class="mobile-menu-hide header__nav__menu" (click)="menuOn()">
       <mat-icon svgIcon="menu-burger--s" class="burger-icon"></mat-icon>
@@ -94,8 +79,8 @@
         <div>
           Park Ridge, IL 60068
         </div>
-        <div>
-          <a [href]="'tel:' + settings.phoneNumber">{{ settings.phoneNumber }}</a>
+        <div class="phone">
+          <a [href]="'tel:' + settings.phoneNumber">{{ settings.phoneNumber | mask: '(000) 000-0000' }}</a>
         </div>
       </div>
     </div>

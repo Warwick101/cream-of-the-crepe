@@ -37,7 +37,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
      this.authService.user$.subscribe(user => {
       this.user = user;
-      console.log(user, ' user')
      })
 
      this.settingsSubscription = this.settingsService.getSettingsCollection().subscribe(settings => {

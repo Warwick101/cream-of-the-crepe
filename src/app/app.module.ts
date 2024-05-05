@@ -51,6 +51,7 @@ import { SettingsEditComponent } from './settings/settings-edit/settings-edit.co
 import {NgxMaskDirective, NgxMaskPipe, provideNgxMask} from "ngx-mask";
 import { ContactComponent } from './contact/contact.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -100,6 +101,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     MatTableModule,
     MatIconModule,
     MatFormFieldModule,
+    MatMenuModule,
     MatDialogModule,
     MatProgressSpinnerModule,
     ImageCropperModule,
