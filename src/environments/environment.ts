@@ -28,9 +28,9 @@
 export const environment = {
   production: false,
   title: 'Cream of the Crepe',
-  apiBaseUrl: 'http://localhost:8080',
+  apiBaseUrl: 'http://localhost:4200',
   firebaseConfig: {
-    apiKey: "AIzaSyDegEEz8JoNkTvVJeDCEAcTs8wbJ1qxhHo",
+    apiKey: "AIzaSyCWk7yHdb2PEzpaVrfNsdEtj0NES2rKQEM",
     authDomain: "cream-of-the-crepe-uat.firebaseapp.com",
     projectId: "cream-of-the-crepe-uat",
     storageBucket: "cream-of-the-crepe-uat.appspot.com",
