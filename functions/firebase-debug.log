@@ -1,0 +1,123 @@
+[debug] [2024-05-27T18:39:26.642Z] ----------------------------------------------------------------------
+[debug] [2024-05-27T18:39:26.690Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy --only functions --debug
+[debug] [2024-05-27T18:39:26.691Z] CLI Version:   13.10.1
+[debug] [2024-05-27T18:39:26.691Z] Platform:      darwin
+[debug] [2024-05-27T18:39:26.692Z] Node Version:  v20.9.0
+[debug] [2024-05-27T18:39:26.692Z] Time:          Mon May 27 2024 20:39:26 GMT+0200 (South Africa Standard Time)
+[debug] [2024-05-27T18:39:26.692Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-05-27T18:39:26.776Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-05-27T18:39:26.780Z] > authorizing via signed-in user (sdanieldk@gmail.com)
+[debug] [2024-05-27T18:39:26.780Z] [iam] checking project cream-of-the-crepe-uat for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2024-05-27T18:39:26.782Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/cream-of-the-crepe-uat:testIamPermissions [none]
+[debug] [2024-05-27T18:39:26.782Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/cream-of-the-crepe-uat:testIamPermissions x-goog-quota-user=projects/cream-of-the-crepe-uat
+[debug] [2024-05-27T18:39:26.783Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/cream-of-the-crepe-uat:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2024-05-27T18:39:28.666Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/cream-of-the-crepe-uat:testIamPermissions 200
+[debug] [2024-05-27T18:39:28.666Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/cream-of-the-crepe-uat:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2024-05-27T18:39:28.667Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/cream-of-the-crepe-uat/serviceAccounts/cream-of-the-crepe-uat@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2024-05-27T18:39:28.667Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/cream-of-the-crepe-uat/serviceAccounts/cream-of-the-crepe-uat@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2024-05-27T18:39:30.396Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/cream-of-the-crepe-uat/serviceAccounts/cream-of-the-crepe-uat@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2024-05-27T18:39:30.396Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/cream-of-the-crepe-uat/serviceAccounts/cream-of-the-crepe-uat@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'cream-of-the-crepe-uat'...
+[info] 
+[info] i  deploying functions 
+[info] Running command: npm --prefix "$RESOURCE_DIR" run build
+[info] ✔  functions: Finished running predeploy script. 
+[debug] [2024-05-27T18:39:40.096Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/cream-of-the-crepe-uat [none]
+[debug] [2024-05-27T18:39:40.736Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/cream-of-the-crepe-uat 200
+[debug] [2024-05-27T18:39:40.736Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/cream-of-the-crepe-uat {"projectId":"cream-of-the-crepe-uat","projectNumber":"588014194326","displayName":"Cream of the Crepe UAT","name":"projects/cream-of-the-crepe-uat","resources":{"hostingSite":"cream-of-the-crepe-uat","storageBucket":"cream-of-the-crepe-uat.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_12772ee2-12e4-41d9-8dee-1c631113581b"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2024-05-27T18:39:40.739Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/cream-of-the-crepe-uat/services/cloudfunctions.googleapis.com [none]
+[debug] [2024-05-27T18:39:40.739Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/cream-of-the-crepe-uat/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/cream-of-the-crepe-uat
+[debug] [2024-05-27T18:39:40.741Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/cream-of-the-crepe-uat/services/runtimeconfig.googleapis.com [none]
+[debug] [2024-05-27T18:39:40.742Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/cream-of-the-crepe-uat/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/cream-of-the-crepe-uat
+[debug] [2024-05-27T18:39:40.743Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/cream-of-the-crepe-uat/services/cloudbuild.googleapis.com [none]
+[debug] [2024-05-27T18:39:40.743Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/cream-of-the-crepe-uat/services/cloudbuild.googleapis.com x-goog-quota-user=projects/cream-of-the-crepe-uat
+[debug] [2024-05-27T18:39:40.745Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/cream-of-the-crepe-uat/services/artifactregistry.googleapis.com [none]
+[debug] [2024-05-27T18:39:40.745Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/cream-of-the-crepe-uat/services/artifactregistry.googleapis.com x-goog-quota-user=projects/cream-of-the-crepe-uat
+[debug] [2024-05-27T18:39:42.707Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/cream-of-the-crepe-uat/services/cloudfunctions.googleapis.com 200
+[debug] [2024-05-27T18:39:42.707Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/cream-of-the-crepe-uat/services/cloudfunctions.googleapis.com [omitted]
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2024-05-27T18:39:42.711Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/cream-of-the-crepe-uat/services/cloudbuild.googleapis.com 200
+[debug] [2024-05-27T18:39:42.711Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/cream-of-the-crepe-uat/services/cloudbuild.googleapis.com [omitted]
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2024-05-27T18:39:42.725Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/cream-of-the-crepe-uat/services/artifactregistry.googleapis.com 200
+[debug] [2024-05-27T18:39:42.726Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/cream-of-the-crepe-uat/services/artifactregistry.googleapis.com [omitted]
+[info] ✔  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2024-05-27T18:39:42.745Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/cream-of-the-crepe-uat/services/runtimeconfig.googleapis.com 200
+[debug] [2024-05-27T18:39:42.745Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/cream-of-the-crepe-uat/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2024-05-27T18:39:42.745Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/cream-of-the-crepe-uat/adminSdkConfig [none]
+[debug] [2024-05-27T18:39:43.546Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/cream-of-the-crepe-uat/adminSdkConfig 200
+[debug] [2024-05-27T18:39:43.547Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/cream-of-the-crepe-uat/adminSdkConfig {"projectId":"cream-of-the-crepe-uat","storageBucket":"cream-of-the-crepe-uat.appspot.com","locationId":"us-central"}
+[debug] [2024-05-27T18:39:43.547Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/cream-of-the-crepe-uat/configs [none]
+[debug] [2024-05-27T18:39:44.187Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/cream-of-the-crepe-uat/configs 200
+[debug] [2024-05-27T18:39:44.187Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/cream-of-the-crepe-uat/configs {}
+[debug] [2024-05-27T18:39:44.189Z] Validating nodejs source
+[debug] [2024-05-27T18:39:45.254Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "firebase-admin": "^12.1.0",
+    "firebase-functions": "^5.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.0",
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2024-05-27T18:39:45.254Z] Building nodejs source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[debug] [2024-05-27T18:39:45.256Z] Could not find functions.yaml. Must use http discovery
+[debug] [2024-05-27T18:39:45.275Z] Found firebase-functions binary at '/Users/danieldekock/Development/Apps/cream-of-the-crepe/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8186
+
+[debug] [2024-05-27T18:39:45.921Z] Got response from /__/functions.yaml {"endpoints":{"startSetAdminClaim":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"eventTrigger":{"eventType":"providers/firebase.auth/eventTypes/user.create","eventFilters":{"resource":"projects/cream-of-the-crepe-uat"},"retry":false},"labels":{},"entryPoint":"startSetAdminClaim"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[info] i  functions: preparing functions directory for uploading... 
+[info] i  functions: packaged /Users/danieldekock/Development/Apps/cream-of-the-crepe/functions (68.23 KB) for uploading 
+[debug] [2024-05-27T18:39:51.044Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/cream-of-the-crepe-uat/locations/-/functions [none]
+[debug] [2024-05-27T18:39:51.941Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/cream-of-the-crepe-uat/locations/-/functions 200
+[debug] [2024-05-27T18:39:51.941Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/cream-of-the-crepe-uat/locations/-/functions {"functions":[{"name":"projects/cream-of-the-crepe-uat/locations/us-central1/functions/startSetAdminClaim","eventTrigger":{"eventType":"providers/firebase.auth/eventTypes/user.create","resource":"projects/cream-of-the-crepe-uat","service":"firebaseauth.googleapis.com","failurePolicy":{}},"status":"ACTIVE","entryPoint":"startSetAdminClaim","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"cream-of-the-crepe-uat@appspot.gserviceaccount.com","updateTime":"2024-05-27T18:37:34.734Z","versionId":"1","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"c462797361efd788743b852222b315a5fcfed7af"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-346257028412.us-central1.cloudfunctions.appspot.com/ee516cf2-054e-43e2-9700-c0c24df421f9.zip","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"cream-of-the-crepe-uat\",\"storageBucket\":\"cream-of-the-crepe-uat.appspot.com\",\"locationId\":\"us-central\"}","GCLOUD_PROJECT":"cream-of-the-crepe-uat","EVENTARC_CLOUD_EVENT_SOURCE":"projects/cream-of-the-crepe-uat/locations/us-central1/functions/startSetAdminClaim"},"runtime":"nodejs18","maxInstances":3000,"ingressSettings":"ALLOW_ALL","buildId":"4f5a9311-21af-49c3-b11d-0f6affc46fe5","buildEnvironmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""},"buildName":"projects/588014194326/locations/us-central1/builds/4f5a9311-21af-49c3-b11d-0f6affc46fe5","dockerRegistry":"ARTIFACT_REGISTRY","automaticUpdatePolicy":{}}]}
+[debug] [2024-05-27T18:39:51.945Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/cream-of-the-crepe-uat/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2024-05-27T18:39:53.051Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/cream-of-the-crepe-uat/locations/-/functions 200
+[debug] [2024-05-27T18:39:53.052Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/cream-of-the-crepe-uat/locations/-/functions {}
+[debug] [2024-05-27T18:39:53.055Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/cream-of-the-crepe-uat [none]
+[debug] [2024-05-27T18:39:53.671Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/cream-of-the-crepe-uat 200
+[debug] [2024-05-27T18:39:53.671Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/cream-of-the-crepe-uat {"projectId":"cream-of-the-crepe-uat","projectNumber":"588014194326","displayName":"Cream of the Crepe UAT","name":"projects/cream-of-the-crepe-uat","resources":{"hostingSite":"cream-of-the-crepe-uat","storageBucket":"cream-of-the-crepe-uat.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_12772ee2-12e4-41d9-8dee-1c631113581b"}
+[info] i  functions: Skipping the deploy of unchanged functions. 
+[info] ✔  functions[startSetAdminClaim(us-central1)] Skipped (No changes detected) 
+[debug] [2024-05-27T18:39:53.676Z] Total Function Deployment time: 0
+[debug] [2024-05-27T18:39:53.676Z] 0 Functions Deployed
+[debug] [2024-05-27T18:39:53.676Z] 0 Functions Errored
+[debug] [2024-05-27T18:39:53.676Z] 0 Function Deployments Aborted
+[debug] [2024-05-27T18:39:53.676Z] Average Function Deployment time: NaN
+[info] i  functions: cleaning up build files... 
+[debug] [2024-05-27T18:39:53.678Z] >>> [apiv2][query] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/cream-of-the-crepe-uat/locations/us-central1/repositories/gcf-artifacts/packages/start_set_admin_claim [none]
+[debug] [2024-05-27T18:39:53.679Z] >>> [apiv2][query] GET https://us.gcr.io/v2/cream-of-the-crepe-uat/gcf/us-central1/tags/list [none]
+[debug] [2024-05-27T18:39:54.547Z] <<< [apiv2][status] GET https://us.gcr.io/v2/cream-of-the-crepe-uat/gcf/us-central1/tags/list 404
+[debug] [2024-05-27T18:39:54.547Z] <<< [apiv2][body] GET https://us.gcr.io/v2/cream-of-the-crepe-uat/gcf/us-central1/tags/list {"errors":[{"code":"NAME_UNKNOWN","message":"Repository \"us.gcr.io\" not found"}]}
+[debug] [2024-05-27T18:39:54.548Z] Failed docker command with error  HTTP Error: 404, Not Found {"name":"FirebaseError","children":[],"context":{"body":{"errors":[{"code":"NAME_UNKNOWN","message":"Repository \"us.gcr.io\" not found"}],"error":{"message":"Not Found"}},"response":{"statusCode":404}},"exit":1,"message":"HTTP Error: 404, Not Found","status":404}
+[debug] [2024-05-27T18:39:54.548Z] >>> [apiv2][query] GET https://us.gcr.io/v2/cream-of-the-crepe-uat/gcf/us-central1/tags/list [none]
+[debug] [2024-05-27T18:39:54.790Z] <<< [apiv2][status] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/cream-of-the-crepe-uat/locations/us-central1/repositories/gcf-artifacts/packages/start_set_admin_claim 404
+[debug] [2024-05-27T18:39:54.791Z] <<< [apiv2][body] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/cream-of-the-crepe-uat/locations/us-central1/repositories/gcf-artifacts/packages/start_set_admin_claim {"error":{"code":404,"message":"Package \"projects/cream-of-the-crepe-uat/locations/us-central1/repositories/gcf-artifacts/packages/start_set_admin_claim\" was not found.","status":"NOT_FOUND"}}
+[debug] [2024-05-27T18:39:54.966Z] <<< [apiv2][status] GET https://us.gcr.io/v2/cream-of-the-crepe-uat/gcf/us-central1/tags/list 404
+[debug] [2024-05-27T18:39:54.967Z] <<< [apiv2][body] GET https://us.gcr.io/v2/cream-of-the-crepe-uat/gcf/us-central1/tags/list {"errors":[{"code":"NAME_UNKNOWN","message":"Repository \"us.gcr.io\" not found"}]}
+[debug] [2024-05-27T18:39:54.967Z] Failed docker command with error  HTTP Error: 404, Not Found {"name":"FirebaseError","children":[],"context":{"body":{"errors":[{"code":"NAME_UNKNOWN","message":"Repository \"us.gcr.io\" not found"}],"error":{"message":"Not Found"}},"response":{"statusCode":404}},"exit":1,"message":"HTTP Error: 404, Not Found","status":404}
+[debug] [2024-05-27T18:39:55.068Z] >>> [apiv2][query] GET https://us.gcr.io/v2/cream-of-the-crepe-uat/gcf/us-central1/tags/list [none]
+[debug] [2024-05-27T18:39:55.477Z] <<< [apiv2][status] GET https://us.gcr.io/v2/cream-of-the-crepe-uat/gcf/us-central1/tags/list 404
