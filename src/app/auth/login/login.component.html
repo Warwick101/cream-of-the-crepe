@@ -1,5 +1,5 @@
-<div style="background-color: white; padding: 20px;">
-    <!-- Login Form -->
+<div class="login-wrapper">
+  <h1>Login</h1>
     <ng-container *ngIf="!resetPassword">
         <!-- form -->
         <form [formGroup]="loginForm">
@@ -11,7 +11,7 @@
             </div>
 
             <!-- form fields -->
-            <div>
+            <div class="field-container">
                 <!-- email -->
                 <mat-form-field appearance="outline">
                     <mat-label>Email</mat-label>
@@ -31,7 +31,7 @@
             <div>
                 <!-- sign in button -->
                 <button mat-flat-button color="primary" [disabled]="loginForm.invalid" (click)="onSubmit()" [class.spinner]="loading">
-                    Sign in
+                    Login
                 </button>
                 <!-- /sign in button -->
                 <!-- forgot password toggle -->

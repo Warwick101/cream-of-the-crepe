@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {animateMobileTrigger, listStateTrigger} from "./animations";
 import {BreakpointObserver} from "@angular/cdk/layout";
-import {map, Observable, Subscription} from "rxjs";
+import {map, Observable, Subscription } from "rxjs";
 import { SettingsService } from '../settings/services/settings.service';
 import { AuthService } from '../auth/services/auth.service';
+
 
 @Component({
   selector: 'app-header',
@@ -28,6 +29,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
      constructor(private breakpointObserver: BreakpointObserver, private settingsService: SettingsService,
                  public authService: AuthService) {
        this.authService.getOnAuthStateChanged();
+       this.user = false;
 
      this.breakpointObserver.observe('(min-width: 960px)').subscribe(result => {
        if (this.isNavMenu) {
@@ -36,7 +38,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
      })
 
      this.authService.user$.subscribe(user => {
-      this.user = user;
+       // this.authSubscription = this.authService.authChange.subscribe( authStatus => {
+       // this.isAuth = authStatus;
+       // });
+       this.user = user;
      })
 
      this.settingsSubscription = this.settingsService.getSettingsCollection().subscribe(settings => {
@@ -46,7 +51,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
           this.isSettings = true;
         } else {
           this.isSettings = false;
-          console.log('There is no setting document');
+          // console.log('There is no setting document');
         }
         this.showSpinner = false;
      })
@@ -58,6 +63,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   menuOn() {
     this.isNavMenu = !this.isNavMenu;
+    console.log(this.isNavMenu, 'this.isNavMenu;')
   }
 
   menuOff() {

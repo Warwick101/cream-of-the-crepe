@@ -31,7 +31,10 @@
         </a>
       </li>
 
-      <button class="header__nav-list__menu" mat-button [matMenuTriggerFor]="menu">Manage</button>
+      <button class="header__nav-list__menu" mat-button
+              [matMenuTriggerFor]="menu" *ngIf="user">
+        Manage
+      </button>
       <mat-menu #menu="matMenu">
         <div class="header-menu">
         <div *ngIf="authService.user$ | async as user" class="header__nav-list__menu__name">
@@ -113,16 +116,16 @@
       </div>
     </div>
 
-    <div class="header__info__block">
-      <h5>Connect</h5>
-      <div class="header__info__block__details">
-        <div>
-          GitHub
-          Facebook
-          Yelp
-        </div>
-      </div>
-    </div>
+    <!--<div class="header__info__block">-->
+      <!--<h5>Connect</h5>-->
+      <!--<div class="header__info__block__details">-->
+        <!--<div>-->
+          <!--GitHub-->
+          <!--Facebook-->
+          <!--Yelp-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
   </div>
   <div *ngIf="isNavMenu" @animateState class="mobile-menu">
     <!--<div [@listState]="routeItems?.length">-->
@@ -139,12 +142,20 @@
       <a [routerLink]="['/menu']" (click)="menuOff()" routerLinkActive="router-active">
         Menu
       </a>
-      <a [routerLink]="['/order']" (click)="menuOff()" routerLinkActive="router-active">
-        Order
+      <a (click)="menuOff()" routerLinkActive="router-active">
+        Order Online
       </a>
-      <a [routerLink]="['/about-us']" (click)="menuOff()" routerLinkActive="router-active">
-        About Us
+      <a [routerLink]="['/contact']" (click)="menuOff()" routerLinkActive="router-active">
+        Contact
       </a>
+
+      <!--<li class="header__nav-list__item">-->
+        <!--<a>-->
+          <!--<mat-icon svgIcon="external-link&#45;&#45;s"></mat-icon>-->
+          <!--Order Online-->
+        <!--</a>-->
+      <!--</li>-->
+
     </div>
   </div>
 </div>

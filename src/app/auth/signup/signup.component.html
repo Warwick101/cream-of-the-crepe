@@ -1,11 +1,12 @@
-<div style="background-color: white; padding: 20px;">
+<div class="signup-wrapper">
+  <h1>Sign Up</h1>
     <form [formGroup]="signupForm">
          <!-- Error Messages -->
          <ng-container *ngIf="errorMessage">
             <p>{{ errorMessage }}</p>
         </ng-container>
       <!-- Form Fields -->
-      <div>
+      <div class="field-container">
         <!-- first name -->
         <mat-form-field appearance="outline">
             <mat-label>First name</mat-label>

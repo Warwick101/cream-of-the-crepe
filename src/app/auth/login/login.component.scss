@@ -1,0 +1,16 @@
+.login-wrapper {
+  background-color: white;
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 42px;
+}
+
+.field-container {
+  display: flex;
+  column-gap: 24px;
+  row-gap: 18px;
+  flex-wrap: wrap;
+  max-width: 720px;
+}

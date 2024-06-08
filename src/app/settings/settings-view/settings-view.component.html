@@ -1,31 +1,31 @@
-<div style="background-color: white; padding: 20px;">
+<div class="settings-wrapper">
     <h1>Settings</h1>
     <h2>Contact Information</h2>
     <div *ngIf="isSettings && settings">
         <h3>Phone Number: {{settings.phoneNumber}}</h3>
         <div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Day</th>
-                        <th>From</th>
-                        <th>To</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let item of settings.tradingHours">
-                        <ng-container *ngIf="item.open; else closedDay">
-                            <td>{{ item.day | titlecase }}</td>
-                            <td>{{ item.from }}</td>
-                            <td>{{ item.to }}</td>
-                        </ng-container>
-                        <ng-template #closedDay>
-                            <td>{{ item.day | titlecase }}</td>
-                            <td colspan="2">Closed</td>
-                        </ng-template>
-                    </tr>
-                </tbody>
-            </table>
+            <!--<table>-->
+                <!--<thead>-->
+                    <!--<tr>-->
+                        <!--<th>Day</th>-->
+                        <!--<th>From</th>-->
+                        <!--<th>To</th>-->
+                    <!--</tr>-->
+                <!--</thead>-->
+                <!--<tbody>-->
+                    <!--<tr *ngFor="let item of settings.tradingHours">-->
+                        <!--<ng-container *ngIf="item.open; else closedDay">-->
+                            <!--<td>{{ item.day | titlecase }}</td>-->
+                            <!--<td>{{ item.from }}</td>-->
+                            <!--<td>{{ item.to }}</td>-->
+                        <!--</ng-container>-->
+                        <!--<ng-template #closedDay>-->
+                            <!--<td>{{ item.day | titlecase }}</td>-->
+                            <!--<td colspan="2">Closed</td>-->
+                        <!--</ng-template>-->
+                    <!--</tr>-->
+                <!--</tbody>-->
+            <!--</table>-->
         </div>
         <button mat-flat-button color="primary" (click)="onEditSettings()">Edit Settings</button>
     </div>

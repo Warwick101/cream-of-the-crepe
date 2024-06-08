@@ -50,11 +50,13 @@ $cream-theme: material.define-light-theme(
 
 // Typography
 //@include material.typography-hierarchy(typography.$cvs-typography, "hi");
-//@include material.legacy-typography-hierarchy(typography.$cvs-typography, "body");
+//@include material.legacy-typography-hierarchy(typography.$cream-typography, "body");
 
 .wdk-theme {
   @include material.all-component-typographies((typography.$cream-typography));
   @include material.button-color($cream-theme);
+  @include material.tabs-color($cream-theme);
+  @include material.form-field-color($cream-theme);
   //@include typography.apply-typography(var(--base-font-size));
 }
 
@@ -110,3 +112,39 @@ mat-tab-group {
 }
 
 
+.page-container {
+  display: flex;
+  height: 100%;
+
+  .main-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    .main-content {
+      flex: 1;
+      main {
+        //background: white;
+        height: 100%;
+
+        .content-wrapper {
+          height: 100%;
+        }
+      }
+    }
+
+  }
+}
+
+.mat-mdc-form-field {
+  //font-size: 22px!important;
+}
+
+.mat-mdc-form-field .mat-mdc-input-element {
+  font-size: 18px!important; /* Adjust this value as needed */
+}
+
+/* Increase the font size of the label */
+.mdc-floating-label {
+  font-size: 18px!important;/* Adjust this value as needed */
+}
