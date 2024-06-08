@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "cream-of-the-crepe-uat",
+    "default": "cream-of-the-crepe",
     "uat": "cream-of-the-crepe-uat"
   },
   "targets": {},
