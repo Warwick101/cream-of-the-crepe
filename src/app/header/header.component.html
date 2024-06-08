@@ -149,11 +149,35 @@
         Contact
       </a>
 
+
+      <!--<ng-container *ngIf="authService.user$ | async as user" class="header__nav-list__menu__name">-->
+      <!--{{user.firstName}} {{user.lastName}}-->
+      <!--</ng-container>-->
+
+      <ng-container *ngIf="user && user.roles.admin">
+        <a (click)="menuOff()" [routerLink]="['/menu-manager']" routerLinkActive="router-active">
+          Menu Manager
+        </a>
+      </ng-container>
+
+      <ng-container *ngIf="user && user.roles.admin">
+        <a (click)="menuOff()" [routerLink]="['/settings']" routerLinkActive="router-active">
+          Settings
+        </a>
+      </ng-container>
+
+      <ng-container *ngIf="user && user.roles.admin">
+        <a (click)="authService.onLogOut(); menuOff()">
+          Logout
+        </a>
+      </ng-container>
+
+
       <!--<li class="header__nav-list__item">-->
-        <!--<a>-->
-          <!--<mat-icon svgIcon="external-link&#45;&#45;s"></mat-icon>-->
-          <!--Order Online-->
-        <!--</a>-->
+      <!--<a>-->
+      <!--<mat-icon svgIcon="external-link&#45;&#45;s"></mat-icon>-->
+      <!--Order Online-->
+      <!--</a>-->
       <!--</li>-->
 
     </div>

@@ -1,6 +1,8 @@
 .menu-list {
   padding: 24px;
   background-color: white;
+  max-width: 100vw;
+  box-sizing: border-box;
 
   .menu-list__actions {
     display: flex;
