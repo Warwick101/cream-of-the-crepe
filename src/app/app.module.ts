@@ -83,10 +83,6 @@ import {MessageBoardComponent} from "./message-board/message-board.component";
     CommonModule,
     AppRoutingModule,
     HttpClientModule,
-    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-    provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore()),
-    provideStorage(() => getStorage()),  
     ReactiveFormsModule,
     FormsModule,
     MatSelectModule,
@@ -114,7 +110,11 @@ import {MessageBoardComponent} from "./message-board/message-board.component";
   ],
   providers: [
     provideAnimationsAsync(),
-    provideNgxMask()
+    provideNgxMask(),
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),  
   ],
   bootstrap: [AppComponent]
 })

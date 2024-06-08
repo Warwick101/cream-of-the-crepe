@@ -1,7 +1,7 @@
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
 
-const adminEmails = ['sdanieldk@gmail.com', 'war.wick101@gmail.com']; // Add your admin email addresses here
+const adminEmails = ['sdanieldk@gmail.com', 'war.wick101@gmail.com', 'jouifak@gmail.com', 'tahatrading2006@gmail.com']; // Add your admin email addresses here
 
 export const setAdminClaim = functions.auth.user().onCreate(async (user) => {
   try {

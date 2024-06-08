@@ -50,7 +50,7 @@ export class AuthService {
   }
 
   getOnAuthStateChanged() {
-    return onAuthStateChanged(this.auth, (user) => {
+    return onAuthStateChanged(this.auth, (user: any) => {
       if (user) {
         this.isAuth = true;
       } else {
@@ -61,6 +61,7 @@ export class AuthService {
   }
 
   // Register User
+  // Register User
   async registerUser(authData: any, userData: any) {
     try {
       // Create user with email and password
@@ -70,38 +71,52 @@ export class AuthService {
         authData.password
       );
 
-      // Update user profile with display name
-      await updateProfile(credential.user, {
-        displayName: userData.firstName,
-      });
-     
-
-      // Listen for changes in the user's authentication state
-      const unsubscribe = this.auth.onIdTokenChanged(async (user) => {
+      // Function to check for custom claims and handle routing
+      const handleClaims = async (user: any | null) => {
         if (user) {
-          // Get user's ID token result
-          if (this.auth.currentUser) {    
-            await this.auth.currentUser.getIdToken(true);
+          try {
+            // Refresh the ID token to ensure we have the latest claims
+            await user.getIdToken(true);
             const idTokenResult = await user.getIdTokenResult();
+
+            // Check if user has the isAdmin or isViewer claim
             if (
               idTokenResult.claims['isAdmin'] ||
               idTokenResult.claims['isViewer']
             ) {
-              console.log(idTokenResult);
+              console.log('User has required claims');
+              // Update user profile with display name
+              await updateProfile(credential.user, {
+                displayName: userData.firstName,
+              });
 
-              
               userData.roles = {
                 [idTokenResult.claims['isAdmin'] ? 'admin' : 'viewer']: true,
               };
-              this.setUserData(credential, userData);
-              this.router.navigate(['']).catch((error: any) => {
-                console.warn(error);
-              });
 
-              // Unsubscribe from further changes
-              unsubscribe();
+              await this.setUserData(credential, userData)
+
+              // Navigate to home or another route
+              await this.router.navigate(['']);
+            } else {
+              console.log('Required claims not set yet, retrying...');
+              setTimeout(() => handleClaims(user), 2000); // Retry after 1 second
             }
+          } catch (tokenError) {
+            console.error('Error getting ID token:', tokenError);
           }
+        }
+      };
+
+      // Initial call to handleClaims to check for claims
+      handleClaims(credential.user);
+
+      // Listen for changes in the user's authentication state and handle claims
+      const unsubscribe = this.auth.onIdTokenChanged(async (user: any) => {
+        if (user) {
+          handleClaims(user);
+          // Unsubscribe from the onIdTokenChanged listener once handled
+          unsubscribe();
         }
       });
     } catch (error) {
@@ -110,7 +125,7 @@ export class AuthService {
   }
 
   // Set Document
-  setUserData(credential: any, userData: any) {
+  async setUserData(credential: any, userData: any) {
     const data: LoginData = {
       uid: credential.user.uid,
       email: credential.user.email,
@@ -121,11 +136,11 @@ export class AuthService {
 
     const dbDoc = doc(this.afs, 'users', data.uid);
 
-    setDoc(dbDoc, data)
+    await setDoc(dbDoc, data)
       .then(() => {
         console.log('Data sent - Set User Doc');
       })
-      .catch((error) => {
+      .catch((error: any) => {
         console.log('Data send ERROR - Set User Doc: ', error);
       });
   }
@@ -169,7 +184,7 @@ export class AuthService {
     const collectionRef = collection(this.afs, 'users');
     return collectionSnapshots(collectionRef).pipe(
       map((res) =>
-        res.map((data) => {
+        res.map((data: any) => {
           // const tid = data.id;
           const docData = data.data();
           const userData = {
@@ -191,7 +206,7 @@ export class AuthService {
           console.warn(error);
         });
       })
-      .catch((error) => {
+      .catch((error: any) => {
         console.log(error);
       });
   }
@@ -205,7 +220,7 @@ export class AuthService {
           console.log('Password reset email sent successfully');
           resolve(); // Resolve the Promise when successful
         })
-        .catch((error) => {
+        .catch((error: any) => {
           // Handle errors
           console.error('Error sending password reset email:', error.message);
           reject(error); // Reject the Promise with the error
