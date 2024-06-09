@@ -8,6 +8,10 @@
   padding: 52px;
 
   .contact__map {
+    background-color: white;
+    padding: 32px;
+    border-radius: 24px 0 0 0;
+
     iframe {
       border-radius: 22px;
     }
@@ -22,3 +26,14 @@
   }
 
 }
+
+
+@media screen and (max-width: 960px) {
+
+  .contact-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+}
+

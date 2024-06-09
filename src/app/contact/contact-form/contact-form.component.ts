@@ -15,6 +15,8 @@ export class ContactFormComponent implements OnInit, OnDestroy {
   @Input() phoneValue: string = '';
   // @ViewChild(FormGroupDirective, { static: true }) formGroupDirective: FormGroupDirective;
 
+
+  contactForm: FormGroup;
   // form: FormGroup;
   alertMessage = 'default';
   alertIcon = 'default';
@@ -24,6 +26,18 @@ export class ContactFormComponent implements OnInit, OnDestroy {
   datePipeEn: DatePipe = new DatePipe('en-US');
 
   constructor(private fb: FormBuilder) {
+
+    this.contactForm = this.fb.group({
+      name: new FormControl(''),
+      email: new FormControl(''),
+      phone: new FormControl(''),
+      message: new FormControl(''),
+    })
+    // this.contactForm = new FormGroup({
+    //   name: new FormControl(''),
+    //   email: new FormControl(''),
+    //   message: new FormControl(''),
+    // })
   }
 
   ngOnInit() {
@@ -41,20 +55,21 @@ export class ContactFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    // const emailData = {
-    //   name: this.queenForm.get('name').value,
-    //   surname: this.queenForm.get('surname').value,
-    //   phone: this.queenForm.get('phone').value,
-    //   email: this.queenForm.get('email').value,
-    //   emailDate: new Date(),
-    //   messageTitle: `New message from ${this.queenForm.get('name').value + ' ' +  this.queenForm.get('surname').value}`,
-    //   adminStatus: 'website',
-    //   messageType: 'contact',
-    //   messageSubject: 'Website Message',
-    //   status: 'siteSent',
-    //   sendTo: 'war.wick101@gmail.com',
-    //   patient: null,
-    // };
+    const emailData: any = {
+      // name: this.contactForm['name'].value,
+      // email: this.contactForm['email'].value,
+      // message: this.contactForm['message'].value,
+      // emailDate: new Date(),
+      // messageTitle: `New message from ${this.queenForm.get('name').value + ' ' +  this.queenForm.get('surname').value}`,
+      // adminStatus: 'website',
+      // messageType: 'contact',
+      // messageSubject: 'Website Message',
+      // status: 'siteSent',
+      // sendTo: 'war.wick101@gmail.com',
+      // patient: null,
+    };
+    console.log(this.contactForm);
+    console.log(emailData);
     // this.messageAnimation();
   }
 

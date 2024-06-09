@@ -1,4 +1,4 @@
-<form >
+<form [formGroup]="contactForm">
 
   <div class="form-container">
     <p class="instructional-text">
@@ -9,7 +9,6 @@
       <h2>Message Us</h2>
     </div>
     <div class="message-form">
-      <div class="left-section">
         <mat-form-field appearance="outline">
           <mat-label>Name</mat-label>
           <input required
@@ -20,15 +19,7 @@
             Name is required
           </mat-error>
         </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Surname</mat-label>
-          <input required
-                 matInput
-                 formControlName="surname">
-          <mat-error>
-            Surname is required
-          </mat-error>
-        </mat-form-field>
+
         <mat-form-field appearance="outline">
           <mat-label>Email</mat-label>
           <input required
@@ -40,43 +31,38 @@
             Valid email is required
           </mat-error>
         </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>
-            Phone Number
-          </mat-label>
-          <input placeholder="(Optional)"
-                 matInput
-                 formControlName="phone"
-                 id="phone">
-        </mat-form-field>
-      </div>
-      <div class="right-section">
-        <div class="form-field message-area">
-          <mat-form-field appearance="outline" class="field-full-height">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Phone</mat-label>
+        <input matInput
+               placeholder="Optional"
+               formControlName="phone"
+               id="name">
+      </mat-form-field>
+
+
+      <mat-form-field appearance="outline" class="field-full-height">
             <mat-label>Leave your message</mat-label>
             <textarea matInput
                       cdkTextareaAutosize
                       cdkAutosizeMinRows="24"
                       id="message"
                       placeholder="Message"
-                      formControlName="patientMessage">
+                      formControlName="message">
           </textarea>
             <mat-error >
               A message is required
             </mat-error>
           </mat-form-field>
-        </div>
-      </div>
     </div>
 
-    <!--<div class="action-buttons">-->
-      <!--<button class="qss-button&#45;&#45;green"-->
-              <!--type="submit"-->
-              <!--[@buttonState]="queenForm.valid ? 'valid' : 'invalid'"-->
-              <!--[disabled]="!queenForm.valid">-->
-        <!--Submit-->
-      <!--</button>-->
-    <!--</div>-->
+    <div class="action-buttons">
+      <button (click)="onSubmit()" color="primary"
+              mat-button mat-raised-button
+              [disabled]="!contactForm.valid">
+        Submit
+      </button>
+    </div>
   </div>
 </form>
 

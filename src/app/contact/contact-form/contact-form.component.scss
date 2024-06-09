@@ -1,4 +1,8 @@
-
+.message-form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px
+}
 .form-container {
   background-color: #fff;
   position: relative;
@@ -31,12 +35,8 @@
 
 
 .form-title {
-  background-color: #ffffff;
-  position: absolute;
-  top: -2px;
-  line-height: 0;
-  height: 18px;
-  left: 2rem;
+
+
 }
 
 
