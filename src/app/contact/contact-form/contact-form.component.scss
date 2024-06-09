@@ -1,0 +1,75 @@
+
+.form-container {
+  background-color: #fff;
+  position: relative;
+  border-radius: 9px;
+  border: 1px solid #ebebeb;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+
+  .message-form {
+    display: flex;
+
+    .left-section {
+      margin-right: 24px;
+      flex: 1;
+    }
+
+    .right-section {
+      flex: 1;
+    }
+  }
+
+  .action-buttons {
+    align-self: flex-end;
+    z-index: 9999;
+    margin-top: 24px;
+  }
+}
+
+
+
+.form-title {
+  background-color: #ffffff;
+  position: absolute;
+  top: -2px;
+  line-height: 0;
+  height: 18px;
+  left: 2rem;
+}
+
+
+.optional-class {
+  color: grey;
+}
+
+.form-container {
+
+  mat-form-field {
+    display: block;
+  }
+  textarea {
+    min-height: 250px!important;
+    line-height: 23px;
+  }
+}
+
+.message-area {
+  height: 380px;
+  mat-form-field {
+    line-height: 18px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+
+  .message-form {
+    display: unset!important;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+
+
+}

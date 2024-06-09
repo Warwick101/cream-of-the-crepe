@@ -53,12 +53,14 @@ import { ContactComponent } from './contact/contact.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {MatMenuModule} from "@angular/material/menu";
 import {MessageBoardComponent} from "./message-board/message-board.component";
+import {ContactFormComponent} from "./contact/contact-form/contact-form.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     DropdownDirective,
+    ContactFormComponent,
     MenuComponent,
     SignupComponent,
     LoginComponent,

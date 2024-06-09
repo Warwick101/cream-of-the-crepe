@@ -7,11 +7,18 @@
   background-color: #4f3a36;
   padding: 52px;
 
-  iframe {
-    border-radius: 22px;
+  .contact__map {
+    iframe {
+      border-radius: 22px;
+    }
+
+    .contact-wrapper__info {
+      padding: 42px;
+    }
   }
 
-  .contact-wrapper__info {
-    padding: 42px;
+  .contact__form {
+    background-color: white;
   }
+
 }
