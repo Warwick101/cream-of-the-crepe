@@ -31,10 +31,13 @@
         </a>
       </li>
 
-      <button class="header__nav-list__menu" mat-button
-              [matMenuTriggerFor]="menu" *ngIf="user">
-        Manage
-      </button>
+      <ng-container *ngIf="user">
+        <button class="header__nav-list__menu" mat-button *ngIf="user.roles?.admin"
+                [matMenuTriggerFor]="menu">
+          Manage
+        </button>
+      </ng-container>
+
       <mat-menu #menu="matMenu">
         <div class="header-menu">
         <div *ngIf="authService.user$ | async as user" class="header__nav-list__menu__name">

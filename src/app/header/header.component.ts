@@ -41,8 +41,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
        // this.authSubscription = this.authService.authChange.subscribe( authStatus => {
        // this.isAuth = authStatus;
        // });
-       this.user = user;
-     })
+
+       if(user) {
+         this.user = user;
+       }
+     });
 
      this.settingsSubscription = this.settingsService.getSettingsCollection().subscribe(settings => {
       this.showSpinner = true;
