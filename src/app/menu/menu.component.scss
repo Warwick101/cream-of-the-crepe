@@ -68,10 +68,22 @@
         h1 {
           text-align: center;
           color: #fcc187;
-          font-size: 62px;
+          font-size: 40px;
+          max-width: 710px;
           font-weight: 400;
           text-shadow: 2px 2px 3px #443619;
         }
+
+      h2 {
+        color: #f4f4f4;
+        font-weight: 600;
+        font-size: 32px;
+      }
+
+      h3 {
+        font-size: 22px;
+        color: white;
+      }
 
       .menu__section__content__logo {
 
