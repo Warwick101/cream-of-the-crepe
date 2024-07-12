@@ -1,154 +1,154 @@
-@use '@angular/material' as material;
-@use 'sass:map';
-@use './typography.scss' ;
-//@use 'node_modules/@wdk/acl/sass/wdk-brand/wdk-theme/wdk-light-theme.scss' as theme ;
-@use 'node_modules/@angular/material/core/theming/_palette.scss' as palette ;
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
-
-/* You can add global styles to this file, and also import other style files */
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-
-wdk-menu {
-  display: none;
-}
-
-.main__header {
-  padding: 0!important;
-  background-color: transparent!important;
-}
-
-body {
-  background-color: #201614!important;
-  //background-color: #5c4740;
-
-  .mat-app-background {
-    background-color: transparent!important;
-  }
-}
-
-:root {
-  --base-font-size: 16px;
-}
-
-$cream-blue: material.m2-define-palette(palette.$blue-palette);
-$wdk-red: material.m2-define-palette(palette.$red-palette);
-$wdk-black: material.m2-define-palette(palette.$orange-palette);
-
-$cream-theme: material.m2-define-light-theme(
-    (
-      color: (
-        primary: $cream-blue,
-        accent: $wdk-red,
-        warn: $wdk-red,
-      )
-    )
-);
-
-
-// Typography
-//@include material.typography-hierarchy(typography.$cvs-typography, "hi");
-//@include material.legacy-typography-hierarchy(typography.$cream-typography, "body");
-
-.wdk-theme {
-  @include material.all-component-typographies((typography.$cream-typography));
-  @include material.button-color($cream-theme);
-  @include material.tabs-color($cream-theme);
-  @include material.form-field-color($cream-theme);
-  //@include typography.apply-typography(var(--base-font-size));
-}
-
-
-//.cvs-link, .pds-link, a {
-//  @include global.pds-link(var(--base-font-size));
+//@use '@angular/material' as material;
+//@use 'sass:map';
+//@use './typography.scss' ;
+////@use 'node_modules/@wdk/acl/sass/wdk-brand/wdk-theme/wdk-light-theme.scss' as theme ;
+//@use 'node_modules/@angular/material/core/theming/_palette.scss' as palette ;
+//@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+//
+///* You can add global styles to this file, and also import other style files */
+//
+//html, body { height: 100%; }
+//body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+//
+//
+//wdk-menu {
+//  display: none;
 //}
-
-//.itim-regular {
-//  font-family: "Itim", cursive;
-//  font-weight: 400;
-//  font-style: normal;
+//
+//.main__header {
+//  padding: 0!important;
+//  background-color: transparent!important;
 //}
-
-
-
-mat-tab-group {
-  background-color: #eaeaea!important;
-}
-
-.mdc-tab-indicator__content--underline {
-  opacity: 0!important;
-}
-
-.mat-mdc-tab {
-  padding: 4px 10px !important;
-  min-width: unset!important;
-  height: 100%!important;
-}
-
-
-.mdc-tab__content {
-  //align-items: baseline!important;
-}
-
-.mat-mdc-tab-labels {
-  height: 70px!important;
-}
-
-
-.header-menu {
-  .header__nav-list__menu__name {
-    padding: 9px 30px;
-    font-size: 16px;
-    color: grey;
-  }
-
-  .mat-mdc-menu-item {
-    a {
-      color: #272727;
-    }
-  }
-}
-
-
-.page-container {
-  display: flex;
-  height: 100%;
-
-  .main-wrapper {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-
-    .main-content {
-      flex: 1;
-      main {
-        //background: white;
-        height: 100%;
-
-        .content-wrapper {
-          height: 100%;
-        }
-      }
-    }
-
-  }
-}
-
-.main__header {
-  display: none!important;
-}
-
-.mat-mdc-form-field {
-  //font-size: 22px!important;
-}
-
-.mat-mdc-form-field .mat-mdc-input-element {
-  font-size: 18px!important; /* Adjust this value as needed */
-}
-
-/* Increase the font size of the label */
-.mdc-floating-label {
-  font-size: 18px!important;/* Adjust this value as needed */
-}
+//
+//body {
+//  background-color: #201614!important;
+//  //background-color: #5c4740;
+//
+//  .mat-app-background {
+//    background-color: transparent!important;
+//  }
+//}
+//
+//:root {
+//  --base-font-size: 16px;
+//}
+//
+//$cream-blue: material.m2-define-palette(palette.$blue-palette);
+//$wdk-red: material.m2-define-palette(palette.$red-palette);
+//$wdk-black: material.m2-define-palette(palette.$orange-palette);
+//
+//$cream-theme: material.m2-define-light-theme(
+//    (
+//      color: (
+//        primary: $cream-blue,
+//        accent: $wdk-red,
+//        warn: $wdk-red,
+//      )
+//    )
+//);
+//
+//
+//// Typography
+////@include material.typography-hierarchy(typography.$cvs-typography, "hi");
+////@include material.legacy-typography-hierarchy(typography.$cream-typography, "body");
+//
+//.wdk-theme {
+//  @include material.all-component-typographies((typography.$cream-typography));
+//  @include material.button-color($cream-theme);
+//  @include material.tabs-color($cream-theme);
+//  @include material.form-field-color($cream-theme);
+//  //@include typography.apply-typography(var(--base-font-size));
+//}
+//
+//
+////.cvs-link, .pds-link, a {
+////  @include global.pds-link(var(--base-font-size));
+////}
+//
+////.itim-regular {
+////  font-family: "Itim", cursive;
+////  font-weight: 400;
+////  font-style: normal;
+////}
+//
+//
+//
+//mat-tab-group {
+//  background-color: #eaeaea!important;
+//}
+//
+//.mdc-tab-indicator__content--underline {
+//  opacity: 0!important;
+//}
+//
+//.mat-mdc-tab {
+//  padding: 4px 10px !important;
+//  min-width: unset!important;
+//  height: 100%!important;
+//}
+//
+//
+//.mdc-tab__content {
+//  //align-items: baseline!important;
+//}
+//
+//.mat-mdc-tab-labels {
+//  height: 70px!important;
+//}
+//
+//
+//.header-menu {
+//  .header__nav-list__menu__name {
+//    padding: 9px 30px;
+//    font-size: 16px;
+//    color: grey;
+//  }
+//
+//  .mat-mdc-menu-item {
+//    a {
+//      color: #272727;
+//    }
+//  }
+//}
+//
+//
+//.page-container {
+//  display: flex;
+//  height: 100%;
+//
+//  .main-wrapper {
+//    display: flex;
+//    flex-direction: column;
+//    flex: 1;
+//
+//    .main-content {
+//      flex: 1;
+//      main {
+//        //background: white;
+//        height: 100%;
+//
+//        .content-wrapper {
+//          height: 100%;
+//        }
+//      }
+//    }
+//
+//  }
+//}
+//
+//.main__header {
+//  display: none!important;
+//}
+//
+//.mat-mdc-form-field {
+//  //font-size: 22px!important;
+//}
+//
+//.mat-mdc-form-field .mat-mdc-input-element {
+//  font-size: 18px!important; /* Adjust this value as needed */
+//}
+//
+///* Increase the font size of the label */
+//.mdc-floating-label {
+//  font-size: 18px!important;/* Adjust this value as needed */
+//}

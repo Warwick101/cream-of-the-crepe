@@ -36,7 +36,6 @@
               }
             ],
             "styles": [
-              "node_modules/@wjdk/acl/sass/styles.scss",
               "src/styles.scss"
             ],
             "scripts": [],
