@@ -33,11 +33,11 @@ body {
   --base-font-size: 16px;
 }
 
-$cream-blue: material.define-palette(palette.$blue-palette);
-$wdk-red: material.define-palette(palette.$red-palette);
-$wdk-black: material.define-palette(palette.$orange-palette);
+$cream-blue: material.m2-define-palette(palette.$blue-palette);
+$wdk-red: material.m2-define-palette(palette.$red-palette);
+$wdk-black: material.m2-define-palette(palette.$orange-palette);
 
-$cream-theme: material.define-light-theme(
+$cream-theme: material.m2-define-light-theme(
     (
       color: (
         primary: $cream-blue,
