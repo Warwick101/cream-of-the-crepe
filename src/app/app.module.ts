@@ -22,7 +22,6 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
-import {RegisterIconsService, WdkBaseModule, WdkHeaderModule, WdkSnackBarModule, WdkSnackBarService} from "@wjdk/acl";
 import {HeaderComponent} from "./header/header.component";
 import {DropdownDirective} from "./header/dropdown.directive";
 import {CommonModule} from "@angular/common";
@@ -53,6 +52,7 @@ import { ContactComponent } from './contact/contact.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {MatMenuModule} from "@angular/material/menu";
 import {MessageBoardComponent} from "./message-board/message-board.component";
+import {WdsBaseModule} from "warlock-design-system";
 
 @NgModule({ declarations: [
         AppComponent,
@@ -77,7 +77,8 @@ import {MessageBoardComponent} from "./message-board/message-board.component";
         ContactComponent,
         NotFoundComponent
     ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
+    bootstrap: [AppComponent],
+    imports: [BrowserModule,
         CommonModule,
         AppRoutingModule,
         ReactiveFormsModule,
@@ -85,10 +86,7 @@ import {MessageBoardComponent} from "./message-board/message-board.component";
         MatSelectModule,
         BrowserAnimationsModule,
         MatInputModule,
-        WdkBaseModule,
         MatIconModule,
-        WdkHeaderModule,
-        WdkSnackBarModule,
         MatButtonModule,
         NgxMaskDirective,
         NgxMaskPipe,
@@ -101,6 +99,7 @@ import {MessageBoardComponent} from "./message-board/message-board.component";
         MatProgressSpinnerModule,
         ImageCropperModule,
         MatSliderModule,
+        WdsBaseModule,
         DragDropModule,
         MatSlideToggleModule,
         MatCheckboxModule], providers: [

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import {BrandTypes, WdkBaseConfig, WdkSnackBarService} from "@wjdk/acl";
 import {HeaderComponent} from "./header/header.component";
 import {environment} from "../environments/environment";
 import {RegisterIconsService} from "./services/icon-service/register-icons.service";
+import {BrandTypes, WdsBaseConfig, WdsSnackBarService} from "warlock-design-system";
 
 @Component({
   selector: 'app-root',
@@ -12,18 +12,18 @@ import {RegisterIconsService} from "./services/icon-service/register-icons.servi
 export class AppComponent {
   baseConfig;
 
-  constructor(private snackBarService: WdkSnackBarService,
+  constructor(private snackBarService: WdsSnackBarService,
               // below is epic
               private registerIconsService: RegisterIconsService) {
     this.baseConfig = {
       appName: environment.title,
-      appAbbr: 'gg',
+      appAbbr: 'cotc',
       unbranded: false,
       homeRoute: '/home',
       brand: BrandTypes.WDS,
       // footerText: `© Copyright ${new Date().getFullYear()} WDS - ACL Custom Footer`,
       headerPortal: HeaderComponent,
-    } as WdkBaseConfig;
+    } as WdsBaseConfig;
 
     this.snackBarService.onDismiss.subscribe(() => {
       // this.handleOnDismissEvent();

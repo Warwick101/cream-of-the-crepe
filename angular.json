@@ -36,7 +36,8 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/warlock-design-system/sass/styles.scss"
             ],
             "scripts": [],
             "browser": "src/main.ts",
