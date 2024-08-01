@@ -113,3 +113,29 @@ mat-tab-group {
 .mdc-floating-label {
   font-size: 18px!important;/* Adjust this value as needed */
 }
+
+
+.mat-primary.mat-mdc-raised-button {
+  background-color: #fa990b!important;
+  border-bottom-color: transparent!important;
+
+  &:focus {
+    background-color: #fa990b!important;
+  }
+
+  &:hover {
+    background-color: #fa990b!important;
+    border-bottom-color: #fa990b!important;
+  }
+
+  &:active {
+    background-color: #fa990b!important;
+    border-bottom-color: transparent;
+    box-shadow: none;
+  }
+
+}
+
+footer {
+  display: none;
+}

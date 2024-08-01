@@ -21,7 +21,6 @@
     "@angular/platform-browser": "^18.1.0",
     "@angular/platform-browser-dynamic": "^18.1.0",
     "@angular/router": "^18.1.0",
-    "@wjdk/acl": "^2.3.2",
     "warlock-design-system": "^0.0.3",
     "ngx-image-cropper": "^7.2.1",
     "ngx-mask": "^17.0.7",
