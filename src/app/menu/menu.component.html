@@ -3,68 +3,87 @@
 </div>
 
 
+<!--// Temp-->
 
-
-
-
-
-<div class="menu-wrapper" *ngIf="!showSpinner">
+<div class="menu-wrapper">
   <div class="menu__section">
-    <div class="menu__header">
-      <h1>Menu</h1>
-    </div>
     <div class="menu__section__content">
-      <div class="menu-nav">
-        <mat-tab-group>
-          <ng-container>
-            <mat-tab *ngFor="let menu of menuData">
-              <ng-template mat-tab-label>
-                <span (click)="jumpToArticle(menu.cid)">
-                  {{menu.category}}
-                </span>
-              </ng-template>
-            </mat-tab>
-
-          </ng-container>
-        </mat-tab-group>
+      <div class="menu__section__content__logo">
+        <img src="../../assets/creame-of-the-crepe.png">
       </div>
-      <ng-container *ngFor="let menu of menuData">
-        <div #categoryDiv [ngClass]="{'special-style': menu.special}" class="menu__content__block" [id]="'id' + menu.cid">
-          <div class="menu__content__item">
-            <h2 class="menu__content__item__title">
-              {{menu.category}}
-            </h2>
-            <div class="menu__content__item__caption">
-              <span *ngIf="menu.caption">
-                {{menu.caption}}
-              </span>
-            </div>
-            <div class="menu__content__block__image" *ngIf="menu.categoryImage">
-              <img [src]="menu.categoryImage">
-            </div>
-            <div class="menu__item">
-              <div *ngFor="let item of menu.items" class="menu__section__item">
-                <div class="menu__section__item__heading">
-
-                  <div class="menu__section__item__heading__title">
-                    {{item.title}}
-                  </div>
-                  <div class="menu__section__item__heading__price">
-                    {{item.price}}
-                  </div>
-                </div>
-                <div class="menu__content__item__description">
-                  {{item.description}}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </ng-container>
+      <br>
+      <br>
+      <br>
+      <h1>Thank you for 14 years of serving you delicious crepes.</h1>
+      <h2>Our location is permanently closed.</h2>
+      <h3>Please keep checking our website for future catering offerings.</h3>
     </div>
   </div>
 
 </div>
-<div class="header__img">
-  <img src="./assets/img/cream-crepe-bg-1-alt.jpg">
-</div>
+
+<!--// Temp-->
+
+
+
+
+<!--<div class="menu-wrapper" *ngIf="!showSpinner">-->
+  <!--<div class="menu__section">-->
+    <!--<div class="menu__header">-->
+      <!--<h1>Menu</h1>-->
+    <!--</div>-->
+    <!--<div class="menu__section__content">-->
+      <!--<div class="menu-nav">-->
+        <!--<mat-tab-group>-->
+          <!--<ng-container>-->
+            <!--<mat-tab *ngFor="let menu of menuData">-->
+              <!--<ng-template mat-tab-label>-->
+                <!--<span (click)="jumpToArticle(menu.cid)">-->
+                  <!--{{menu.category}}-->
+                <!--</span>-->
+              <!--</ng-template>-->
+            <!--</mat-tab>-->
+
+          <!--</ng-container>-->
+        <!--</mat-tab-group>-->
+      <!--</div>-->
+      <!--<ng-container *ngFor="let menu of menuData">-->
+        <!--<div #categoryDiv [ngClass]="{'special-style': menu.special}" class="menu__content__block" [id]="'id' + menu.cid">-->
+          <!--<div class="menu__content__item">-->
+            <!--<h2 class="menu__content__item__title">-->
+              <!--{{menu.category}}-->
+            <!--</h2>-->
+            <!--<div class="menu__content__item__caption">-->
+              <!--<span *ngIf="menu.caption">-->
+                <!--{{menu.caption}}-->
+              <!--</span>-->
+            <!--</div>-->
+            <!--<div class="menu__content__block__image" *ngIf="menu.categoryImage">-->
+              <!--<img [src]="menu.categoryImage">-->
+            <!--</div>-->
+            <!--<div class="menu__item">-->
+              <!--<div *ngFor="let item of menu.items" class="menu__section__item">-->
+                <!--<div class="menu__section__item__heading">-->
+
+                  <!--<div class="menu__section__item__heading__title">-->
+                    <!--{{item.title}}-->
+                  <!--</div>-->
+                  <!--<div class="menu__section__item__heading__price">-->
+                    <!--{{item.price}}-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="menu__content__item__description">-->
+                  <!--{{item.description}}-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</ng-container>-->
+    <!--</div>-->
+  <!--</div>-->
+
+<!--</div>-->
+<!--<div class="header__img">-->
+  <!--<img src="./assets/img/cream-crepe-bg-1-alt.jpg">-->
+<!--</div>-->
